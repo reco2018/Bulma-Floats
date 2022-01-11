@@ -1,0 +1,30 @@
+{
+  "name": "vuetify-floats",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "src",
+    "types/*.d.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reco2018/Vuetify-Floats.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reco2018/Vuetify-Floats/issues"
+  },
+  "homepage": "https://github.com/reco2018/Vuetify-Floats#readme",
+  "peerDependencies": {
+    "vue": "^3.2.21"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "^2.0.0-rc.18"
+  }
+}

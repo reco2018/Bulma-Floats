@@ -25,7 +25,8 @@
     "vue": "^3.2.21"
   },
   "dependencies": {
-    "bulma": "0.9.3"
+    "bulma": "0.9.3",
+    "mount-vue-component": "^0.10.1"
   },
   "devDependencies": {
     "@vue/test-utils": "^2.0.0-rc.18"

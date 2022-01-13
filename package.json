@@ -1,6 +1,6 @@
 {
   "name": "@reco2018/vuetify-floats",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "src/index.js",
   "typings": "types/index.d.ts",

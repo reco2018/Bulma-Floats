@@ -19,6 +19,9 @@
     "url": "https://github.com/reco2018/Vuetify-Floats/issues"
   },
   "homepage": "https://github.com/reco2018/Vuetify-Floats#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/reco2018"
+  },
   "peerDependencies": {
     "vue": "^3.2.21"
   },

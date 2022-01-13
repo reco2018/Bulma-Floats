@@ -30,9 +30,7 @@ const ToastProgrammatic = {
     }
 }
 
-export const ToastSymbol = Symbol.for('floats:toast');
-
 export {
-    ToastProgrammatic as PToast,
+    ToastProgrammatic,
     Toast
 }

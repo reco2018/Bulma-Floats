@@ -5,8 +5,8 @@ import {
     FloatsConfig,
     ToastProgrammatic } from "./components"
 
-declare module '@vue/runtime-core' {
-    export interface ComponentCustomProperties {
+declare module 'nuxt3' {
+    export interface NuxtApp {
         $floats: FloatsNamespace
     }
 }

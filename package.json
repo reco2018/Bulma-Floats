@@ -1,6 +1,6 @@
 {
   "name": "@reco2018/vuetify-floats",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "src/index.js",
   "typings": "types/index.d.ts",
@@ -26,8 +26,8 @@
     "vue": "^3.2.21"
   },
   "dependencies": {
-    "bulma": "0.9.3",
-    "mount-vue-component": "^0.10.1"
+    "mount-vue-component": "^0.10.1",
+    "nuxt3": "^3.0.0-27368185.a4f300b"
   },
   "devDependencies": {
     "@vue/test-utils": "^2.0.0-rc.18"

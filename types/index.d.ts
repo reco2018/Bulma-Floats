@@ -1,4 +1,5 @@
 import { App }  from 'vue'
+import { Plugin as Nuxt3Plugin } from "nuxt3";
 
 import {
     FloatsConfig,
@@ -14,11 +15,14 @@ export declare type FloatsNamespace = {
     toast: typeof ToastProgrammatic
 }
 
+declare const createVuetifyFloats: Nuxt3Plugin;
+
 declare const _default: {
     install: (app: App, options: FloatsConfig) => void;
 };
 
 export {
+    createVuetifyFloats,
     ToastProgrammatic
 }
 

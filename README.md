@@ -1,11 +1,9 @@
 # Vuetify-Floats
 ```ts
 import { defineNuxtPlugin } from "#app";
-import VuetifyFloats from "@reco2018/vuetify-floats";
+import { createVuetifyFloats } from "@reco2018/vuetify-floats";
 
-export default defineNuxtPlugin((nuxtApp) => {
-    nuxtApp.vueApp.use(VuetifyFloats)
-});
+export default defineNuxtPlugin(createVuetifyFloats);
 ```
 
 ## Toast Example
@@ -47,5 +45,18 @@ OR
       }
     }
   })
+</script>
+```
+Nuxt App provide
+
+```vue
+<template>
+  <div>
+        <button @click="onClick">Show Toast</button>
+  </div>
+</template>
+
+<script setup lang="ts">
+  const onClick = () => useNuxtApp().$floats.toast.open({ message: 'Toasty!' })
 </script>
 ```

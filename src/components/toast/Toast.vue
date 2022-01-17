@@ -2,7 +2,7 @@
     <transition
         :enter-active-class="transition.enter"
         :leave-active-class="transition.leave">
-        <div
+        <v-alert
             @mouseenter="pause"
             @mouseleave="removePause"
             v-show="isActive"
@@ -10,13 +10,8 @@
             :class="[type, position]"
             :aria-hidden="!isActive"
             role="alert">
-            <template v-if="$slots.default">
-                <slot />
-            </template>
-            <template v-else>
-                <div v-html="message" />
-            </template>
-        </div>
+            {{ message }}
+        </v-alert>
     </transition>
 </template>
 

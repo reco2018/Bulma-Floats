@@ -27,9 +27,10 @@
   },
   "dependencies": {
     "mount-vue-component": "^0.10.1",
-    "nuxt3": "^3.0.0-27368185.a4f300b"
+    "vuetify": "^3.0.0-alpha.12"
   },
   "devDependencies": {
+    "nuxt3": "latest",
     "@vue/test-utils": "^2.0.0-rc.18"
   }
 }

@@ -23,14 +23,15 @@
     "registry": "https://npm.pkg.github.com/reco2018"
   },
   "peerDependencies": {
-    "vue": "^3.2.21"
-  },
-  "dependencies": {
-    "mount-vue-component": "^0.10.1",
+    "vue": "^3.2.21",
+    "nuxt3": "latest",
     "vuetify": "^3.0.0-alpha.12"
   },
+  "dependencies": {
+    "vuetify": "^3.0.0-alpha.12",
+    "mount-vue-component": "^0.10.1"
+  },
   "devDependencies": {
-    "nuxt3": "latest",
     "@vue/test-utils": "^2.0.0-rc.18"
   }
 }

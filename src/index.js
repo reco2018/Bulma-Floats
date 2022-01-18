@@ -9,8 +9,6 @@ const VuetifyFloats = {
             const component = components[key]
             app.component(key, component)
         }
-        
-        app.config.compilerOptions.isCustomElement = tag => tag.startsWith('v-')
 
         app.config.globalProperties.$floats = {
             toast: ToastProgrammatic

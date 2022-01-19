@@ -10,7 +10,7 @@
     "build": "rimraf dist && rollup -c"
   },
   "files": [
-    "src",
+    "dist",
     "types/*.d.ts"
   ],
   "repository": {

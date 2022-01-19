@@ -27,8 +27,7 @@
   "dependencies": {
     "vue": "^3.2.21",
     "nuxt3": "latest",
-    "vuetify": "^3.0.0-alpha.12",
-    "mount-vue-component": "^0.10.1"
+    "vuetify": "^3.0.0-alpha.12"
   },
   "devDependencies": {
     "@babel/preset-env": "7.16.8",

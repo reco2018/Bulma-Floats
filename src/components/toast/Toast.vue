@@ -3,6 +3,7 @@
         :enter-active-class="transition.enter"
         :leave-active-class="transition.leave">
         <v-alert
+            :type="type"
             @mouseenter="pause"
             @mouseleave="removePause"
             v-show="isActive"
@@ -45,17 +46,9 @@ export default {
 }
 
 .notices .toast {
-    display: inline-flex;
     animation-duration: 150ms;
-    margin: 0.5em 0;
-    text-align: center;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
-    border-radius: 2em;
     padding: 0.75em 1.5em;
-    pointer-events: auto;
-    opacity: 0.92;
-    color: rgba(255, 255, 255, 0.96);
-    background: rgba(0, 0, 0, 0.96);
+    margin: 0.5em 0;
 }
 
 .notices .notification {

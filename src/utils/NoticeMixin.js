@@ -5,7 +5,7 @@ export default {
     props: {
         type: {
             type: String,
-            default: 'is-dark'
+            default: config.defaultType
         },
         message: [String, Array],
         duration: Number,

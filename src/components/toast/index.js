@@ -1,7 +1,6 @@
 import Toast from './Toast'
 import { defineComponent } from "vue";
 import { mount } from 'mount-vue-component'
-import * as components from 'vuetify/components'
 
 import config from '../../utils/config'
 import { merge } from '../../utils/helpers'
@@ -19,10 +18,11 @@ const ToastProgrammatic = {
         }
         const propsData = merge(defaultParam, params)
         const ToastComponent = defineComponent({
-            extends: Toast,
-            components,
+            extends: Toast
         })
-        mount(ToastComponent, { props: propsData })
+        mount(ToastComponent, { 
+            props: propsData
+        })
         return ToastComponent
     }
 }

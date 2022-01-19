@@ -1,5 +1,3 @@
-import { createVuetify } from 'vuetify'
-import * as vuetifyComponents from 'vuetify/components'
 import * as components from './components'
 import { ToastProgrammatic } from './components/toast'
 
@@ -19,9 +17,6 @@ const VuetifyFloats = {
 }
 
 const createVuetifyFloats = (nuxtApp) => {
-    nuxtApp.vueApp.use(createVuetify({
-        components: vuetifyComponents,
-    }))
     nuxtApp.vueApp.use(VuetifyFloats, {})
     return {
         provide: {

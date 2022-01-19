@@ -1,13 +1,11 @@
 import Toast from './Toast'
-import { defineComponent } from "vue";
-import { mount } from 'mount-vue-component'
+import { defineComponent, createApp } from "vue";
 
 import config from '../../utils/config'
 import { merge } from '../../utils/helpers'
 
 const ToastProgrammatic = {
-    open(params) {
-        let parent
+    open(app, params) {
         if (typeof params === 'string') {
             params = {
                 message: params
@@ -17,15 +15,15 @@ const ToastProgrammatic = {
         const defaultParam = {
             position: config.defaultToastPosition || 'is-top'
         }
-        if (params.parent) {
-            parent = params.parent
-            delete params.parent
-        }
         const propsData = merge(defaultParam, params)
         const ToastComponent = defineComponent({
-            extends: Toast,
+            extends: Toast
         })
-        mount(ToastComponent, { props: propsData })
+
+        let _app = createApp(ToastComponent, propsData)
+        Object.assign(_app._context, app._instance.appContext)
+        _app.mount(document.createElement('div'))
+
         return ToastComponent
     }
 }

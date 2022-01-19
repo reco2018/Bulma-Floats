@@ -5,7 +5,7 @@ export default {
     props: {
         type: {
             type: String,
-            default: 'is-dark'
+            default: config.defaultType
         },
         message: [String, Array],
         duration: Number,
@@ -113,9 +113,7 @@ export default {
                 this.isActive = false
                 this.$emit('close')
 
-                // Timeout for the animation complete before destroying
                 setTimeout(() => {
-                    // this.$destroy()
                     removeElement(this.$el)
                 }, 150)
             }

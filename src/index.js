@@ -2,7 +2,7 @@ import * as components from './components'
 import { ToastProgrammatic } from './components/toast'
 
 const VuetifyFloats = {
-    install (app) {
+    install (app, options) {
         for (const key in components) {
             const component = components[key]
             app.component(key, component)
@@ -17,12 +17,12 @@ const VuetifyFloats = {
 }
 
 const createVuetifyFloats = (nuxtApp) => {
-    nuxtApp.vueApp.use(VuetifyFloats)
+    nuxtApp.vueApp.use(VuetifyFloats, {})
     return {
         provide: {
             floats: {
                 toast: ToastProgrammatic,
-            }
+            },
         }
     }
 }

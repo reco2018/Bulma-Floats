@@ -19,21 +19,9 @@ const VuetifyFloats = {
     }
 }
 
-const createVuetifyFloats = (nuxtApp) => {
-    nuxtApp.vueApp.use(VuetifyFloats, {})
-    return {
-        provide: {
-            floats: {
-                toast: ToastProgrammatic,
-            },
-        }
-    }
-}
-
 export default VuetifyFloats
 
 export * from './components'
 export {
-    ToastProgrammatic,
-    createVuetifyFloats
+    ToastProgrammatic
 }

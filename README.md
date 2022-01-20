@@ -16,7 +16,7 @@ export default defineNuxtPlugin(createVuetifyFloats);
 </template>
 
 <script setup lang="ts">
-  const onClick = () => useNuxtApp().$floats.toast.open(useNuxtApp().vueApp, {message: 'Toasty!', duration: 2000})
+  const onClick = () => useNuxtApp().$floats.toast.open({message: 'Toasty!', duration: 2000})
 </script>
 ```
 OR
@@ -31,7 +31,7 @@ OR
 <script setup lang="ts">
   import { ToastProgrammatic } from '@reco2018/vuetify-floats'
   const toast: typeof ToastProgrammatic = inject('floats:toast')
-  const onClick = () => toast.open(useNuxtApp().vueApp, 'Toasty!')
+  const onClick = () => toast.open('Toasty!')
 </script>
 ```
 OR
@@ -44,6 +44,6 @@ OR
 </template>
 
 <script setup lang="ts">
-  const onClick = () => useNuxtApp().vueApp.config.globalProperties.$floats.toast.open(useNuxtApp().vueApp, 'Toasty!')
+  const onClick = () => useNuxtApp().vueApp.config.globalProperties.$floats.toast.open('Toasty!')
 </script>
 ```

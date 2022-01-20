@@ -1,9 +1,18 @@
 # Vuetify-Floats
 ```ts
-import { defineNuxtPlugin } from "#app";
-import { createVuetifyFloats } from "@reco2018/vuetify-floats";
+import { defineNuxtPlugin } from '#app'
+import VuetifyFloats, { ToastProgrammatic } from '@reco2018/vuetify-floats'
 
-export default defineNuxtPlugin(createVuetifyFloats);
+export default defineNuxtPlugin((nuxtApp) => {
+    nuxtApp.vueApp.use(VuetifyFloats);
+    return {
+        provide: {
+            floats: {
+                toast: ToastProgrammatic,
+            },
+        }
+    }
+})
 ```
 
 ## Toast Example

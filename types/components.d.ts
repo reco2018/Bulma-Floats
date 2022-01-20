@@ -1,4 +1,4 @@
-import { DefineComponent, App } from "vue";
+import { DefineComponent } from "vue";
 import { ColorModifiers, GlobalPositions } from "./helpers";
 
 export declare type FloatsConfig = {
@@ -52,5 +52,5 @@ export declare type FNoticeConfig = {
 }
 
 export declare const ToastProgrammatic: {
-    open: (app: App<Element>, params: FNoticeConfig | string) => DefineComponent;
+    open: (params: FNoticeConfig | string) => DefineComponent;
 }

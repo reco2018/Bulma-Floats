@@ -1,11 +1,11 @@
 import Toast from './Toast'
 import { defineComponent, createApp } from "vue";
 
-import config from '../../utils/config'
+import config, { VueInstance } from '../../utils/config'
 import { merge } from '../../utils/helpers'
 
 const ToastProgrammatic = {
-    open(app, params) {
+    open(params) {
         if (typeof params === 'string') {
             params = {
                 message: params
@@ -21,7 +21,7 @@ const ToastProgrammatic = {
         })
 
         let _app = createApp(ToastComponent, propsData)
-        Object.assign(_app._context, app._instance.appContext)
+        Object.assign(_app._context, VueInstance._instance.appContext)
         _app.mount(document.createElement('div'))
 
         return ToastComponent

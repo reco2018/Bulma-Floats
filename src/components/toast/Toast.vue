@@ -23,8 +23,7 @@ export default {
     mixins: [NoticeMixin],
     data() {
         return {
-            newDuration: this.duration || config.defaultToastDuration,
-            type: this.type || config.defaultToastType
+            newDuration: this.duration || config.defaultToastDuration
         }
     }
 }

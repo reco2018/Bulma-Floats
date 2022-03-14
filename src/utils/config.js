@@ -1,5 +1,6 @@
 let config = {
-    defaultType: 'info',
+    defaultType: 'is-info',
+    defaultToastType: 'is-info',
     defaultToastDuration: 2000,
     defaultToastPosition: null
 }

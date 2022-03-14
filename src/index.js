@@ -2,7 +2,7 @@ import * as components from './components'
 import { ToastProgrammatic } from './components/toast'
 import { setVueInstance } from './utils/config'
 
-const VuetifyFloats = {
+const BulmaFloats = {
     install (app, options) {
         setVueInstance(app)
         
@@ -19,7 +19,7 @@ const VuetifyFloats = {
     }
 }
 
-export default VuetifyFloats
+export default BulmaFloats
 
 export * from './components'
 export {

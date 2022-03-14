@@ -2,17 +2,15 @@
     <transition
         :enter-active-class="transition.enter"
         :leave-active-class="transition.leave">
-        <v-alert
-            :type="type"
+        <div
             @mouseenter="pause"
             @mouseleave="removePause"
             v-show="isActive"
-            class="toast"
+            class="toast notification"
             :class="[type, position]"
-            :aria-hidden="!isActive"
-            role="alert">
+            :aria-hidden="!isActive">
             {{ message }}
-        </v-alert>
+        </div>
     </transition>
 </template>
 
@@ -25,7 +23,8 @@ export default {
     mixins: [NoticeMixin],
     data() {
         return {
-            newDuration: this.duration || config.defaultToastDuration
+            newDuration: this.duration || config.defaultToastDuration,
+            type: this.type || config.defaultToastType
         }
     }
 }

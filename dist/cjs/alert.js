@@ -230,7 +230,7 @@ const _hoisted_1 = { class: "modal-card" };
 const _hoisted_2 = { class: "modal-card-head" };
 const _hoisted_3 = { class: "modal-card-title" };
 const _hoisted_4 = { class: "modal-card-body" };
-const _hoisted_5 = { class: "modal-card-foot" };
+const _hoisted_5 = { class: "modal-card-foot is-justify-content-end" };
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (vue.openBlock(), vue.createBlock(vue.Transition, { name: _ctx.animation }, {
@@ -253,19 +253,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           ]),
           vue.createElementVNode("section", _hoisted_4, vue.toDisplayString(_ctx.content), 1 /* TEXT */),
           vue.createElementVNode("footer", _hoisted_5, [
-            (_ctx.okVisible)
-              ? (vue.openBlock(), vue.createElementBlock("button", {
-                  key: 0,
-                  onClick: _cache[2] || (_cache[2] = (...args) => (_ctx.ok && _ctx.ok(...args))),
-                  class: "button is-success"
-                }, vue.toDisplayString($data.newOkText), 1 /* TEXT */))
-              : vue.createCommentVNode("v-if", true),
             (_ctx.cancelVisible)
               ? (vue.openBlock(), vue.createElementBlock("button", {
-                  key: 1,
-                  onClick: _cache[3] || (_cache[3] = $event => (_ctx.cancel('button'))),
+                  key: 0,
+                  onClick: _cache[2] || (_cache[2] = $event => (_ctx.cancel('button'))),
                   class: "button"
                 }, vue.toDisplayString($data.newCancelText), 1 /* TEXT */))
+              : vue.createCommentVNode("v-if", true),
+            (_ctx.okVisible)
+              ? (vue.openBlock(), vue.createElementBlock("button", {
+                  key: 1,
+                  onClick: _cache[3] || (_cache[3] = (...args) => (_ctx.ok && _ctx.ok(...args))),
+                  class: "button is-success"
+                }, vue.toDisplayString($data.newOkText), 1 /* TEXT */))
               : vue.createCommentVNode("v-if", true)
           ])
         ]),

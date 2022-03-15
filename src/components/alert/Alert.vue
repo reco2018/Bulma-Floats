@@ -10,9 +10,9 @@
                 <section class="modal-card-body">
                     {{ content }}
                 </section>
-                <footer class="modal-card-foot">
-                    <button @click="ok" v-if="okVisible" class="button is-success">{{ newOkText }}</button>
+                <footer class="modal-card-foot is-justify-content-end">
                     <button @click="cancel('button')" v-if="cancelVisible" class="button">{{ newCancelText }}</button>
+                    <button @click="ok" v-if="okVisible" class="button is-success">{{ newOkText }}</button>
                 </footer>
             </div>
             <button @click="cancel('x')" class="modal-close is-large" aria-label="close"></button>

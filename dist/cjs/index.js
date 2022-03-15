@@ -2,18 +2,21 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var toast = require('./index-b203a406.js');
+var toast = require('./toast.js');
 require('vue');
+var alert = require('./alert.js');
+var config = require('./config-4ce33493.js');
 require('./helpers.js');
 
 var components = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    FToast: toast.script
+    FToast: toast.Toast,
+    FAlert: alert.Alert
 });
 
 var BulmaFloats = {
   install: function install(app, options) {
-    toast.setVueInstance(app);
+    config.setVueInstance(app);
 
     for (var key in components) {
       var component = components[key];
@@ -21,12 +24,14 @@ var BulmaFloats = {
     }
 
     app.config.globalProperties.$floats = {
-      toast: toast.ToastProgrammatic
+      toast: toast.ToastProgrammatic,
+      alert: alert.AlertProgrammatic
     };
-    app.provide('floats:toast', toast.ToastProgrammatic);
   }
 };
 
-exports.FToast = toast.script;
+exports.FToast = toast.Toast;
 exports.ToastProgrammatic = toast.ToastProgrammatic;
+exports.AlertProgrammatic = alert.AlertProgrammatic;
+exports.FAlert = alert.Alert;
 exports["default"] = BulmaFloats;

@@ -54,3 +54,7 @@ export declare type FNoticeConfig = {
 export declare const ToastProgrammatic: {
     open: (params: FNoticeConfig | string) => DefineComponent;
 }
+
+export declare const AlertProgrammatic: {
+    open: (params: FNoticeConfig | string) => DefineComponent;
+}

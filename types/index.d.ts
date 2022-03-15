@@ -2,7 +2,8 @@ import { App }  from 'vue'
 
 import {
     FloatsConfig,
-    ToastProgrammatic } from "./components"
+    ToastProgrammatic,
+    AlertProgrammatic } from "./components"
 
 declare module 'nuxt3' {
     export interface NuxtApp {
@@ -11,7 +12,8 @@ declare module 'nuxt3' {
 }
 
 export declare type FloatsNamespace = {
-    toast: typeof ToastProgrammatic
+    toast: typeof ToastProgrammatic,
+    alert: typeof AlertProgrammatic
 }
 
 declare const _default: {
@@ -19,7 +21,8 @@ declare const _default: {
 };
 
 export {
-    ToastProgrammatic
+    ToastProgrammatic,
+    AlertProgrammatic
 }
 
 export default _default;

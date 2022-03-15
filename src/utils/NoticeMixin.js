@@ -124,6 +124,7 @@ export default {
         },
 
         showNotice() {
+            console.log(this.$el)
             if (this.shouldQueue()) this.correctParent.innerHTML = ''
             this.correctParent.insertAdjacentElement('afterbegin', this.$el)
             this.isActive = true

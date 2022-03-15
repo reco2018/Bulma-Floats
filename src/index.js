@@ -1,5 +1,6 @@
 import * as components from './components'
 import { ToastProgrammatic } from './components/toast'
+import { AlertProgrammatic } from './components/alert'
 import { setVueInstance } from './utils/config'
 
 const BulmaFloats = {
@@ -12,10 +13,9 @@ const BulmaFloats = {
         }
 
         app.config.globalProperties.$floats = {
-            toast: ToastProgrammatic
+            toast: ToastProgrammatic,
+            alert: AlertProgrammatic
         }
-
-        app.provide('floats:toast', ToastProgrammatic)
     }
 }
 
@@ -23,5 +23,6 @@ export default BulmaFloats
 
 export * from './components'
 export {
-    ToastProgrammatic
+    ToastProgrammatic,
+    AlertProgrammatic
 }

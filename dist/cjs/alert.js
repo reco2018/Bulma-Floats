@@ -12,6 +12,7 @@ var DialogMixin = {
     component: [Object, Function, String],
     title: [String, Array],
     content: [String, Array],
+    isFullScreen: Boolean,
     okVisible: Boolean,
     okText: String,
     cancelVisible: Boolean,
@@ -226,32 +227,44 @@ var script = {
     }
 };
 
-const _hoisted_1 = { class: "modal-card" };
-const _hoisted_2 = { class: "modal-card-head" };
-const _hoisted_3 = { class: "modal-card-title" };
-const _hoisted_4 = { class: "modal-card-body" };
+const _hoisted_1 = { class: "modal-card-head" };
+const _hoisted_2 = { class: "modal-card-title has-text-centered is-size-5" };
+const _hoisted_3 = { class: "modal-card-body" };
+const _hoisted_4 = { key: 1 };
 const _hoisted_5 = { class: "modal-card-foot is-justify-content-end" };
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_component = vue.resolveComponent("component");
+
   return (vue.openBlock(), vue.createBlock(vue.Transition, { name: _ctx.animation }, {
     default: vue.withCtx(() => [
       vue.createElementVNode("div", {
         class: vue.normalizeClass(`modal ${_ctx.isActive ? 'is-active' : ''}`)
       }, [
+        (!_ctx.isFullScreen)
+          ? (vue.openBlock(), vue.createElementBlock("div", {
+              key: 0,
+              onClick: _cache[0] || (_cache[0] = $event => (_ctx.cancel('outside'))),
+              class: "modal-background"
+            }))
+          : vue.createCommentVNode("v-if", true),
         vue.createElementVNode("div", {
-          onClick: _cache[0] || (_cache[0] = $event => (_ctx.cancel('outside'))),
-          class: "modal-background"
-        }),
-        vue.createElementVNode("div", _hoisted_1, [
-          vue.createElementVNode("header", _hoisted_2, [
-            vue.createElementVNode("p", _hoisted_3, vue.toDisplayString(_ctx.title), 1 /* TEXT */),
+          class: vue.normalizeClass(`modal-card ${!_ctx.isFullScreen ? 'px-3' : ''}`),
+          style: vue.normalizeStyle(_ctx.isFullScreen ? 'width: 100%; height: 100%; max-height: 100vh;' : '')
+        }, [
+          vue.createElementVNode("header", _hoisted_1, [
+            vue.createElementVNode("p", _hoisted_2, vue.toDisplayString(_ctx.title), 1 /* TEXT */),
             vue.createElementVNode("button", {
               onClick: _cache[1] || (_cache[1] = $event => (_ctx.cancel('x'))),
               class: "delete",
               "aria-label": "close"
             })
           ]),
-          vue.createElementVNode("section", _hoisted_4, vue.toDisplayString(_ctx.content), 1 /* TEXT */),
+          vue.createElementVNode("section", _hoisted_3, [
+            (_ctx.component)
+              ? (vue.openBlock(), vue.createBlock(_component_component, { key: 0 }))
+              : (vue.openBlock(), vue.createElementBlock("span", _hoisted_4, vue.toDisplayString(_ctx.content), 1 /* TEXT */))
+          ]),
           vue.createElementVNode("footer", _hoisted_5, [
             (_ctx.cancelVisible)
               ? (vue.openBlock(), vue.createElementBlock("button", {
@@ -268,12 +281,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 }, vue.toDisplayString($data.newOkText), 1 /* TEXT */))
               : vue.createCommentVNode("v-if", true)
           ])
-        ]),
-        vue.createElementVNode("button", {
-          onClick: _cache[4] || (_cache[4] = $event => (_ctx.cancel('x'))),
-          class: "modal-close is-large",
-          "aria-label": "close"
-        })
+        ], 6 /* CLASS, STYLE */),
+        vue.createCommentVNode(" <button v-if=\"!isFullScreen\" @click=\"cancel('x')\" class=\"modal-close is-large\" aria-label=\"close\"></button> ")
       ], 2 /* CLASS */)
     ]),
     _: 1 /* STABLE */
@@ -293,6 +302,7 @@ var AlertProgrammatic = {
 
     var defaultParam = {
       programmatic: true,
+      isFullScreen: false,
       okVisible: config.config.defaultAlertOkVisible,
       okText: config.config.defaultAlertOkText,
       onOkPressed: function onOkPressed() {},
@@ -303,6 +313,9 @@ var AlertProgrammatic = {
     var propsData = helpers.merge(defaultParam, params);
     var AlertComponent = vue.defineComponent({
       "extends": script,
+      components: {
+        component: propsData.component
+      },
       emits: {
         onCancel: function onCancel() {
           propsData.onCancelPressed();

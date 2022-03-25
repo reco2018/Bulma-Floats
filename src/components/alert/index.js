@@ -14,6 +14,7 @@ const AlertProgrammatic = {
 
         const defaultParam = {
             programmatic: true,
+            isFullScreen: false,
             okVisible: config.defaultAlertOkVisible,
             okText: config.defaultAlertOkText,
             onOkPressed: () => {},
@@ -24,6 +25,9 @@ const AlertProgrammatic = {
         const propsData = merge(defaultParam, params)
         const AlertComponent = defineComponent({
             extends: Alert,
+            components: {
+                component: propsData.component,
+            },
             emits: {
                 onCancel() {
                     propsData.onCancelPressed()

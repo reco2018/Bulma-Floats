@@ -1,6 +1,6 @@
 import { c as config, V as VueInstance } from './config-b6f98b99.js';
 import { removeElement, merge } from './helpers.js';
-import { openBlock, createBlock, Transition, withCtx, createElementVNode, normalizeClass, toDisplayString, createElementBlock, createCommentVNode, defineComponent, createApp } from 'vue';
+import { resolveComponent, openBlock, createBlock, Transition, withCtx, createElementVNode, normalizeClass, createElementBlock, createCommentVNode, normalizeStyle, toDisplayString, defineComponent, createApp } from 'vue';
 
 var DialogMixin = {
   props: {
@@ -8,6 +8,7 @@ var DialogMixin = {
     component: [Object, Function, String],
     title: [String, Array],
     content: [String, Array],
+    isFullScreen: Boolean,
     okVisible: Boolean,
     okText: String,
     cancelVisible: Boolean,
@@ -222,32 +223,44 @@ var script = {
     }
 };
 
-const _hoisted_1 = { class: "modal-card" };
-const _hoisted_2 = { class: "modal-card-head" };
-const _hoisted_3 = { class: "modal-card-title" };
-const _hoisted_4 = { class: "modal-card-body" };
+const _hoisted_1 = { class: "modal-card-head" };
+const _hoisted_2 = { class: "modal-card-title has-text-centered is-size-5" };
+const _hoisted_3 = { class: "modal-card-body" };
+const _hoisted_4 = { key: 1 };
 const _hoisted_5 = { class: "modal-card-foot is-justify-content-end" };
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_component = resolveComponent("component");
+
   return (openBlock(), createBlock(Transition, { name: _ctx.animation }, {
     default: withCtx(() => [
       createElementVNode("div", {
         class: normalizeClass(`modal ${_ctx.isActive ? 'is-active' : ''}`)
       }, [
+        (!_ctx.isFullScreen)
+          ? (openBlock(), createElementBlock("div", {
+              key: 0,
+              onClick: _cache[0] || (_cache[0] = $event => (_ctx.cancel('outside'))),
+              class: "modal-background"
+            }))
+          : createCommentVNode("v-if", true),
         createElementVNode("div", {
-          onClick: _cache[0] || (_cache[0] = $event => (_ctx.cancel('outside'))),
-          class: "modal-background"
-        }),
-        createElementVNode("div", _hoisted_1, [
-          createElementVNode("header", _hoisted_2, [
-            createElementVNode("p", _hoisted_3, toDisplayString(_ctx.title), 1 /* TEXT */),
+          class: normalizeClass(`modal-card ${!_ctx.isFullScreen ? 'px-3' : ''}`),
+          style: normalizeStyle(_ctx.isFullScreen ? 'width: 100%; height: 100%; max-height: 100vh;' : '')
+        }, [
+          createElementVNode("header", _hoisted_1, [
+            createElementVNode("p", _hoisted_2, toDisplayString(_ctx.title), 1 /* TEXT */),
             createElementVNode("button", {
               onClick: _cache[1] || (_cache[1] = $event => (_ctx.cancel('x'))),
               class: "delete",
               "aria-label": "close"
             })
           ]),
-          createElementVNode("section", _hoisted_4, toDisplayString(_ctx.content), 1 /* TEXT */),
+          createElementVNode("section", _hoisted_3, [
+            (_ctx.component)
+              ? (openBlock(), createBlock(_component_component, { key: 0 }))
+              : (openBlock(), createElementBlock("span", _hoisted_4, toDisplayString(_ctx.content), 1 /* TEXT */))
+          ]),
           createElementVNode("footer", _hoisted_5, [
             (_ctx.cancelVisible)
               ? (openBlock(), createElementBlock("button", {
@@ -264,12 +277,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 }, toDisplayString($data.newOkText), 1 /* TEXT */))
               : createCommentVNode("v-if", true)
           ])
-        ]),
-        createElementVNode("button", {
-          onClick: _cache[4] || (_cache[4] = $event => (_ctx.cancel('x'))),
-          class: "modal-close is-large",
-          "aria-label": "close"
-        })
+        ], 6 /* CLASS, STYLE */),
+        createCommentVNode(" <button v-if=\"!isFullScreen\" @click=\"cancel('x')\" class=\"modal-close is-large\" aria-label=\"close\"></button> ")
       ], 2 /* CLASS */)
     ]),
     _: 1 /* STABLE */
@@ -289,6 +298,7 @@ var AlertProgrammatic = {
 
     var defaultParam = {
       programmatic: true,
+      isFullScreen: false,
       okVisible: config.defaultAlertOkVisible,
       okText: config.defaultAlertOkText,
       onOkPressed: function onOkPressed() {},
@@ -299,6 +309,9 @@ var AlertProgrammatic = {
     var propsData = merge(defaultParam, params);
     var AlertComponent = defineComponent({
       "extends": script,
+      components: {
+        component: propsData.component
+      },
       emits: {
         onCancel: function onCancel() {
           propsData.onCancelPressed();

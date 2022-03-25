@@ -7,6 +7,7 @@ export default {
         component: [Object, Function, String],
         title: [String, Array],
         content: [String, Array],
+        isFullScreen: Boolean,
         okVisible: Boolean,
         okText: String,
         cancelVisible: Boolean,

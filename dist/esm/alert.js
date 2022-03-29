@@ -16,6 +16,7 @@ var DialogMixin = {
     programmatic: Boolean,
     props: Object,
     events: Object,
+    defaultResult: [Object, Array, String, Number, Boolean],
     width: {
       type: [String, Number],
       "default": 960
@@ -151,7 +152,7 @@ var DialogMixin = {
       this.savedScrollTop = null;
     },
     ok: function ok() {
-      this.$emit('onOk');
+      this.$emit('onOk', this.defaultResult);
       this.close();
     },
     cancel: function cancel(method) {
@@ -218,8 +219,18 @@ var script = {
     data() {
         return {
             newOkText: this.okText || config.defaultAlertOkText,
-            newCancelText: this.cancelText || config.defaultAlertCancelText
+            newCancelText: this.cancelText || config.defaultAlertCancelText,
+            newResult: this.defaultResult || {}
         }
+    },
+    methods: {
+        onResultChanged(result) {
+            this.newResult = result;
+        },
+        ok() {
+            this.$emit('onOk', this.newResult);
+            this.close();
+        },
     }
 };
 
@@ -258,7 +269,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           ]),
           createElementVNode("section", _hoisted_3, [
             (_ctx.component)
-              ? (openBlock(), createBlock(_component_component, { key: 0 }))
+              ? (openBlock(), createBlock(_component_component, {
+                  key: 0,
+                  result: $data.newResult,
+                  onOnResultChanged: $options.onResultChanged
+                }, null, 8 /* PROPS */, ["result", "onOnResultChanged"]))
               : (openBlock(), createElementBlock("span", _hoisted_4, toDisplayString(_ctx.content), 1 /* TEXT */))
           ]),
           createElementVNode("footer", _hoisted_5, [
@@ -272,13 +287,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             (_ctx.okVisible)
               ? (openBlock(), createElementBlock("button", {
                   key: 1,
-                  onClick: _cache[3] || (_cache[3] = (...args) => (_ctx.ok && _ctx.ok(...args))),
+                  onClick: _cache[3] || (_cache[3] = (...args) => ($options.ok && $options.ok(...args))),
                   class: "button is-success"
                 }, toDisplayString($data.newOkText), 1 /* TEXT */))
               : createCommentVNode("v-if", true)
           ])
-        ], 6 /* CLASS, STYLE */),
-        createCommentVNode(" <button v-if=\"!isFullScreen\" @click=\"cancel('x')\" class=\"modal-close is-large\" aria-label=\"close\"></button> ")
+        ], 6 /* CLASS, STYLE */)
       ], 2 /* CLASS */)
     ]),
     _: 1 /* STABLE */
@@ -317,8 +331,8 @@ var AlertProgrammatic = {
           propsData.onCancelPressed();
           return true;
         },
-        onOk: function onOk() {
-          propsData.onOkPressed();
+        onOk: function onOk(result) {
+          propsData.onOkPressed(result);
           return true;
         }
       }

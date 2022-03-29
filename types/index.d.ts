@@ -12,17 +12,17 @@ declare module 'nuxt3' {
 }
 
 export declare type FloatsNamespace = {
-    toast: typeof ToastProgrammatic,
+    toast: typeof ToastProgrammatic
     alert: typeof AlertProgrammatic
 }
 
 declare const _default: {
-    install: (app: App, options: FloatsConfig) => void;
-};
+    install: (app: App, options: FloatsConfig) => void
+}
 
 export {
     ToastProgrammatic,
     AlertProgrammatic
 }
 
-export default _default;
+export default _default

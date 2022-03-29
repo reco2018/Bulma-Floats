@@ -15,6 +15,7 @@ export default {
         programmatic: Boolean,
         props: Object,
         events: Object,
+        defaultResult: [Object, Array, String, Number, Boolean],
         width: {
             type: [String, Number],
             default: 960
@@ -155,7 +156,7 @@ export default {
             this.savedScrollTop = null
         },
         ok() {
-            this.$emit('onOk')
+            this.$emit('onOk', this.defaultResult)
             this.close()
         },
         cancel(method) {

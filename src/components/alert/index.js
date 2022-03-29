@@ -33,8 +33,8 @@ const AlertProgrammatic = {
                     propsData.onCancelPressed()
                     return true;
                 },
-                onOk() {
-                    propsData.onOkPressed()
+                onOk(result) {
+                    propsData.onOkPressed(result)
                     return true;
                 }
             }

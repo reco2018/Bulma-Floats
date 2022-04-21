@@ -276,22 +276,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               ? (vue.openBlock(), vue.createBlock(_component_component, {
                   key: 0,
                   result: $data.newResult,
+                  onOnOk: $options.ok,
+                  onOnCancel: _cache[2] || (_cache[2] = $event => (_ctx.cancel('button'))),
                   onOnResultChanged: $options.onResultChanged
-                }, null, 8 /* PROPS */, ["result", "onOnResultChanged"]))
+                }, null, 8 /* PROPS */, ["result", "onOnOk", "onOnResultChanged"]))
               : (vue.openBlock(), vue.createElementBlock("span", _hoisted_4, vue.toDisplayString(_ctx.content), 1 /* TEXT */))
           ]),
           vue.createElementVNode("footer", _hoisted_5, [
             (_ctx.cancelVisible)
               ? (vue.openBlock(), vue.createElementBlock("button", {
                   key: 0,
-                  onClick: _cache[2] || (_cache[2] = $event => (_ctx.cancel('button'))),
+                  onClick: _cache[3] || (_cache[3] = $event => (_ctx.cancel('button'))),
                   class: "button"
                 }, vue.toDisplayString($data.newCancelText), 1 /* TEXT */))
               : vue.createCommentVNode("v-if", true),
             (_ctx.okVisible)
               ? (vue.openBlock(), vue.createElementBlock("button", {
                   key: 1,
-                  onClick: _cache[3] || (_cache[3] = (...args) => ($options.ok && $options.ok(...args))),
+                  onClick: _cache[4] || (_cache[4] = (...args) => ($options.ok && $options.ok(...args))),
                   class: "button is-success"
                 }, vue.toDisplayString($data.newOkText), 1 /* TEXT */))
               : vue.createCommentVNode("v-if", true)

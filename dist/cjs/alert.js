@@ -245,7 +245,7 @@ const _hoisted_4 = { key: 1 };
 const _hoisted_5 = { class: "modal-card-foot is-justify-content-end" };
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_component = vue.resolveComponent("component");
+  const _component_ChildComponent = vue.resolveComponent("ChildComponent");
 
   return (vue.openBlock(), vue.createBlock(vue.Transition, { name: _ctx.animation }, {
     default: vue.withCtx(() => [
@@ -273,7 +273,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           ]),
           vue.createElementVNode("section", _hoisted_3, [
             (_ctx.component)
-              ? (vue.openBlock(), vue.createBlock(_component_component, {
+              ? (vue.openBlock(), vue.createBlock(_component_ChildComponent, {
                   key: 0,
                   result: $data.newResult,
                   onOnOk: $options.ok,
@@ -330,7 +330,7 @@ var AlertProgrammatic = {
     var AlertComponent = vue.defineComponent({
       "extends": script,
       components: {
-        component: propsData.component
+        ChildComponent: propsData.component
       },
       emits: {
         onCancel: function onCancel() {

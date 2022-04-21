@@ -26,7 +26,7 @@ const AlertProgrammatic = {
         const AlertComponent = defineComponent({
             extends: Alert,
             components: {
-                component: propsData.component,
+                ChildComponent: propsData.component,
             },
             emits: {
                 onCancel() {

@@ -8,6 +8,7 @@ export default {
         title: [String, Array],
         content: [String, Array],
         isFullScreen: Boolean,
+        isSheet: Boolean,
         okVisible: Boolean,
         okText: String,
         cancelVisible: Boolean,

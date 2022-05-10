@@ -27,6 +27,7 @@ export declare type FDialogConfig<T> = {
     onOkPressed: (result: T) => null,
     onCancelPressed: Function,
     isFullScreen: true,
+    isSheet: true,
 }
 
 export declare const ToastProgrammatic: {

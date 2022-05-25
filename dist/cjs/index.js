@@ -2,16 +2,16 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var index = require('./index-1b8de993.js');
+var toast = require('./toast.js');
 require('vue');
-var index$1 = require('./index-db87e810.js');
+var alert = require('./alert.js');
 var styleInject_es = require('./style-inject.es-691dc3e9.js');
-require('./helpers-8cc69401.js');
+require('./helpers.js');
 
 var components = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    FToast: index.script,
-    FAlert: index$1.script
+    FToast: toast.Toast,
+    FAlert: alert.Alert
 });
 
 var BulmaFloats = {
@@ -24,14 +24,14 @@ var BulmaFloats = {
     }
 
     app.config.globalProperties.$floats = {
-      toast: index.ToastProgrammatic,
-      alert: index$1.AlertProgrammatic
+      toast: toast.ToastProgrammatic,
+      alert: alert.AlertProgrammatic
     };
   }
 };
 
-exports.FToast = index.script;
-exports.ToastProgrammatic = index.ToastProgrammatic;
-exports.AlertProgrammatic = index$1.AlertProgrammatic;
-exports.FAlert = index$1.script;
+exports.FToast = toast.Toast;
+exports.ToastProgrammatic = toast.ToastProgrammatic;
+exports.AlertProgrammatic = alert.AlertProgrammatic;
+exports.FAlert = alert.Alert;
 exports["default"] = BulmaFloats;

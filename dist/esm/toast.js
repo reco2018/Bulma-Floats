@@ -172,7 +172,8 @@ const _hoisted_1 = ["aria-hidden"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createBlock(Transition, {
     "enter-active-class": _ctx.transition.enter,
-    "leave-active-class": _ctx.transition.leave
+    "leave-active-class": _ctx.transition.leave,
+    persisted: ""
   }, {
     default: withCtx(() => [
       withDirectives(createElementVNode("div", {

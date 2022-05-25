@@ -1,6 +1,6 @@
 {
   "name": "@reco2018/bulma-floats",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -16,12 +16,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reco2018/Vuetify-Floats.git"
+    "url": "git+https://github.com/reco2018/Bulma-Floats.git"
   },
   "bugs": {
-    "url": "https://github.com/reco2018/Vuetify-Floats/issues"
+    "url": "https://github.com/reco2018/Bulma-Floats/issues"
   },
-  "homepage": "https://github.com/reco2018/Vuetify-Floats#readme",
+  "homepage": "https://github.com/reco2018/Bulma-Floats#readme",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/reco2018"
   },

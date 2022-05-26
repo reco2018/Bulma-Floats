@@ -35,6 +35,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
+import { useNuxtApp, useRoute, useRouter } from 'nuxt/app'
 
 export default defineComponent({
   props: {
@@ -51,6 +52,11 @@ export default defineComponent({
 
     const changePage = (page) => {
       $Airporter.updateQuery({ page })
+    }
+
+    return {
+      current,
+      changePage
     }
   }
 })

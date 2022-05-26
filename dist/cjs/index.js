@@ -7,7 +7,7 @@ require('vue');
 var alert = require('./alert.js');
 var auto_complete = require('./auto.complete-dfad2dc9.js');
 var checkbox = require('./checkbox-426c325b.js');
-var pagination = require('./pagination-33a6dac5.js');
+var pagination = require('./pagination-70f68f61.js');
 var tag_input = require('./tag.input-0bc0b714.js');
 var config = require('./config-4ce33493.js');
 require('./helpers.js');

@@ -2,15 +2,16 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var styleInject_es = require('./style-inject.es-691dc3e9.js');
+var config = require('./config-4ce33493.js');
 var helpers = require('./helpers.js');
 var vue = require('vue');
+var styleInject_es = require('./style-inject.es-dcee06b6.js');
 
 var NoticeMixin = {
   props: {
     type: {
       type: String,
-      "default": styleInject_es.config.defaultType
+      "default": config.config.defaultType
     },
     message: [String, Array],
     duration: Number,
@@ -41,7 +42,7 @@ var NoticeMixin = {
       isPaused: false,
       parentTop: null,
       parentBottom: null,
-      newContainer: this.container || styleInject_es.config.defaultContainerElement
+      newContainer: this.container || config.config.defaultContainerElement
     };
   },
   computed: {
@@ -92,7 +93,7 @@ var NoticeMixin = {
       }
     },
     shouldQueue: function shouldQueue() {
-      var queue = this.queue !== undefined ? this.queue : styleInject_es.config.defaultNoticeQueue;
+      var queue = this.queue !== undefined ? this.queue : config.config.defaultNoticeQueue;
       if (!queue) return false;
       return this.parentTop.childElementCount > 0 || this.parentBottom.childElementCount > 0;
     },
@@ -166,7 +167,7 @@ var script = {
     mixins: [NoticeMixin],
     data() {
         return {
-            newDuration: this.duration || styleInject_es.config.defaultToastDuration
+            newDuration: this.duration || config.config.defaultToastDuration
         }
     }
 };
@@ -176,7 +177,8 @@ const _hoisted_1 = ["aria-hidden"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (vue.openBlock(), vue.createBlock(vue.Transition, {
     "enter-active-class": _ctx.transition.enter,
-    "leave-active-class": _ctx.transition.leave
+    "leave-active-class": _ctx.transition.leave,
+    persisted: ""
   }, {
     default: vue.withCtx(() => [
       vue.withDirectives(vue.createElementVNode("div", {
@@ -216,7 +218,7 @@ var ToastProgrammatic = {
 
     var _app = vue.createApp(ToastComponent, propsData);
 
-    Object.assign(_app._context, styleInject_es.VueInstance._instance.appContext);
+    Object.assign(_app._context, config.VueInstance._instance.appContext);
 
     _app.mount(document.createElement('div'));
 

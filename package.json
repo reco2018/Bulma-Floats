@@ -1,6 +1,6 @@
 {
   "name": "@reco2018/bulma-floats",
-  "version": "0.3.0",
+  "version": "0.3.3",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "bulma": "^0.9.3",
-    "nuxt3": "latest",
+    "nuxt": "npm:nuxt3@latest",
     "vue": "^3.2.29"
   },
   "devDependencies": {

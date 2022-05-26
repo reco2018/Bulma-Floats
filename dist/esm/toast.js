@@ -1,6 +1,7 @@
-import { c as config, a as styleInject, V as VueInstance } from './style-inject.es-41074691.js';
+import { c as config, V as VueInstance } from './config-b6f98b99.js';
 import { removeElement, merge } from './helpers.js';
 import { openBlock, createBlock, Transition, withCtx, withDirectives, createElementVNode, normalizeClass, toDisplayString, vShow, defineComponent, createApp } from 'vue';
+import { s as styleInject } from './style-inject.es-1f59c1d0.js';
 
 var NoticeMixin = {
   props: {
@@ -172,7 +173,8 @@ const _hoisted_1 = ["aria-hidden"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createBlock(Transition, {
     "enter-active-class": _ctx.transition.enter,
-    "leave-active-class": _ctx.transition.leave
+    "leave-active-class": _ctx.transition.leave,
+    persisted: ""
   }, {
     default: withCtx(() => [
       withDirectives(createElementVNode("div", {

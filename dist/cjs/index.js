@@ -5,18 +5,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var toast = require('./toast.js');
 require('vue');
 var alert = require('./alert.js');
-var styleInject_es = require('./style-inject.es-691dc3e9.js');
+var auto_complete = require('./auto.complete-dfad2dc9.js');
+var checkbox = require('./checkbox-426c325b.js');
+var pagination = require('./pagination-70f68f61.js');
+var tag_input = require('./tag.input-0bc0b714.js');
+var config = require('./config-4ce33493.js');
 require('./helpers.js');
+require('./style-inject.es-dcee06b6.js');
 
 var components = /*#__PURE__*/Object.freeze({
     __proto__: null,
     FToast: toast.Toast,
-    FAlert: alert.Alert
+    FAlert: alert.Alert,
+    AutoComplete: auto_complete.script,
+    CheckBox: checkbox.script,
+    Pagination: pagination.script,
+    TagInput: tag_input.script
 });
 
 var BulmaFloats = {
   install: function install(app, options) {
-    styleInject_es.setVueInstance(app);
+    config.setVueInstance(app);
 
     for (var key in components) {
       var component = components[key];
@@ -34,4 +43,8 @@ exports.FToast = toast.Toast;
 exports.ToastProgrammatic = toast.ToastProgrammatic;
 exports.AlertProgrammatic = alert.AlertProgrammatic;
 exports.FAlert = alert.Alert;
+exports.AutoComplete = auto_complete.script;
+exports.CheckBox = checkbox.script;
+exports.Pagination = pagination.script;
+exports.TagInput = tag_input.script;
 exports["default"] = BulmaFloats;

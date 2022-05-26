@@ -1,18 +1,4 @@
-var config = {
-  defaultType: 'is-info',
-  defaultToastType: 'is-info',
-  defaultToastDuration: 2000,
-  defaultToastPosition: null,
-  defaultAlertOkVisible: true,
-  defaultAlertOkText: 'OK',
-  defaultAlertCancelVisible: true,
-  defaultAlertCancelText: 'Cancel',
-  defaultModalCanCancel: ['escape', 'x', 'outside', 'button']
-};
-var setVueInstance = function setVueInstance(Vue) {
-  VueInstance = Vue;
-};
-var VueInstance;
+'use strict';
 
 function styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
@@ -41,4 +27,4 @@ function styleInject(css, ref) {
   }
 }
 
-export { VueInstance as V, styleInject as a, config as c, setVueInstance as s };
+exports.styleInject = styleInject;

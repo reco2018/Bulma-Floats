@@ -2,9 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var styleInject_es = require('./style-inject.es-691dc3e9.js');
+var config = require('./config-4ce33493.js');
 var helpers = require('./helpers.js');
 var vue = require('vue');
+var styleInject_es = require('./style-inject.es-dcee06b6.js');
 
 var DialogMixin = {
   props: {
@@ -34,7 +35,7 @@ var DialogMixin = {
     canCancel: {
       type: [Array, Boolean],
       "default": function _default() {
-        return styleInject_es.config.defaultModalCanCancel;
+        return config.config.defaultModalCanCancel;
       }
     },
     onCancel: {
@@ -54,13 +55,13 @@ var DialogMixin = {
     trapFocus: {
       type: Boolean,
       "default": function _default() {
-        return styleInject_es.config.defaultTrapFocus;
+        return config.config.defaultTrapFocus;
       }
     },
     autoFocus: {
       type: Boolean,
       "default": function _default() {
-        return styleInject_es.config.defaultAutoFocus;
+        return config.config.defaultAutoFocus;
       }
     },
     customClass: String,
@@ -94,7 +95,7 @@ var DialogMixin = {
   },
   computed: {
     cancelOptions: function cancelOptions() {
-      return typeof this.canCancel === 'boolean' ? this.canCancel ? styleInject_es.config.defaultModalCanCancel : [] : this.canCancel;
+      return typeof this.canCancel === 'boolean' ? this.canCancel ? config.config.defaultModalCanCancel : [] : this.canCancel;
     },
     showX: function showX() {
       return this.cancelOptions.indexOf('x') >= 0;
@@ -223,8 +224,8 @@ var script = {
     mixins: [DialogMixin],
     data() {
         return {
-            newOkText: this.okText || styleInject_es.config.defaultAlertOkText,
-            newCancelText: this.cancelText || styleInject_es.config.defaultAlertCancelText,
+            newOkText: this.okText || config.config.defaultAlertOkText,
+            newCancelText: this.cancelText || config.config.defaultAlertCancelText,
             newResult: this.defaultResult || {}
         }
     },
@@ -328,11 +329,11 @@ var AlertProgrammatic = {
     var defaultParam = {
       programmatic: true,
       isFullScreen: false,
-      okVisible: styleInject_es.config.defaultAlertOkVisible,
-      okText: styleInject_es.config.defaultAlertOkText,
+      okVisible: config.config.defaultAlertOkVisible,
+      okText: config.config.defaultAlertOkText,
       onOkPressed: function onOkPressed() {},
-      cancelVisible: styleInject_es.config.defaultAlertCancelVisible,
-      cancelText: styleInject_es.config.defaultAlertCancelText,
+      cancelVisible: config.config.defaultAlertCancelVisible,
+      cancelText: config.config.defaultAlertCancelText,
       onCancelPressed: function onCancelPressed() {}
     };
     var propsData = helpers.merge(defaultParam, params);
@@ -355,7 +356,7 @@ var AlertProgrammatic = {
 
     var _app = vue.createApp(AlertComponent, propsData);
 
-    Object.assign(_app._context, styleInject_es.VueInstance._instance.appContext);
+    Object.assign(_app._context, config.VueInstance._instance.appContext);
 
     _app.mount(document.createElement('div'));
 

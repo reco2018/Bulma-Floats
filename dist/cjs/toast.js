@@ -218,7 +218,11 @@ var ToastProgrammatic = {
 
     var _app = vue.createApp(ToastComponent, propsData);
 
-    Object.assign(_app._context, config.VueInstance._instance.appContext);
+    if (config.VueInstance._instance && config.VueInstance._instance.appContext) {
+      Object.assign(_app._context, config.VueInstance._instance.appContext);
+    } else if (config.VueInstance._context) {
+      Object.assign(_app._context, config.VueInstance._context);
+    }
 
     _app.mount(document.createElement('div'));
 

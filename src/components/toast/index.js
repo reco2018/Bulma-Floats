@@ -21,7 +21,11 @@ const ToastProgrammatic = {
         })
 
         let _app = createApp(ToastComponent, propsData)
-        Object.assign(_app._context, VueInstance._instance.appContext)
+        if (VueInstance._instance && VueInstance._instance.appContext) {
+            Object.assign(_app._context, VueInstance._instance.appContext)
+        } else if (VueInstance._context) {
+            Object.assign(_app._context, VueInstance._context)
+        }
         _app.mount(document.createElement('div'))
 
         return ToastComponent

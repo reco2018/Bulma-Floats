@@ -234,8 +234,6 @@ var script = {
             this.newResult = result;
         },
         ok() {
-            console.log('okokok');
-            console.log(this.newResult);
             this.onOk(this.newResult);
             this.close();
         },
@@ -347,12 +345,10 @@ var AlertProgrammatic = {
       methods: {
         onCancel: function onCancel() {
           propsData.onCancelPressed();
-          console.log('oncancel');
           return true;
         },
         onOk: function onOk(result) {
           propsData.onOkPressed(result);
-          console.log('onok');
           return true;
         }
       }

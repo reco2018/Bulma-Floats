@@ -39,8 +39,6 @@ export default {
             this.newResult = result
         },
         ok() {
-            console.log('okokok')
-            console.log(this.newResult)
             this.onOk(this.newResult)
             this.close()
         },

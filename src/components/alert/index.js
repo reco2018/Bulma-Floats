@@ -31,12 +31,10 @@ const AlertProgrammatic = {
             methods: {
                 onCancel() {
                     propsData.onCancelPressed()
-                    console.log('oncancel')
                     return true;
                 },
                 onOk(result) {
                     propsData.onOkPressed(result)
-                    console.log('onok')
                     return true;
                 }
             }

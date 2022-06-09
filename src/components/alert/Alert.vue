@@ -39,7 +39,9 @@ export default {
             this.newResult = result
         },
         ok() {
-            this.$emit('onOk', this.newResult)
+            console.log('okokok')
+            console.log(this.newResult)
+            this.onOk(this.newResult)
             this.close()
         },
     }

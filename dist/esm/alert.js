@@ -154,12 +154,12 @@ var DialogMixin = {
       this.savedScrollTop = null;
     },
     ok: function ok() {
-      this.$emit('onOk', this.defaultResult);
+      this.onOk(this.defaultResult);
       this.close();
     },
     cancel: function cancel(method) {
       if (this.cancelOptions.indexOf(method) < 0) return;
-      this.$emit('onCancel');
+      this.onCancel();
       this.onCancel.apply(null, arguments);
       this.close();
     },
@@ -230,7 +230,9 @@ var script = {
             this.newResult = result;
         },
         ok() {
-            this.$emit('onOk', this.newResult);
+            console.log('okokok');
+            console.log(this.newResult);
+            this.onOk(this.newResult);
             this.close();
         },
     }
@@ -338,13 +340,15 @@ var AlertProgrammatic = {
       components: {
         ChildComponent: propsData.component
       },
-      emits: {
+      methods: {
         onCancel: function onCancel() {
           propsData.onCancelPressed();
+          console.log('oncancel');
           return true;
         },
         onOk: function onOk(result) {
           propsData.onOkPressed(result);
+          console.log('onok');
           return true;
         }
       }
@@ -357,6 +361,8 @@ var AlertProgrammatic = {
     } else if (VueInstance._context) {
       Object.assign(_app._context, VueInstance._context);
     }
+
+    console.log(_app);
 
     _app.mount(document.createElement('div'));
 

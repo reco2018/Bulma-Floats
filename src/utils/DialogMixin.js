@@ -157,12 +157,12 @@ export default {
             this.savedScrollTop = null
         },
         ok() {
-            this.$emit('onOk', this.defaultResult)
+            this.onOk(this.defaultResult)
             this.close()
         },
         cancel(method) {
             if (this.cancelOptions.indexOf(method) < 0) return
-            this.$emit('onCancel')
+            this.onCancel()
             this.onCancel.apply(null, arguments)
             this.close()
         },

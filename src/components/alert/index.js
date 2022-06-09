@@ -28,13 +28,15 @@ const AlertProgrammatic = {
             components: {
                 ChildComponent: propsData.component,
             },
-            emits: {
+            methods: {
                 onCancel() {
                     propsData.onCancelPressed()
+                    console.log('oncancel')
                     return true;
                 },
                 onOk(result) {
                     propsData.onOkPressed(result)
+                    console.log('onok')
                     return true;
                 }
             }
@@ -46,6 +48,7 @@ const AlertProgrammatic = {
         } else if (VueInstance._context) {
             Object.assign(_app._context, VueInstance._context)
         }
+        console.log(_app)
         _app.mount(document.createElement('div'))
 
         return AlertComponent

@@ -38,7 +38,7 @@ var script = vue.defineComponent({
 
     const select = (item) => {
       search.value = '';
-      let isExits = false;
+      let isExits = null;
       if (props.returnObject) {
         isExits = props.selected.find((i) => item[props.itemKey] == i[props.itemKey]);  
       } else {
@@ -60,9 +60,9 @@ var script = vue.defineComponent({
     const remove = (item) => {
       let data = [];
       if (props.returnObject) {
-        data = props.selected.filter((i) => item[props.itemKey] != i[props.itemKey]);
+        data = props.selected.filter((i) => item[props.itemKey] !== i[props.itemKey]);
       } else {
-        data = props.selected.filter((i) => item[props.itemValue] != i);
+        data = props.selected.filter((i) => item[props.itemValue] !== i);
       }
       emit('update:selected', data);
     };
@@ -101,8 +101,7 @@ const _hoisted_7 = {
   key: 1,
   class: "tags mt-2"
 };
-const _hoisted_8 = { class: "tag" };
-const _hoisted_9 = ["onClick"];
+const _hoisted_8 = ["onClick"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (vue.openBlock(), vue.createElementBlock("div", _hoisted_1, [
@@ -126,26 +125,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ]),
       vue.createElementVNode("div", _hoisted_4, [
         vue.createElementVNode("div", _hoisted_5, [
-          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.items, (item) => {
+          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.items, (item, index) => {
             return (vue.openBlock(), vue.createElementBlock("span", {
+              key: index,
               onClick: $event => (_ctx.select(item)),
               class: "dropdown-item is-clickable"
             }, vue.toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_6))
-          }), 256 /* UNKEYED_FRAGMENT */))
+          }), 128 /* KEYED_FRAGMENT */))
         ])
       ])
     ], 2 /* CLASS */),
     (_ctx.selected.length > 0)
       ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_7, [
-          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.selected, (item) => {
-            return (vue.openBlock(), vue.createElementBlock("span", _hoisted_8, [
+          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.selected, (item, index) => {
+            return (vue.openBlock(), vue.createElementBlock("span", {
+              key: index,
+              class: "tag"
+            }, [
               vue.createTextVNode(vue.toDisplayString(_ctx.returnObject ? item[_ctx.itemValue] : item) + " ", 1 /* TEXT */),
               vue.createElementVNode("button", {
                 class: "delete is-small",
                 onClick: $event => (_ctx.remove(item))
-              }, null, 8 /* PROPS */, _hoisted_9)
+              }, null, 8 /* PROPS */, _hoisted_8)
             ]))
-          }), 256 /* UNKEYED_FRAGMENT */))
+          }), 128 /* KEYED_FRAGMENT */))
         ]))
       : vue.createCommentVNode("v-if", true)
   ]))

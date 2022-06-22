@@ -2,8 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var pagination = require('./pagination-70f68f61.js');
+var pagination = require('./pagination-b7605f77.js');
 require('vue');
+require('nuxt/app');
 
 
 

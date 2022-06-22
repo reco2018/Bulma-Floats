@@ -6,11 +6,11 @@
         <div class="columns is-gapless input is-mobile auto-complete" :class="{'is-small': isSmall}">
           <div class="column" v-if="returnObject">
             <span v-if="item[itemKey]">{{ item[itemValue] }}</span>
-            <span v-if="!item[itemKey]">選択してください</span>
+            <span v-if="!item[itemKey]">{{placeHolder}}</span>
           </div>
           <div class="column" v-else>
             <span v-if="item">{{ items.find((i) => i[itemKey] == item)?.[itemValue] }}</span>
-            <span v-if="!item">選択してください</span>
+            <span v-if="!item">{{placeHolder}}</span>
           </div>
 
           <div v-if="item.id && !isActive" class="column is-narrow">
@@ -27,7 +27,7 @@
           <div class="mx-2 mb-1" v-if="searchable">
             <input class="input" type="text" placeholder="検索" v-model="search" @blur="onBlur" />
           </div>
-          <span v-for="item in items" @click="select(item)" class="dropdown-item is-clickable">
+          <span v-for="(item, index) in items" :key="index" @click="select(item)" class="dropdown-item is-clickable">
             {{ item[itemValue] }}
           </span>
         </div>
@@ -40,9 +40,13 @@ import { defineComponent, ref, watch } from 'vue'
 
 export default defineComponent({
   props: {
-    title: Boolean,
+    title: String,
     items: Array,
     item: Object,
+    placeHolder: {
+      type: String,
+      default: '選択してください'
+    },
     itemKey: {
       type: String,
       default: 'id'

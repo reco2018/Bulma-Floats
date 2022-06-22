@@ -2,21 +2,22 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var toast = require('./toast.js');
+var index = require('./index-a79783a3.js');
 require('vue');
-var alert = require('./alert.js');
-var auto_complete = require('./auto.complete-dfad2dc9.js');
+var index$1 = require('./index-17c6abab.js');
+var auto_complete = require('./auto.complete-95214dd7.js');
 var checkbox = require('./checkbox-426c325b.js');
-var pagination = require('./pagination-70f68f61.js');
-var tag_input = require('./tag.input-0bc0b714.js');
+var pagination = require('./pagination-b7605f77.js');
+var tag_input = require('./tag.input-80ed8268.js');
 var config = require('./config-4ce33493.js');
-require('./helpers.js');
+require('./helpers-8cc69401.js');
 require('./style-inject.es-dcee06b6.js');
+require('nuxt/app');
 
 var components = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    FToast: toast.Toast,
-    FAlert: alert.Alert,
+    FToast: index.script,
+    FAlert: index$1.script,
     AutoComplete: auto_complete.script,
     CheckBox: checkbox.script,
     Pagination: pagination.script,
@@ -33,16 +34,16 @@ var BulmaFloats = {
     }
 
     app.config.globalProperties.$floats = {
-      toast: toast.ToastProgrammatic,
-      alert: alert.AlertProgrammatic
+      toast: index.ToastProgrammatic,
+      alert: index$1.AlertProgrammatic
     };
   }
 };
 
-exports.FToast = toast.Toast;
-exports.ToastProgrammatic = toast.ToastProgrammatic;
-exports.AlertProgrammatic = alert.AlertProgrammatic;
-exports.FAlert = alert.Alert;
+exports.FToast = index.script;
+exports.ToastProgrammatic = index.ToastProgrammatic;
+exports.AlertProgrammatic = index$1.AlertProgrammatic;
+exports.FAlert = index$1.script;
 exports.AutoComplete = auto_complete.script;
 exports.CheckBox = checkbox.script;
 exports.Pagination = pagination.script;

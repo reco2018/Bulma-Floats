@@ -11,7 +11,7 @@
       </div>
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
         <div class="dropdown-content">
-          <span v-for="item in items" @click="select(item)" class="dropdown-item is-clickable">
+          <span v-for="(item, index) in items" :key="index" @click="select(item)" class="dropdown-item is-clickable">
             {{ item[itemValue] }}
           </span>
         </div>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="tags mt-2" v-if="selected.length > 0">
-      <span v-for="item in selected" class="tag">
+      <span v-for="(item, index) in selected" :key="index" class="tag">
         {{ returnObject ? item[itemValue] : item }}
         <button class="delete is-small" @click="remove(item)"></button>
       </span>
@@ -64,7 +64,7 @@ export default defineComponent({
 
     const select = (item) => {
       search.value = ''
-      let isExits = false
+      let isExits = null
       if (props.returnObject) {
         isExits = props.selected.find((i) => item[props.itemKey] == i[props.itemKey])  
       } else {
@@ -86,9 +86,9 @@ export default defineComponent({
     const remove = (item) => {
       let data = []
       if (props.returnObject) {
-        data = props.selected.filter((i) => item[props.itemKey] != i[props.itemKey])
+        data = props.selected.filter((i) => item[props.itemKey] !== i[props.itemKey])
       } else {
-        data = props.selected.filter((i) => item[props.itemValue] != i)
+        data = props.selected.filter((i) => item[props.itemValue] !== i)
       }
       emit('update:selected', data)
     }

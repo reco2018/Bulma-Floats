@@ -1,3 +1,2 @@
-export { s as Pagination } from './pagination-394af68d.js';
+export { s as Pagination } from './pagination-82038dbb.js';
 import 'vue';
-import 'nuxt/app';

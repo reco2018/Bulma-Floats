@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var tag_input = require('./tag.input-b397033d.js');
+var tag_input = require('./tag.input-93fdbc6e.js');
 require('vue');
 require('./style-inject.es-dcee06b6.js');
 

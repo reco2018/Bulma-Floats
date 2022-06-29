@@ -63,7 +63,6 @@ var script = defineComponent({
         data = props.selected.filter((i) => item[props.itemValue] !== i);
       }
       emit('update:selected', data);
-      emit('remove', item);
     };
 
     const onBlur = () => {

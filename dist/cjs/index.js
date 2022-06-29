@@ -8,7 +8,7 @@ var alert = require('./alert.js');
 var auto_complete = require('./auto.complete-95214dd7.js');
 var checkbox = require('./checkbox-426c325b.js');
 var pagination = require('./pagination-70f68f61.js');
-var tag_input = require('./tag.input-fa7b07a2.js');
+var tag_input = require('./tag.input-b397033d.js');
 var config = require('./config-4ce33493.js');
 require('./helpers.js');
 require('./style-inject.es-dcee06b6.js');

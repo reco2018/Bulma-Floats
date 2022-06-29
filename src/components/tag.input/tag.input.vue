@@ -84,16 +84,11 @@ export default defineComponent({
     }
 
     const remove = (item) => {
-      console.log('sffs')
       let data = []
       if (props.returnObject) {
         data = props.selected.filter((i) => item[props.itemKey] !== i[props.itemKey])
       } else {
-        console.log('xxss')
-        data = props.selected.filter((i) => {
-          console.log('xxss:', item[props.itemValue] , i)
-          return item[props.itemValue] !== i
-        })
+        data = props.selected.filter((i) => item !== i)
       }
       emit('update:selected', data)
     }

@@ -65,6 +65,7 @@ var script = vue.defineComponent({
         data = props.selected.filter((i) => item[props.itemValue] !== i);
       }
       emit('update:selected', data);
+      emit('remove', item);
     };
 
     const onBlur = () => {
@@ -144,6 +145,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             }, [
               vue.createTextVNode(vue.toDisplayString(_ctx.returnObject ? item[_ctx.itemValue] : item) + " ", 1 /* TEXT */),
               vue.createElementVNode("button", {
+                type: "button",
                 class: "delete is-small",
                 onClick: $event => (_ctx.remove(item))
               }, null, 8 /* PROPS */, _hoisted_8)

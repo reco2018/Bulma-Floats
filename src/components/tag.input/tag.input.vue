@@ -21,7 +21,7 @@
     <div class="tags mt-2" v-if="selected.length > 0">
       <span v-for="(item, index) in selected" :key="index" class="tag">
         {{ returnObject ? item[itemValue] : item }}
-        <button class="delete is-small" @click="remove(item)"></button>
+        <button type="button" class="delete is-small" @click="remove(item)"></button>
       </span>
     </div>
   </div>
@@ -91,6 +91,7 @@ export default defineComponent({
         data = props.selected.filter((i) => item[props.itemValue] !== i)
       }
       emit('update:selected', data)
+      emit('remove', item)
     }
 
     const onBlur = () => {

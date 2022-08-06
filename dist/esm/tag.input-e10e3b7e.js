@@ -40,7 +40,7 @@ var script = defineComponent({
       if (props.returnObject) {
         isExits = props.selected.find((i) => item[props.itemKey] == i[props.itemKey]);  
       } else {
-        isExits = props.selected.find((i) => item[props.itemValue] == i);
+        isExits = props.selected.find((i) => item[props.itemKey] == i);
       }
       isExits ? remove(item) : append(item);
     };
@@ -50,7 +50,7 @@ var script = defineComponent({
       if (props.returnObject) {
         data = [...props.selected, item];
       } else {
-        data = [...props.selected, item[props.itemValue]];
+        data = [...props.selected, item[props.itemKey]];
       }
       emit('update:selected', data);
     };

@@ -142,7 +142,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               key: index,
               class: "tag"
             }, [
-              vue.createTextVNode(vue.toDisplayString(_ctx.returnObject ? item[_ctx.itemValue] : item) + " ", 1 /* TEXT */),
+              vue.createTextVNode(vue.toDisplayString(typeof item === 'object' ? item[_ctx.itemValue] : item) + " ", 1 /* TEXT */),
               vue.createElementVNode("button", {
                 type: "button",
                 class: "delete is-small",

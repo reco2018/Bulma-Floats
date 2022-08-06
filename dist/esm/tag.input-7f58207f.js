@@ -140,7 +140,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               key: index,
               class: "tag"
             }, [
-              createTextVNode(toDisplayString(_ctx.returnObject ? item[_ctx.itemValue] : item) + " ", 1 /* TEXT */),
+              createTextVNode(toDisplayString(typeof item === 'object' ? item[_ctx.itemValue] : item) + " ", 1 /* TEXT */),
               createElementVNode("button", {
                 type: "button",
                 class: "delete is-small",

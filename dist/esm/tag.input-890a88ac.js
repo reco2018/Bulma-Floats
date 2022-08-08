@@ -1,4 +1,4 @@
-import { defineComponent, ref, watch, openBlock, createElementBlock, toDisplayString, createCommentVNode, createElementVNode, normalizeClass, withDirectives, vModelText, Fragment, renderList, createTextVNode } from 'vue';
+import { defineComponent, ref, watch, openBlock, createElementBlock, toDisplayString, createCommentVNode, createElementVNode, normalizeClass, withDirectives, vModelText, Fragment, renderList, renderSlot, createTextVNode } from 'vue';
 import { s as styleInject } from './style-inject.es-1f59c1d0.js';
 
 var script = defineComponent({
@@ -135,19 +135,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ], 2 /* CLASS */),
     (_ctx.selected.length > 0)
       ? (openBlock(), createElementBlock("div", _hoisted_7, [
-          (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.selected, (item, index) => {
-            return (openBlock(), createElementBlock("span", {
-              key: index,
-              class: "tag"
-            }, [
-              createTextVNode(toDisplayString(typeof item === 'object' ? item[_ctx.itemValue] : item) + " ", 1 /* TEXT */),
-              createElementVNode("button", {
-                type: "button",
-                class: "delete is-small",
-                onClick: $event => (_ctx.remove(item))
-              }, null, 8 /* PROPS */, _hoisted_8)
-            ]))
-          }), 128 /* KEYED_FRAGMENT */))
+          renderSlot(_ctx.$slots, "tags", {}, () => [
+            (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.selected, (item, index) => {
+              return (openBlock(), createElementBlock("span", {
+                key: index,
+                class: "tag"
+              }, [
+                createTextVNode(toDisplayString(_ctx.returnObject ? item[_ctx.itemValue] : item) + " ", 1 /* TEXT */),
+                createElementVNode("button", {
+                  type: "button",
+                  class: "delete is-small",
+                  onClick: $event => (_ctx.remove(item))
+                }, null, 8 /* PROPS */, _hoisted_8)
+              ]))
+            }), 128 /* KEYED_FRAGMENT */))
+          ])
         ]))
       : createCommentVNode("v-if", true)
   ]))

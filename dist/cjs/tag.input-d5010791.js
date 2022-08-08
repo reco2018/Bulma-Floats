@@ -137,19 +137,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ], 2 /* CLASS */),
     (_ctx.selected.length > 0)
       ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_7, [
-          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.selected, (item, index) => {
-            return (vue.openBlock(), vue.createElementBlock("span", {
-              key: index,
-              class: "tag"
-            }, [
-              vue.createTextVNode(vue.toDisplayString(typeof item === 'object' ? item[_ctx.itemValue] : item) + " ", 1 /* TEXT */),
-              vue.createElementVNode("button", {
-                type: "button",
-                class: "delete is-small",
-                onClick: $event => (_ctx.remove(item))
-              }, null, 8 /* PROPS */, _hoisted_8)
-            ]))
-          }), 128 /* KEYED_FRAGMENT */))
+          vue.renderSlot(_ctx.$slots, "tags", {}, () => [
+            (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.selected, (item, index) => {
+              return (vue.openBlock(), vue.createElementBlock("span", {
+                key: index,
+                class: "tag"
+              }, [
+                vue.createTextVNode(vue.toDisplayString(_ctx.returnObject ? item[_ctx.itemValue] : item) + " ", 1 /* TEXT */),
+                vue.createElementVNode("button", {
+                  type: "button",
+                  class: "delete is-small",
+                  onClick: $event => (_ctx.remove(item))
+                }, null, 8 /* PROPS */, _hoisted_8)
+              ]))
+            }), 128 /* KEYED_FRAGMENT */))
+          ])
         ]))
       : vue.createCommentVNode("v-if", true)
   ]))

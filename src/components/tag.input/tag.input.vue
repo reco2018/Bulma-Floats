@@ -19,10 +19,12 @@
     </div>
 
     <div class="tags mt-2" v-if="selected.length > 0">
-      <span v-for="(item, index) in selected" :key="index" class="tag">
-        {{ typeof item === 'object' ? item[itemValue] : item }}
-        <button type="button" class="delete is-small" @click="remove(item)"></button>
-      </span>
+      <slot name="tags">
+        <span v-for="(item, index) in selected" :key="index" class="tag">
+          {{ returnObject ? item[itemValue] : item }}
+          <button type="button" class="delete is-small" @click="remove(item)"></button>
+        </span>
+      </slot>
     </div>
   </div>
 </template>

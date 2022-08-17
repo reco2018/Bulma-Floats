@@ -279,10 +279,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             vue.createVNode(_component_ChildComponent, {
               is: _ctx.component,
               result: $data.newResult,
+              customProps: _ctx.props,
               onOnOk: $options.ok,
               onOnCancel: _cache[2] || (_cache[2] = $event => (_ctx.cancel('button'))),
               onOnResultChanged: $options.onResultChanged
-            }, null, 8 /* PROPS */, ["is", "result", "onOnOk", "onOnResultChanged"]),
+            }, null, 8 /* PROPS */, ["is", "result", "customProps", "onOnOk", "onOnResultChanged"]),
             (_ctx.content)
               ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_4, vue.toDisplayString(_ctx.content), 1 /* TEXT */))
               : vue.createCommentVNode("v-if", true)

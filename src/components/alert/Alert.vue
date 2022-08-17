@@ -8,7 +8,7 @@
                     <button @click="cancel('x')" class="delete" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
-                    <ChildComponent v-bind:is="component" :result="newResult" @onOk="ok" @onCancel="cancel('button')" @onResultChanged="onResultChanged" />
+                    <ChildComponent v-bind:is="component" :result="newResult" :customProps="props" @onOk="ok" @onCancel="cancel('button')" @onResultChanged="onResultChanged" />
                     <span v-if="content">{{ content }}</span>
                 </section>
                 <footer v-if="cancelVisible || okVisible" class="modal-card-foot is-justify-content-end">

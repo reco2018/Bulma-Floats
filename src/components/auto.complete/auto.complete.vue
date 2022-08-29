@@ -25,7 +25,7 @@
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
         <div class="dropdown-content">
           <div class="mx-2 mb-1" v-if="searchable">
-            <input class="input" type="text" placeholder="検索" v-model="search" @blur="onBlur" />
+            <input class="input" type="text" :placeholder="inputPlaceHolder" v-model="search" @blur="onBlur" />
           </div>
           <span v-for="(item, index) in items" :key="index" @click="select(item)" class="dropdown-item is-clickable">
             {{ item[itemValue] }}
@@ -46,6 +46,10 @@ export default defineComponent({
     placeHolder: {
       type: String,
       default: '選択してください'
+    },
+    inputPlaceHolder: {
+      type: String,
+      default: '検索'
     },
     itemKey: {
       type: String,

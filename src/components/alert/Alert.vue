@@ -82,7 +82,6 @@ export default {
         padding: 20px 25px;
 
         hr.has-background-accent {
-            margin-top: 0;
             margin-left: -25px !important;
             margin-right: -25px !important;
         }

@@ -246,7 +246,11 @@ const _hoisted_3 = { class: "modal-card-body" };
 const _hoisted_4 = { key: 0 };
 const _hoisted_5 = {
   key: 0,
-  class: "modal-card-foot is-justify-content-end"
+  class: "modal-card-foot is-justify-content-center"
+};
+const _hoisted_6 = {
+  key: 1,
+  class: "modal-card-foot no-button"
 };
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -264,16 +268,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               class: "modal-background"
             }))
           : vue.createCommentVNode("v-if", true),
+        vue.createElementVNode("button", {
+          onClick: _cache[1] || (_cache[1] = $event => (_ctx.cancel('x'))),
+          class: "delete",
+          "aria-label": "close"
+        }),
         vue.createElementVNode("div", {
-          class: vue.normalizeClass(["modal-card", {'px-3': !_ctx.isFullScreen, 'fullScreenModal': _ctx.isFullScreen}])
+          class: vue.normalizeClass(["modal-card", {'px-2': !_ctx.isFullScreen, 'fullScreenModal': _ctx.isFullScreen}])
         }, [
           vue.createElementVNode("header", _hoisted_1, [
-            vue.createElementVNode("p", _hoisted_2, vue.toDisplayString(_ctx.title), 1 /* TEXT */),
-            vue.createElementVNode("button", {
-              onClick: _cache[1] || (_cache[1] = $event => (_ctx.cancel('x'))),
-              class: "delete",
-              "aria-label": "close"
-            })
+            vue.createElementVNode("p", _hoisted_2, vue.toDisplayString(_ctx.title), 1 /* TEXT */)
           ]),
           vue.createElementVNode("section", _hoisted_3, [
             vue.createVNode(_component_ChildComponent, {
@@ -305,7 +309,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     }, vue.toDisplayString($data.newOkText), 1 /* TEXT */))
                   : vue.createCommentVNode("v-if", true)
               ]))
-            : vue.createCommentVNode("v-if", true)
+            : (!_ctx.cancelVisible && !_ctx.okVisible && !_ctx.isSheet)
+              ? (vue.openBlock(), vue.createElementBlock("footer", _hoisted_6))
+              : vue.createCommentVNode("v-if", true)
         ], 2 /* CLASS */)
       ], 2 /* CLASS */)
     ]),
@@ -313,7 +319,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8 /* PROPS */, ["name"]))
 }
 
-var css_248z = "\n.fullScreenModal {\n    width: 100%; \n    height: 100%;\n    max-height: 100vh;\n}\n.sheetModal {\n   justify-content: end !important;\n}\n";
+var css_248z = ".fullScreenModal {\n  width: 100%;\n  height: 100%;\n  max-height: 100vh;\n}\n\n.sheetModal {\n  justify-content: end !important;\n  padding-top: 60px;\n}\n\n.modal .modal-card {\n  margin-left: 5px;\n  margin-right: 5px;\n}\n.modal .modal-card-title {\n  flex-shrink: 1;\n}\n.modal .modal-card-head {\n  background-color: #fff;\n}\n.modal .modal-card-head .modal-card-title {\n  font-size: 16px !important;\n}\n.modal .modal-card-body {\n  padding: 20px 25px;\n}\n.modal .modal-card-body hr.has-background-accent {\n  margin-top: 0;\n  margin-left: -25px !important;\n  margin-right: -25px !important;\n}\n.modal .modal-card-foot {\n  background-color: #fff;\n  border-top: none;\n  justify-content: center !important;\n}\n.modal .modal-card-foot .button {\n  padding: 0.5em 1.5em;\n  min-width: 7em;\n}\n.modal .modal-card-foot.no-button {\n  height: 10px;\n  padding: 0;\n  margin: 0;\n}\n.modal button.delete {\n  position: absolute;\n  top: 0px;\n  right: 10px;\n  height: 60px !important;\n  width: 60px !important;\n  max-height: initial;\n  max-width: initial;\n  padding: 0;\n  margin: 0;\n}";
 styleInject_es.styleInject(css_248z);
 
 script.render = render;

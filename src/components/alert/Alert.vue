@@ -103,7 +103,7 @@ export default {
         }
     }
 
-    button.delete {
+    .modal-background ~ button.delete {
         position: absolute;
         top: 0px;
         right: 10px;
@@ -113,6 +113,7 @@ export default {
         max-width: initial;
         padding: 0;
         margin: 0;
+        background-color: transparent;
     }
 }
 </style>

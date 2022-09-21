@@ -1,7 +1,9 @@
-import { defineComponent, ref, watch, openBlock, createElementBlock, toDisplayString, createCommentVNode, createElementVNode, normalizeClass, withDirectives, vModelText, Fragment, renderList, pushScopeId, popScopeId } from 'vue';
-import { s as styleInject } from './style-inject.es-1f59c1d0.js';
+'use strict';
 
-var script = defineComponent({
+var vue = require('vue');
+var styleInject_es = require('./style-inject.es-dcee06b6.js');
+
+var script = vue.defineComponent({
   props: {
     title: String,
     items: Array,
@@ -43,10 +45,10 @@ var script = defineComponent({
     'update:item', 'updated'
   ],
   setup(props, {emit}) {
-    const isActive = ref(false);
-    const search = ref('');
+    const isActive = vue.ref(false);
+    const search = vue.ref('');
 
-    watch(search, () => {
+    vue.watch(search, () => {
       emit('updated', search.value);
     });
 
@@ -84,7 +86,7 @@ var script = defineComponent({
   }
 });
 
-const _withScopeId = n => (pushScopeId("data-v-5f95ed01"),n=n(),popScopeId(),n);
+const _withScopeId = n => (vue.pushScopeId("data-v-5f95ed01"),n=n(),vue.popScopeId(),n);
 const _hoisted_1 = { class: "field" };
 const _hoisted_2 = {
   key: 0,
@@ -106,7 +108,7 @@ const _hoisted_9 = {
   key: 2,
   class: "column is-narrow"
 };
-const _hoisted_10 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/createElementVNode("i", { class: "fas fa-trash" }, null, -1 /* HOISTED */));
+const _hoisted_10 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("i", { class: "fas fa-trash" }, null, -1 /* HOISTED */));
 const _hoisted_11 = [
   _hoisted_10
 ];
@@ -115,7 +117,7 @@ const _hoisted_13 = {
   key: 0,
   class: "icon"
 };
-const _hoisted_14 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/createElementVNode("i", { class: "fas fa-chevron-down" }, null, -1 /* HOISTED */));
+const _hoisted_14 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("i", { class: "fas fa-chevron-down" }, null, -1 /* HOISTED */));
 const _hoisted_15 = [
   _hoisted_14
 ];
@@ -123,7 +125,7 @@ const _hoisted_16 = {
   key: 1,
   class: "icon"
 };
-const _hoisted_17 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/createElementVNode("i", { class: "fas fa-chevron-up" }, null, -1 /* HOISTED */));
+const _hoisted_17 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("i", { class: "fas fa-chevron-up" }, null, -1 /* HOISTED */));
 const _hoisted_18 = [
   _hoisted_17
 ];
@@ -141,76 +143,76 @@ const _hoisted_22 = ["placeholder"];
 const _hoisted_23 = ["onClick"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock("div", _hoisted_1, [
+  return (vue.openBlock(), vue.createElementBlock("div", _hoisted_1, [
     (_ctx.title)
-      ? (openBlock(), createElementBlock("label", _hoisted_2, toDisplayString(_ctx.title), 1 /* TEXT */))
-      : createCommentVNode("v-if", true),
-    createElementVNode("div", {
-      class: normalizeClass(["dropdown", { 'is-active': _ctx.isActive }])
+      ? (vue.openBlock(), vue.createElementBlock("label", _hoisted_2, vue.toDisplayString(_ctx.title), 1 /* TEXT */))
+      : vue.createCommentVNode("v-if", true),
+    vue.createElementVNode("div", {
+      class: vue.normalizeClass(["dropdown", { 'is-active': _ctx.isActive }])
     }, [
-      createElementVNode("div", {
+      vue.createElementVNode("div", {
         class: "dropdown-trigger",
         onClick: _cache[1] || (_cache[1] = $event => (_ctx.disabled ? null : (_ctx.isActive = !_ctx.isActive)))
       }, [
-        createElementVNode("div", {
-          class: normalizeClass(["columns is-gapless input is-mobile auto-complete", {'is-small': _ctx.isSmall}])
+        vue.createElementVNode("div", {
+          class: vue.normalizeClass(["columns is-gapless input is-mobile auto-complete", {'is-small': _ctx.isSmall}])
         }, [
           (_ctx.returnObject)
-            ? (openBlock(), createElementBlock("div", _hoisted_3, [
+            ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_3, [
                 (_ctx.item[_ctx.itemKey])
-                  ? (openBlock(), createElementBlock("span", _hoisted_4, toDisplayString(_ctx.item[_ctx.itemValue]), 1 /* TEXT */))
-                  : createCommentVNode("v-if", true),
+                  ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_4, vue.toDisplayString(_ctx.item[_ctx.itemValue]), 1 /* TEXT */))
+                  : vue.createCommentVNode("v-if", true),
                 (!_ctx.item[_ctx.itemKey])
-                  ? (openBlock(), createElementBlock("span", _hoisted_5, toDisplayString(_ctx.placeHolder), 1 /* TEXT */))
-                  : createCommentVNode("v-if", true)
+                  ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_5, vue.toDisplayString(_ctx.placeHolder), 1 /* TEXT */))
+                  : vue.createCommentVNode("v-if", true)
               ]))
-            : (openBlock(), createElementBlock("div", _hoisted_6, [
+            : (vue.openBlock(), vue.createElementBlock("div", _hoisted_6, [
                 (_ctx.item)
-                  ? (openBlock(), createElementBlock("span", _hoisted_7, toDisplayString(_ctx.items.find((i) => i[_ctx.itemKey] == _ctx.item)?.[_ctx.itemValue]), 1 /* TEXT */))
-                  : createCommentVNode("v-if", true),
+                  ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_7, vue.toDisplayString(_ctx.items.find((i) => i[_ctx.itemKey] == _ctx.item)?.[_ctx.itemValue]), 1 /* TEXT */))
+                  : vue.createCommentVNode("v-if", true),
                 (!_ctx.item)
-                  ? (openBlock(), createElementBlock("span", _hoisted_8, toDisplayString(_ctx.placeHolder), 1 /* TEXT */))
-                  : createCommentVNode("v-if", true)
+                  ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_8, vue.toDisplayString(_ctx.placeHolder), 1 /* TEXT */))
+                  : vue.createCommentVNode("v-if", true)
               ])),
           (_ctx.item.id && !_ctx.isActive)
-            ? (openBlock(), createElementBlock("div", _hoisted_9, [
-                createElementVNode("span", {
+            ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_9, [
+                vue.createElementVNode("span", {
                   class: "icon",
                   onClick: _cache[0] || (_cache[0] = (...args) => (_ctx.remove && _ctx.remove(...args)))
                 }, _hoisted_11)
               ]))
-            : createCommentVNode("v-if", true),
-          createElementVNode("div", _hoisted_12, [
+            : vue.createCommentVNode("v-if", true),
+          vue.createElementVNode("div", _hoisted_12, [
             (!_ctx.isActive)
-              ? (openBlock(), createElementBlock("span", _hoisted_13, _hoisted_15))
-              : createCommentVNode("v-if", true),
+              ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_13, _hoisted_15))
+              : vue.createCommentVNode("v-if", true),
             (_ctx.isActive)
-              ? (openBlock(), createElementBlock("span", _hoisted_16, _hoisted_18))
-              : createCommentVNode("v-if", true)
+              ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_16, _hoisted_18))
+              : vue.createCommentVNode("v-if", true)
           ])
         ], 2 /* CLASS */)
       ]),
-      createElementVNode("div", _hoisted_19, [
-        createElementVNode("div", _hoisted_20, [
+      vue.createElementVNode("div", _hoisted_19, [
+        vue.createElementVNode("div", _hoisted_20, [
           (_ctx.searchable)
-            ? (openBlock(), createElementBlock("div", _hoisted_21, [
-                withDirectives(createElementVNode("input", {
+            ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_21, [
+                vue.withDirectives(vue.createElementVNode("input", {
                   class: "input",
                   type: "text",
                   placeholder: _ctx.inputPlaceHolder,
                   "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => ((_ctx.search) = $event)),
                   onBlur: _cache[3] || (_cache[3] = (...args) => (_ctx.onBlur && _ctx.onBlur(...args)))
                 }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_22), [
-                  [vModelText, _ctx.search]
+                  [vue.vModelText, _ctx.search]
                 ])
               ]))
-            : createCommentVNode("v-if", true),
-          (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.items, (item, index) => {
-            return (openBlock(), createElementBlock("span", {
-              key: index,
+            : vue.createCommentVNode("v-if", true),
+          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.items, (item, index) => {
+            return (vue.openBlock(), vue.createElementBlock("span", {
+              key: item.key,
               onClick: $event => (_ctx.select(item)),
               class: "dropdown-item is-clickable"
-            }, toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_23))
+            }, vue.toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_23))
           }), 128 /* KEYED_FRAGMENT */))
         ])
       ])
@@ -219,10 +221,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 var css_248z = "\n.dropdown[data-v-5f95ed01],\n.dropdown-trigger[data-v-5f95ed01],\n.dropdown-menu[data-v-5f95ed01] {\n  width: 100%;\n}\n.auto-complete[data-v-5f95ed01] {\n  border: 1px solid #ccc;\n  min-height: 24px;\n}\n";
-styleInject(css_248z);
+styleInject_es.styleInject(css_248z);
 
 script.render = render;
 script.__scopeId = "data-v-5f95ed01";
 script.__file = "src/components/auto.complete/auto.complete.vue";
 
-export { script as s };
+exports.script = script;

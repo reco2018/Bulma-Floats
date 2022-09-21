@@ -27,7 +27,7 @@
           <div class="mx-2 mb-1" v-if="searchable">
             <input class="input" type="text" :placeholder="inputPlaceHolder" v-model="search" @blur="onBlur" />
           </div>
-          <span v-for="(item, index) in items" :key="index" @click="select(item)" class="dropdown-item is-clickable">
+          <span v-for="(item, index) in items" :key="item.key" @click="select(item)" class="dropdown-item is-clickable">
             {{ item[itemValue] }}
           </span>
         </div>

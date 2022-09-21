@@ -96,13 +96,13 @@ export default defineComponent({
     }
 
     const select = (item) => {
-      search.value = ''
-      isActive.value = false
       if (props.returnObject) {
         emit('update:item', item)
       } else {
         emit('update:item', item[props.itemKey])
       }
+      search.value = ''
+      isActive.value = false
     }
 
     const onBlur = () => {

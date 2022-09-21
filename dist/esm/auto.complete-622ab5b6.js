@@ -207,7 +207,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             : createCommentVNode("v-if", true),
           (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.items, (item, index) => {
             return (openBlock(), createElementBlock("span", {
-              key: item.key,
+              key: item[_ctx.itemKey],
               onClick: $event => (_ctx.select(item)),
               class: "dropdown-item is-clickable"
             }, toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_23))

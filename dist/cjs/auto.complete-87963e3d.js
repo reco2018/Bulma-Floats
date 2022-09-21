@@ -209,7 +209,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             : vue.createCommentVNode("v-if", true),
           (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.items, (item, index) => {
             return (vue.openBlock(), vue.createElementBlock("span", {
-              key: item.key,
+              key: item[_ctx.itemKey],
               onClick: $event => (_ctx.select(item)),
               class: "dropdown-item is-clickable"
             }, vue.toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_23))

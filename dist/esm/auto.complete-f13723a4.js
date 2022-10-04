@@ -1,4 +1,4 @@
-import { defineComponent, ref, watch, openBlock, createElementBlock, toDisplayString, createCommentVNode, createElementVNode, normalizeClass, withDirectives, vModelText, Fragment, renderList, pushScopeId, popScopeId } from 'vue';
+import { defineComponent, ref, watch, openBlock, createElementBlock, toDisplayString, createCommentVNode, createElementVNode, normalizeClass, withDirectives, vModelText, Fragment, renderList, renderSlot, pushScopeId, popScopeId } from 'vue';
 import { s as styleInject } from './style-inject.es-1f59c1d0.js';
 
 var script = defineComponent({
@@ -38,13 +38,22 @@ var script = defineComponent({
       type: Boolean,
       default: false
     },
+    itemTemplete: {
+      type: String,
+      default: null
+    }
   },
   emits: [
     'update:item', 'updated'
   ],
-  setup(props, {emit}) {
+  setup(props, { emit, slots }) {
     const isActive = ref(false);
     const search = ref('');
+    const hasItemContent = ref(false);
+
+    if (slots.itemContent) {
+      hasItemContent.value = true;
+    }
 
     watch(search, () => {
       emit('updated', search.value);
@@ -77,6 +86,7 @@ var script = defineComponent({
     return {
       isActive,
       search,
+      hasItemContent,
       remove,
       select,
       onBlur
@@ -204,13 +214,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 ])
               ]))
             : createCommentVNode("v-if", true),
-          (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.items, (item, index) => {
-            return (openBlock(), createElementBlock("span", {
-              key: item[_ctx.itemKey],
-              onClick: $event => (_ctx.select(item)),
-              class: "dropdown-item is-clickable"
-            }, toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_23))
-          }), 128 /* KEYED_FRAGMENT */))
+          (_ctx.hasItemContent)
+            ? (openBlock(true), createElementBlock(Fragment, { key: 1 }, renderList(_ctx.items, (item, index) => {
+                return (openBlock(), createElementBlock("span", null, [
+                  renderSlot(_ctx.$slots, "itemContent", {
+                    key: item[_ctx.itemKey],
+                    item: item,
+                    click: () => _ctx.select(item)
+                  })
+                ]))
+              }), 256 /* UNKEYED_FRAGMENT */))
+            : (openBlock(true), createElementBlock(Fragment, { key: 2 }, renderList(_ctx.items, (item, index) => {
+                return (openBlock(), createElementBlock("span", null, [
+                  (openBlock(), createElementBlock("span", {
+                    key: item[_ctx.itemKey],
+                    onClick: $event => (_ctx.select(item)),
+                    class: "dropdown-item is-clickable"
+                  }, toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_23))
+                ]))
+              }), 256 /* UNKEYED_FRAGMENT */))
         ])
       ])
     ], 2 /* CLASS */)

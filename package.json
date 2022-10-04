@@ -1,6 +1,6 @@
 {
   "name": "@reco2018/bulma-floats",
-  "version": "0.4.19",
+  "version": "0.4.23",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -8,6 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf dist && rollup -c",
+    "pub": "npm run build && npm i && npm publish",
     "watch": "watch 'npm run build' ./src"
   },
   "files": [

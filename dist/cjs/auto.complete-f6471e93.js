@@ -40,13 +40,22 @@ var script = vue.defineComponent({
       type: Boolean,
       default: false
     },
+    itemTemplete: {
+      type: String,
+      default: null
+    }
   },
   emits: [
     'update:item', 'updated'
   ],
-  setup(props, {emit}) {
+  setup(props, { emit, slots }) {
     const isActive = vue.ref(false);
     const search = vue.ref('');
+    const hasItemContent = vue.ref(false);
+
+    if (slots.itemContent) {
+      hasItemContent.value = true;
+    }
 
     vue.watch(search, () => {
       emit('updated', search.value);
@@ -79,6 +88,7 @@ var script = vue.defineComponent({
     return {
       isActive,
       search,
+      hasItemContent,
       remove,
       select,
       onBlur
@@ -206,13 +216,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 ])
               ]))
             : vue.createCommentVNode("v-if", true),
-          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.items, (item, index) => {
-            return (vue.openBlock(), vue.createElementBlock("span", {
-              key: item[_ctx.itemKey],
-              onClick: $event => (_ctx.select(item)),
-              class: "dropdown-item is-clickable"
-            }, vue.toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_23))
-          }), 128 /* KEYED_FRAGMENT */))
+          (_ctx.hasItemContent)
+            ? (vue.openBlock(true), vue.createElementBlock(vue.Fragment, { key: 1 }, vue.renderList(_ctx.items, (item, index) => {
+                return (vue.openBlock(), vue.createElementBlock("span", null, [
+                  vue.renderSlot(_ctx.$slots, "itemContent", {
+                    key: item[_ctx.itemKey],
+                    item: item,
+                    click: () => _ctx.select(item)
+                  })
+                ]))
+              }), 256 /* UNKEYED_FRAGMENT */))
+            : (vue.openBlock(true), vue.createElementBlock(vue.Fragment, { key: 2 }, vue.renderList(_ctx.items, (item, index) => {
+                return (vue.openBlock(), vue.createElementBlock("span", null, [
+                  (vue.openBlock(), vue.createElementBlock("span", {
+                    key: item[_ctx.itemKey],
+                    onClick: $event => (_ctx.select(item)),
+                    class: "dropdown-item is-clickable"
+                  }, vue.toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_23))
+                ]))
+              }), 256 /* UNKEYED_FRAGMENT */))
         ])
       ])
     ], 2 /* CLASS */)

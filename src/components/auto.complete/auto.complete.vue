@@ -27,8 +27,13 @@
           <div class="mx-2 mb-1" v-if="searchable">
             <input class="input" type="text" :placeholder="inputPlaceHolder" v-model="search" />
           </div>
-          <span v-for="(item, index) in items" :key="item[itemKey]" @click="select(item)" class="dropdown-item is-clickable">
-            {{ item[itemValue] }}
+          <span v-if="hasItemContent" v-for="(item, index) in items">
+            <slot :key="item[itemKey]" name="itemContent" :item="item" :click="() => select(item)"></slot>
+          </span>
+          <span v-else v-for="(item, index) in items">
+            <span :key="item[itemKey]" @click="select(item)" class="dropdown-item is-clickable">
+              {{ item[itemValue] }}
+            </span>
           </span>
         </div>
       </div>
@@ -75,13 +80,22 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
+    itemTemplete: {
+      type: String,
+      default: null
+    }
   },
   emits: [
     'update:item', 'updated'
   ],
-  setup(props, {emit}) {
+  setup(props, { emit, slots }) {
     const isActive = ref(false)
     const search = ref('')
+    const hasItemContent = ref(false)
+
+    if (slots.itemContent) {
+      hasItemContent.value = true
+    }
 
     watch(search, () => {
       emit('updated', search.value)
@@ -114,6 +128,7 @@ export default defineComponent({
     return {
       isActive,
       search,
+      hasItemContent,
       remove,
       select,
       onBlur

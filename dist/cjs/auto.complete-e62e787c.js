@@ -43,6 +43,10 @@ var script = vue.defineComponent({
     itemTemplete: {
       type: String,
       default: null
+    },
+    menuHeight: {
+      type: Number,
+      default: null
     }
   },
   emits: [
@@ -216,25 +220,29 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 ])
               ]))
             : vue.createCommentVNode("v-if", true),
-          (_ctx.hasItemContent)
-            ? (vue.openBlock(true), vue.createElementBlock(vue.Fragment, { key: 1 }, vue.renderList(_ctx.items, (item, index) => {
-                return (vue.openBlock(), vue.createElementBlock("span", null, [
-                  vue.renderSlot(_ctx.$slots, "itemContent", {
-                    key: item[_ctx.itemKey],
-                    item: item,
-                    click: () => _ctx.select(item)
-                  })
-                ]))
-              }), 256 /* UNKEYED_FRAGMENT */))
-            : (vue.openBlock(true), vue.createElementBlock(vue.Fragment, { key: 2 }, vue.renderList(_ctx.items, (item, index) => {
-                return (vue.openBlock(), vue.createElementBlock("span", null, [
-                  (vue.openBlock(), vue.createElementBlock("span", {
-                    key: item[_ctx.itemKey],
-                    onClick: $event => (_ctx.select(item)),
-                    class: "dropdown-item is-clickable"
-                  }, vue.toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_23))
-                ]))
-              }), 256 /* UNKEYED_FRAGMENT */))
+          vue.createElementVNode("div", {
+            style: vue.normalizeStyle(_ctx.menuHeight ? { overflow: 'scroll', height: _ctx.menuHeight + 'px' } : {})
+          }, [
+            (_ctx.hasItemContent)
+              ? (vue.openBlock(true), vue.createElementBlock(vue.Fragment, { key: 0 }, vue.renderList(_ctx.items, (item, index) => {
+                  return (vue.openBlock(), vue.createElementBlock("span", null, [
+                    vue.renderSlot(_ctx.$slots, "itemContent", {
+                      key: item[_ctx.itemKey],
+                      item: item,
+                      click: () => _ctx.select(item)
+                    })
+                  ]))
+                }), 256 /* UNKEYED_FRAGMENT */))
+              : (vue.openBlock(true), vue.createElementBlock(vue.Fragment, { key: 1 }, vue.renderList(_ctx.items, (item, index) => {
+                  return (vue.openBlock(), vue.createElementBlock("span", null, [
+                    (vue.openBlock(), vue.createElementBlock("span", {
+                      key: item[_ctx.itemKey],
+                      onClick: $event => (_ctx.select(item)),
+                      class: "dropdown-item is-clickable"
+                    }, vue.toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_23))
+                  ]))
+                }), 256 /* UNKEYED_FRAGMENT */))
+          ], 4 /* STYLE */)
         ])
       ])
     ], 2 /* CLASS */)

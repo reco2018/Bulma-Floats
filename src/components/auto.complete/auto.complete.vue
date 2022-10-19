@@ -27,14 +27,16 @@
           <div class="mx-2 mb-1" v-if="searchable">
             <input class="input" type="text" :placeholder="inputPlaceHolder" v-model="search" />
           </div>
-          <span v-if="hasItemContent" v-for="(item, index) in items">
-            <slot :key="item[itemKey]" name="itemContent" :item="item" :click="() => select(item)"></slot>
-          </span>
-          <span v-else v-for="(item, index) in items">
-            <span :key="item[itemKey]" @click="select(item)" class="dropdown-item is-clickable">
-              {{ item[itemValue] }}
+          <div :style="menuHeight ? { overflow: 'scroll', height: menuHeight + 'px' } : {}">
+            <span v-if="hasItemContent" v-for="(item, index) in items">
+              <slot :key="item[itemKey]" name="itemContent" :item="item" :click="() => select(item)"></slot>
             </span>
-          </span>
+            <span v-else v-for="(item, index) in items">
+              <span :key="item[itemKey]" @click="select(item)" class="dropdown-item is-clickable">
+                {{ item[itemValue] }}
+              </span>
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -82,6 +84,10 @@ export default defineComponent({
     },
     itemTemplete: {
       type: String,
+      default: null
+    },
+    menuHeight: {
+      type: Number,
       default: null
     }
   },

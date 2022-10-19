@@ -1,4 +1,4 @@
-import { defineComponent, ref, watch, openBlock, createElementBlock, toDisplayString, createCommentVNode, createElementVNode, normalizeClass, withDirectives, vModelText, Fragment, renderList, renderSlot, pushScopeId, popScopeId } from 'vue';
+import { defineComponent, ref, watch, openBlock, createElementBlock, toDisplayString, createCommentVNode, createElementVNode, normalizeClass, withDirectives, vModelText, normalizeStyle, Fragment, renderList, renderSlot, pushScopeId, popScopeId } from 'vue';
 import { s as styleInject } from './style-inject.es-1f59c1d0.js';
 
 var script = defineComponent({
@@ -40,6 +40,10 @@ var script = defineComponent({
     },
     itemTemplete: {
       type: String,
+      default: null
+    },
+    menuHeight: {
+      type: Number,
       default: null
     }
   },
@@ -214,25 +218,29 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 ])
               ]))
             : createCommentVNode("v-if", true),
-          (_ctx.hasItemContent)
-            ? (openBlock(true), createElementBlock(Fragment, { key: 1 }, renderList(_ctx.items, (item, index) => {
-                return (openBlock(), createElementBlock("span", null, [
-                  renderSlot(_ctx.$slots, "itemContent", {
-                    key: item[_ctx.itemKey],
-                    item: item,
-                    click: () => _ctx.select(item)
-                  })
-                ]))
-              }), 256 /* UNKEYED_FRAGMENT */))
-            : (openBlock(true), createElementBlock(Fragment, { key: 2 }, renderList(_ctx.items, (item, index) => {
-                return (openBlock(), createElementBlock("span", null, [
-                  (openBlock(), createElementBlock("span", {
-                    key: item[_ctx.itemKey],
-                    onClick: $event => (_ctx.select(item)),
-                    class: "dropdown-item is-clickable"
-                  }, toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_23))
-                ]))
-              }), 256 /* UNKEYED_FRAGMENT */))
+          createElementVNode("div", {
+            style: normalizeStyle(_ctx.menuHeight ? { overflow: 'scroll', height: _ctx.menuHeight + 'px' } : {})
+          }, [
+            (_ctx.hasItemContent)
+              ? (openBlock(true), createElementBlock(Fragment, { key: 0 }, renderList(_ctx.items, (item, index) => {
+                  return (openBlock(), createElementBlock("span", null, [
+                    renderSlot(_ctx.$slots, "itemContent", {
+                      key: item[_ctx.itemKey],
+                      item: item,
+                      click: () => _ctx.select(item)
+                    })
+                  ]))
+                }), 256 /* UNKEYED_FRAGMENT */))
+              : (openBlock(true), createElementBlock(Fragment, { key: 1 }, renderList(_ctx.items, (item, index) => {
+                  return (openBlock(), createElementBlock("span", null, [
+                    (openBlock(), createElementBlock("span", {
+                      key: item[_ctx.itemKey],
+                      onClick: $event => (_ctx.select(item)),
+                      class: "dropdown-item is-clickable"
+                    }, toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_23))
+                  ]))
+                }), 256 /* UNKEYED_FRAGMENT */))
+          ], 4 /* STYLE */)
         ])
       ])
     ], 2 /* CLASS */)

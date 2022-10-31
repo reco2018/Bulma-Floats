@@ -186,7 +186,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   ? (openBlock(), createElementBlock("span", _hoisted_8, toDisplayString(_ctx.placeHolder), 1 /* TEXT */))
                   : createCommentVNode("v-if", true)
               ])),
-          (_ctx.item.id && !_ctx.isActive)
+          (_ctx.item.id && !_ctx.isActive && !_ctx.disabled)
             ? (openBlock(), createElementBlock("div", _hoisted_9, [
                 createElementVNode("span", {
                   class: "icon",

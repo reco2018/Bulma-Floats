@@ -188,7 +188,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_8, vue.toDisplayString(_ctx.placeHolder), 1 /* TEXT */))
                   : vue.createCommentVNode("v-if", true)
               ])),
-          (_ctx.item.id && !_ctx.isActive)
+          (_ctx.item.id && !_ctx.isActive && !_ctx.disabled)
             ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_9, [
                 vue.createElementVNode("span", {
                   class: "icon",

@@ -13,7 +13,7 @@
             <span v-if="!item">{{placeHolder}}</span>
           </div>
 
-          <div v-if="item.id && !isActive" class="column is-narrow">
+          <div v-if="item.id && !isActive && !disabled" class="column is-narrow">
             <span class="icon" @click="remove"><i class="fas fa-trash"></i></span>
           </div>
           <div class="column is-narrow">

@@ -45,8 +45,31 @@ export default {
             this.onOk(this.newResult)
             this.close()
         },
-    }
+        handlePopstate() {
+            this.close()
+        }
+    },
+    mounted() {
+        window.addEventListener("popstate", this.handlePopstate)
+    },
+    beforeDestroy() {
+        window.removeEventListener("popstate", this.handlePopstate)
+    },
 }
+
+// const handlePopstate = () => {
+//   useRouter().push(`/order/edit/${id}?city=${order.value.fromSpot.spot.spotArea.spotCity.slug}`)
+// }
+
+// addElementToHeader({ logo: true, isMypageBtn: true, isLangBtn: true })
+// onMounted(() => {
+//   hideHtmlElementIfNeeded({header: isFixedSpot.value, footer: false})
+//   window.addEventListener('popstate', handlePopstate)
+// })
+
+// onBeforeUnmount(() => {
+//   window.removeEventListener("popstate", handlePopstate)
+// })
 </script>
 <style lang="scss">
 .fullScreenModal {

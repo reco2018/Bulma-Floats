@@ -96,12 +96,12 @@ const _hoisted_4 = {
   role: "menu"
 };
 const _hoisted_5 = { class: "dropdown-content" };
-const _hoisted_6 = ["onClick"];
+const _hoisted_6 = ["onMousedown"];
 const _hoisted_7 = {
   key: 1,
   class: "tags mt-2"
 };
-const _hoisted_8 = ["onClick"];
+const _hoisted_8 = ["onMousedown"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (vue.openBlock(), vue.createElementBlock("div", _hoisted_1, [
@@ -128,9 +128,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.items, (item, index) => {
             return (vue.openBlock(), vue.createElementBlock("span", {
               key: index,
-              onClick: $event => (_ctx.select(item)),
+              onMousedown: $event => (_ctx.select(item)),
               class: "dropdown-item is-clickable"
-            }, vue.toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_6))
+            }, vue.toDisplayString(item[_ctx.itemValue]), 41 /* TEXT, PROPS, HYDRATE_EVENTS */, _hoisted_6))
           }), 128 /* KEYED_FRAGMENT */))
         ])
       ])
@@ -147,8 +147,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 vue.createElementVNode("button", {
                   type: "button",
                   class: "delete is-small",
-                  onClick: $event => (_ctx.remove(item))
-                }, null, 8 /* PROPS */, _hoisted_8)
+                  onMousedown: $event => (_ctx.remove(item))
+                }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_8)
               ]))
             }), 128 /* KEYED_FRAGMENT */))
           ])

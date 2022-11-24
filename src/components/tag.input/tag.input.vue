@@ -4,14 +4,15 @@
     <div class="dropdown" :class="{ 'is-active': isActive }">
       <div class="dropdown-trigger">
         <input 
-          class="input" :class="{'is-small': isSmall}" 
-          type="text" placeholder="検索" 
-          v-model="search" @focus="isActive = true" 
-          @blur="onBlur" />
+          class="input" :class="{'is-small': isSmall}"
+          type="text" placeholder="検索"
+          v-model="search" @focus="isActive = true"
+          @blur="onBlur"
+        />
       </div>
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
         <div class="dropdown-content">
-          <span v-for="(item, index) in items" :key="index" @click="select(item)" class="dropdown-item is-clickable">
+          <span v-for="(item, index) in items" :key="index" @mousedown="select(item)" class="dropdown-item is-clickable">
             {{ item[itemValue] }}
           </span>
         </div>
@@ -22,7 +23,7 @@
       <slot name="tags">
         <span v-for="(item, index) in selected" :key="index" class="tag">
           {{ returnObject ? item[itemValue] : item }}
-          <button type="button" class="delete is-small" @click="remove(item)"></button>
+          <button type="button" class="delete is-small" @mousedown="remove(item)"></button>
         </span>
       </slot>
     </div>

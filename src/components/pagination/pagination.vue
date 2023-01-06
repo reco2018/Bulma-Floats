@@ -45,7 +45,7 @@
 </nav>
 </template>
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 import { useNuxtApp, useRoute, useRouter } from 'nuxt/app'
 
 export default defineComponent({

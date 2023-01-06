@@ -253,7 +253,7 @@ var script = vue.defineComponent({
     const { $Airporter } = useNuxtApp();
     const route = useRoute();
     useRouter();
-    const isActive = ref(false);
+    const isActive = vue.ref(false);
 
     const current = vue.computed({
       get: () => Number(route.query.page || 1)

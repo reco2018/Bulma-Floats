@@ -1,4 +1,6 @@
-import { getCurrentInstance, defineComponent, computed, h, resolveComponent, openBlock, createElementBlock, createCommentVNode, createElementVNode, Fragment, renderList, toDisplayString } from 'vue';
+'use strict';
+
+var vue = require('vue');
 
 function createContext() {
   let currentInstance = null;
@@ -112,7 +114,7 @@ createMock("mock");
 
 const nuxtAppCtx = getContext("nuxt-app");
 function useNuxtApp() {
-  const vm = getCurrentInstance();
+  const vm = vue.getCurrentInstance();
   if (!vm) {
     const nuxtAppInstance = nuxtAppCtx.use();
     if (!nuxtAppInstance) {
@@ -145,7 +147,7 @@ function defineNuxtLink(options) {
       console.warn(`[${componentName}] \`${main}\` and \`${sub}\` cannot be used together. \`${sub}\` will be ignored.`);
     }
   };
-  return defineComponent({
+  return vue.defineComponent({
     name: componentName,
     props: {
       to: {
@@ -206,11 +208,11 @@ function defineNuxtLink(options) {
     },
     setup(props, { slots }) {
       const router = useRouter();
-      const to = computed(() => {
+      const to = vue.computed(() => {
         checkPropConflicts(props, "to", "href");
         return props.to || props.href || "";
       });
-      const isExternal = computed(() => {
+      const isExternal = vue.computed(() => {
         if (props.external) {
           return true;
         }
@@ -224,7 +226,7 @@ function defineNuxtLink(options) {
       });
       return () => {
         if (!isExternal.value) {
-          return h(resolveComponent("RouterLink"), {
+          return vue.h(vue.resolveComponent("RouterLink"), {
             to: to.value,
             activeClass: props.activeClass || options.activeClass,
             exactActiveClass: props.exactActiveClass || options.exactActiveClass,
@@ -236,14 +238,14 @@ function defineNuxtLink(options) {
         const target = props.target || null;
         checkPropConflicts(props, "noRel", "rel");
         const rel = props.noRel ? null : firstNonUndefined(props.rel, options.externalRelAttribute, href ? DEFAULT_EXTERNAL_REL_ATTRIBUTE : "") || null;
-        return h("a", { href, rel, target }, slots.default?.());
+        return vue.h("a", { href, rel, target }, slots.default?.());
       };
     }
   });
 }
 defineNuxtLink({ componentName: "NuxtLink" });
 
-var script = defineComponent({
+var script = vue.defineComponent({
   props: {
     meta: Object
   },
@@ -251,18 +253,30 @@ var script = defineComponent({
     const { $Airporter } = useNuxtApp();
     const route = useRoute();
     useRouter();
+    const isActive = ref(false);
 
-    const current = computed({
+    const current = vue.computed({
       get: () => Number(route.query.page || 1)
+    });
+
+    const currentLimit = vue.computed({
+      get: () => Number(route.query.limit || 10)
     });
 
     const changePage = (page) => {
       $Airporter.updateQuery({ page });
     };
 
+    const changeLimit = (limit) => {
+      $Airporter.updateQuery({ limit });
+    };
+
     return {
       current,
-      changePage
+      currentLimit,
+      changePage,
+      changeLimit,
+      isActive
     }
   }
 });
@@ -273,62 +287,76 @@ const _hoisted_1 = {
   role: "navigation",
   "aria-label": "pagination"
 };
-const _hoisted_2 = { class: "pagination-list" };
-const _hoisted_3 = ["onClick"];
-const _hoisted_4 = { key: 1 };
-const _hoisted_5 = /*#__PURE__*/createElementVNode("span", { class: "pagination-ellipsis" }, "…", -1 /* HOISTED */);
-const _hoisted_6 = [
-  _hoisted_5
+const _hoisted_2 = { class: "select" };
+const _hoisted_3 = /*#__PURE__*/vue.createStaticVNode("<option value=\"\">表示件数</option><option value=\"10\">10件</option><option value=\"20\">20件</option><option value=\"50\">50件</option><option value=\"100\">100件</option><option value=\"200\">200件</option>", 6);
+const _hoisted_9 = [
+  _hoisted_3
 ];
-const _hoisted_7 = {
+const _hoisted_10 = { class: "pagination-list" };
+const _hoisted_11 = ["onClick"];
+const _hoisted_12 = { key: 1 };
+const _hoisted_13 = /*#__PURE__*/vue.createElementVNode("span", { class: "pagination-ellipsis" }, "…", -1 /* HOISTED */);
+const _hoisted_14 = [
+  _hoisted_13
+];
+const _hoisted_15 = {
   key: 2,
   class: "pagination-link is-current"
 };
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (_ctx.meta.last_page > 1)
-    ? (openBlock(), createElementBlock("nav", _hoisted_1, [
+    ? (vue.openBlock(), vue.createElementBlock("nav", _hoisted_1, [
         (_ctx.current > 1)
-          ? (openBlock(), createElementBlock("a", {
+          ? (vue.openBlock(), vue.createElementBlock("a", {
               key: 0,
               class: "pagination-previous",
               onClick: _cache[0] || (_cache[0] = $event => (_ctx.changePage(_ctx.current - 1)))
             }, " Previous "))
-          : createCommentVNode("v-if", true),
+          : vue.createCommentVNode("v-if", true),
         (_ctx.meta.total > _ctx.current)
-          ? (openBlock(), createElementBlock("a", {
+          ? (vue.openBlock(), vue.createElementBlock("a", {
               key: 1,
               class: "pagination-next",
               onClick: _cache[1] || (_cache[1] = $event => (_ctx.changePage(_ctx.current + 1)))
             }, " Next "))
-          : createCommentVNode("v-if", true),
-        createElementVNode("ul", _hoisted_2, [
-          (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.meta.last_page, (index) => {
-            return (openBlock(), createElementBlock("li", null, [
+          : vue.createCommentVNode("v-if", true),
+        vue.createElementVNode("div", _hoisted_2, [
+          vue.withDirectives(vue.createElementVNode("select", {
+            name: "limits",
+            "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => ((_ctx.currentLimit) = $event)),
+            onChange: _cache[3] || (_cache[3] = (e) => _ctx.changeLimit(e.target.value))
+          }, _hoisted_9, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [
+            [vue.vModelSelect, _ctx.currentLimit]
+          ])
+        ]),
+        vue.createElementVNode("ul", _hoisted_10, [
+          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.meta.last_page, (index) => {
+            return (vue.openBlock(), vue.createElementBlock("li", null, [
               (index !== _ctx.current
           && (index < 6
           || index > _ctx.meta.last_page - 5
           || (index > _ctx.current - 2 && index < _ctx.current + 2)))
-                ? (openBlock(), createElementBlock("a", {
+                ? (vue.openBlock(), vue.createElementBlock("a", {
                     key: 0,
                     class: "pagination-link",
                     onClick: $event => (_ctx.changePage(index))
-                  }, toDisplayString(index), 9 /* TEXT, PROPS */, _hoisted_3))
-                : createCommentVNode("v-if", true),
+                  }, vue.toDisplayString(index), 9 /* TEXT, PROPS */, _hoisted_11))
+                : vue.createCommentVNode("v-if", true),
               ((_ctx.current > 7 && index == 6) || (_ctx.current < _ctx.meta.last_page - 6 && index == _ctx.meta.last_page - 5))
-                ? (openBlock(), createElementBlock("li", _hoisted_4, _hoisted_6))
-                : createCommentVNode("v-if", true),
+                ? (vue.openBlock(), vue.createElementBlock("li", _hoisted_12, _hoisted_14))
+                : vue.createCommentVNode("v-if", true),
               (index == _ctx.current)
-                ? (openBlock(), createElementBlock("a", _hoisted_7, toDisplayString(index), 1 /* TEXT */))
-                : createCommentVNode("v-if", true)
+                ? (vue.openBlock(), vue.createElementBlock("a", _hoisted_15, vue.toDisplayString(index), 1 /* TEXT */))
+                : vue.createCommentVNode("v-if", true)
             ]))
           }), 256 /* UNKEYED_FRAGMENT */))
         ])
       ]))
-    : createCommentVNode("v-if", true)
+    : vue.createCommentVNode("v-if", true)
 }
 
 script.render = render;
 script.__file = "src/components/pagination/pagination.vue";
 
-export { script as s };
+exports.script = script;

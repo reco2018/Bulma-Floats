@@ -10,6 +10,17 @@
     Next
   </a>
 
+  <div class="select">
+    <select name="limits" v-model="currentLimit" @change="(e) => changeLimit(e.target.value)">
+      <option value="">表示件数</option>
+      <option value="10">10件</option>
+      <option value="20">20件</option>
+      <option value="50">50件</option>
+      <option value="100">100件</option>
+      <option value="200">200件</option>
+    </select>
+  </div>
+
   <ul class="pagination-list">
     <li v-for="index in meta.last_page">
       <a
@@ -45,18 +56,30 @@ export default defineComponent({
     const { $Airporter } = useNuxtApp()
     const route = useRoute()
     const router = useRouter()
+    const isActive = ref(false)
 
     const current = computed({
       get: () => Number(route.query.page || 1)
+    })
+
+    const currentLimit = computed({
+      get: () => Number(route.query.limit || 10)
     })
 
     const changePage = (page) => {
       $Airporter.updateQuery({ page })
     }
 
+    const changeLimit = (limit) => {
+      $Airporter.updateQuery({ limit })
+    }
+
     return {
       current,
-      changePage
+      currentLimit,
+      changePage,
+      changeLimit,
+      isActive
     }
   }
 })

@@ -59,11 +59,13 @@ export default defineComponent({
     const isActive = ref(false)
 
     const current = computed({
-      get: () => Number(route.query.page || 1)
+      get: () => Number(route.query.page || 1),
+      set: () => {}
     })
 
     const currentLimit = computed({
-      get: () => Number(route.query.limit || 10)
+      get: () => Number(route.query.limit) ?? '',
+      set: () => {}
     })
 
     const changePage = (page) => {

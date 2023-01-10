@@ -261,7 +261,7 @@ var script = vue.defineComponent({
     });
 
     const currentLimit = vue.computed({
-      get: () => Number(route.query.limit ?? '20') || '',
+      get: () => Number(route.query.limit ?? 20),
       set: () => {}
     });
 

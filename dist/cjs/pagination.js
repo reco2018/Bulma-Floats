@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var pagination = require('./pagination-ce8568bd.js');
+var pagination = require('./pagination-deef01a0.js');
 require('vue');
 
 

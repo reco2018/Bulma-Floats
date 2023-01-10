@@ -1,6 +1,4 @@
-'use strict';
-
-var vue = require('vue');
+import { getCurrentInstance, defineComponent, computed, h, resolveComponent, ref, openBlock, createElementBlock, createCommentVNode, createElementVNode, withDirectives, vModelSelect, Fragment, renderList, toDisplayString, createStaticVNode } from 'vue';
 
 function createContext() {
   let currentInstance = null;
@@ -114,7 +112,7 @@ createMock("mock");
 
 const nuxtAppCtx = getContext("nuxt-app");
 function useNuxtApp() {
-  const vm = vue.getCurrentInstance();
+  const vm = getCurrentInstance();
   if (!vm) {
     const nuxtAppInstance = nuxtAppCtx.use();
     if (!nuxtAppInstance) {
@@ -147,7 +145,7 @@ function defineNuxtLink(options) {
       console.warn(`[${componentName}] \`${main}\` and \`${sub}\` cannot be used together. \`${sub}\` will be ignored.`);
     }
   };
-  return vue.defineComponent({
+  return defineComponent({
     name: componentName,
     props: {
       to: {
@@ -208,11 +206,11 @@ function defineNuxtLink(options) {
     },
     setup(props, { slots }) {
       const router = useRouter();
-      const to = vue.computed(() => {
+      const to = computed(() => {
         checkPropConflicts(props, "to", "href");
         return props.to || props.href || "";
       });
-      const isExternal = vue.computed(() => {
+      const isExternal = computed(() => {
         if (props.external) {
           return true;
         }
@@ -226,7 +224,7 @@ function defineNuxtLink(options) {
       });
       return () => {
         if (!isExternal.value) {
-          return vue.h(vue.resolveComponent("RouterLink"), {
+          return h(resolveComponent("RouterLink"), {
             to: to.value,
             activeClass: props.activeClass || options.activeClass,
             exactActiveClass: props.exactActiveClass || options.exactActiveClass,
@@ -238,14 +236,14 @@ function defineNuxtLink(options) {
         const target = props.target || null;
         checkPropConflicts(props, "noRel", "rel");
         const rel = props.noRel ? null : firstNonUndefined(props.rel, options.externalRelAttribute, href ? DEFAULT_EXTERNAL_REL_ATTRIBUTE : "") || null;
-        return vue.h("a", { href, rel, target }, slots.default?.());
+        return h("a", { href, rel, target }, slots.default?.());
       };
     }
   });
 }
 defineNuxtLink({ componentName: "NuxtLink" });
 
-var script = vue.defineComponent({
+var script = defineComponent({
   props: {
     meta: Object
   },
@@ -253,15 +251,15 @@ var script = vue.defineComponent({
     const { $Airporter } = useNuxtApp();
     const route = useRoute();
     useRouter();
-    const isActive = vue.ref(false);
+    const isActive = ref(false);
 
-    const current = vue.computed({
+    const current = computed({
       get: () => Number(route.query.page || 1),
       set: () => {}
     });
 
-    const currentLimit = vue.computed({
-      get: () => Number(route.query.limit) ?? '',
+    const currentLimit = computed({
+      get: () => Number(route.query.limit) ?? '20',
       set: () => {}
     });
 
@@ -290,14 +288,14 @@ const _hoisted_1 = {
   "aria-label": "pagination"
 };
 const _hoisted_2 = { class: "select" };
-const _hoisted_3 = /*#__PURE__*/vue.createStaticVNode("<option value=\"\">表示件数</option><option value=\"10\">10件</option><option value=\"20\">20件</option><option value=\"50\">50件</option><option value=\"100\">100件</option><option value=\"200\">200件</option>", 6);
+const _hoisted_3 = /*#__PURE__*/createStaticVNode("<option value=\"\">表示件数</option><option value=\"10\">10件</option><option value=\"20\">20件</option><option value=\"50\">50件</option><option value=\"100\">100件</option><option value=\"200\">200件</option>", 6);
 const _hoisted_9 = [
   _hoisted_3
 ];
 const _hoisted_10 = { class: "pagination-list" };
 const _hoisted_11 = ["onClick"];
 const _hoisted_12 = { key: 1 };
-const _hoisted_13 = /*#__PURE__*/vue.createElementVNode("span", { class: "pagination-ellipsis" }, "…", -1 /* HOISTED */);
+const _hoisted_13 = /*#__PURE__*/createElementVNode("span", { class: "pagination-ellipsis" }, "…", -1 /* HOISTED */);
 const _hoisted_14 = [
   _hoisted_13
 ];
@@ -308,57 +306,57 @@ const _hoisted_15 = {
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (_ctx.meta.last_page > 1)
-    ? (vue.openBlock(), vue.createElementBlock("nav", _hoisted_1, [
+    ? (openBlock(), createElementBlock("nav", _hoisted_1, [
         (_ctx.current > 1)
-          ? (vue.openBlock(), vue.createElementBlock("a", {
+          ? (openBlock(), createElementBlock("a", {
               key: 0,
               class: "pagination-previous",
               onClick: _cache[0] || (_cache[0] = $event => (_ctx.changePage(_ctx.current - 1)))
             }, " Previous "))
-          : vue.createCommentVNode("v-if", true),
+          : createCommentVNode("v-if", true),
         (_ctx.meta.total > _ctx.current)
-          ? (vue.openBlock(), vue.createElementBlock("a", {
+          ? (openBlock(), createElementBlock("a", {
               key: 1,
               class: "pagination-next",
               onClick: _cache[1] || (_cache[1] = $event => (_ctx.changePage(_ctx.current + 1)))
             }, " Next "))
-          : vue.createCommentVNode("v-if", true),
-        vue.createElementVNode("div", _hoisted_2, [
-          vue.withDirectives(vue.createElementVNode("select", {
+          : createCommentVNode("v-if", true),
+        createElementVNode("div", _hoisted_2, [
+          withDirectives(createElementVNode("select", {
             name: "limits",
             "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => ((_ctx.currentLimit) = $event)),
             onChange: _cache[3] || (_cache[3] = (e) => _ctx.changeLimit(e.target.value))
           }, _hoisted_9, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [
-            [vue.vModelSelect, _ctx.currentLimit]
+            [vModelSelect, _ctx.currentLimit]
           ])
         ]),
-        vue.createElementVNode("ul", _hoisted_10, [
-          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.meta.last_page, (index) => {
-            return (vue.openBlock(), vue.createElementBlock("li", null, [
+        createElementVNode("ul", _hoisted_10, [
+          (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.meta.last_page, (index) => {
+            return (openBlock(), createElementBlock("li", null, [
               (index !== _ctx.current
           && (index < 6
           || index > _ctx.meta.last_page - 5
           || (index > _ctx.current - 2 && index < _ctx.current + 2)))
-                ? (vue.openBlock(), vue.createElementBlock("a", {
+                ? (openBlock(), createElementBlock("a", {
                     key: 0,
                     class: "pagination-link",
                     onClick: $event => (_ctx.changePage(index))
-                  }, vue.toDisplayString(index), 9 /* TEXT, PROPS */, _hoisted_11))
-                : vue.createCommentVNode("v-if", true),
+                  }, toDisplayString(index), 9 /* TEXT, PROPS */, _hoisted_11))
+                : createCommentVNode("v-if", true),
               ((_ctx.current > 7 && index == 6) || (_ctx.current < _ctx.meta.last_page - 6 && index == _ctx.meta.last_page - 5))
-                ? (vue.openBlock(), vue.createElementBlock("li", _hoisted_12, _hoisted_14))
-                : vue.createCommentVNode("v-if", true),
+                ? (openBlock(), createElementBlock("li", _hoisted_12, _hoisted_14))
+                : createCommentVNode("v-if", true),
               (index == _ctx.current)
-                ? (vue.openBlock(), vue.createElementBlock("a", _hoisted_15, vue.toDisplayString(index), 1 /* TEXT */))
-                : vue.createCommentVNode("v-if", true)
+                ? (openBlock(), createElementBlock("a", _hoisted_15, toDisplayString(index), 1 /* TEXT */))
+                : createCommentVNode("v-if", true)
             ]))
           }), 256 /* UNKEYED_FRAGMENT */))
         ])
       ]))
-    : vue.createCommentVNode("v-if", true)
+    : createCommentVNode("v-if", true)
 }
 
 script.render = render;
 script.__file = "src/components/pagination/pagination.vue";
 
-exports.script = script;
+export { script as s };

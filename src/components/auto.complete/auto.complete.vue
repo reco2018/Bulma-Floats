@@ -25,7 +25,9 @@
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
         <div class="dropdown-content">
           <div class="mx-2 mb-1" v-if="searchable">
-            <input class="input" type="text" :placeholder="inputPlaceHolder" v-model="search" />
+            <div :class="`control is-medium ${isLoading ? 'is-loading' : ''} has-icons-right mt-2`">
+              <input class="input" type="text" :placeholder="inputPlaceHolder" v-model="search" />
+            </div>
           </div>
           <div :style="menuHeight ? { overflow: 'scroll', height: menuHeight + 'px' } : {}">
             <span v-if="hasItemContent" v-for="(item, index) in items">
@@ -89,7 +91,11 @@ export default defineComponent({
     menuHeight: {
       type: Number,
       default: null
-    }
+    },
+    isLoading: {
+      type: Boolean,
+      default: false
+    },
   },
   emits: [
     'update:item', 'updated'
@@ -151,5 +157,11 @@ export default defineComponent({
 .auto-complete {
   border: 1px solid #ccc;
   min-height: 24px;
+}
+
+.control.is-loading::after {
+  border: 2px solid #157562;
+  border-right-color: transparent;
+  border-top-color: transparent;
 }
 </style>

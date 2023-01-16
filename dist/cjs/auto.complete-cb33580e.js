@@ -47,7 +47,11 @@ var script = vue.defineComponent({
     menuHeight: {
       type: Number,
       default: null
-    }
+    },
+    isLoading: {
+      type: Boolean,
+      default: false
+    },
   },
   emits: [
     'update:item', 'updated'
@@ -210,14 +214,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         vue.createElementVNode("div", _hoisted_20, [
           (_ctx.searchable)
             ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_21, [
-                vue.withDirectives(vue.createElementVNode("input", {
-                  class: "input",
-                  type: "text",
-                  placeholder: _ctx.inputPlaceHolder,
-                  "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => ((_ctx.search) = $event))
-                }, null, 8 /* PROPS */, _hoisted_22), [
-                  [vue.vModelText, _ctx.search]
-                ])
+                vue.createElementVNode("div", {
+                  class: vue.normalizeClass(`control is-medium ${_ctx.isLoading ? 'is-loading' : ''} has-icons-right mt-2`)
+                }, [
+                  vue.withDirectives(vue.createElementVNode("input", {
+                    class: "input",
+                    type: "text",
+                    placeholder: _ctx.inputPlaceHolder,
+                    "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => ((_ctx.search) = $event))
+                  }, null, 8 /* PROPS */, _hoisted_22), [
+                    [vue.vModelText, _ctx.search]
+                  ])
+                ], 2 /* CLASS */)
               ]))
             : vue.createCommentVNode("v-if", true),
           vue.createElementVNode("div", {
@@ -249,7 +257,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ]))
 }
 
-var css_248z = "\n.dropdown[data-v-5f95ed01],\n.dropdown-trigger[data-v-5f95ed01],\n.dropdown-menu[data-v-5f95ed01] {\n  width: 100%;\n}\n.auto-complete[data-v-5f95ed01] {\n  border: 1px solid #ccc;\n  min-height: 24px;\n}\n";
+var css_248z = "\n.dropdown[data-v-5f95ed01],\n.dropdown-trigger[data-v-5f95ed01],\n.dropdown-menu[data-v-5f95ed01] {\n  width: 100%;\n}\n.auto-complete[data-v-5f95ed01] {\n  border: 1px solid #ccc;\n  min-height: 24px;\n}\n.control.is-loading[data-v-5f95ed01]::after {\n  border: 2px solid #157562;\n  border-right-color: transparent;\n  border-top-color: transparent;\n}\n";
 styleInject_es.styleInject(css_248z);
 
 script.render = render;

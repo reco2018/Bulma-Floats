@@ -127,7 +127,7 @@ export default defineComponent({
       } else {
         emit('update:item', item[props.itemKey])
       }
-      search.value = ''
+      // search.value = ''
       isActive.value = false
     }
 

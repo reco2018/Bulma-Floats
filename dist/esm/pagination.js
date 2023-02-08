@@ -1,2 +1,2 @@
-export { s as Pagination } from './pagination-32ba4268.js';
+export { s as Pagination } from './pagination-4a10c250.js';
 import 'vue';

@@ -10,6 +10,10 @@
     Next
   </a>
 
+  <p class="mr-2">
+    全<span class="has-text-weight-bold">{{ meta.total }}</span>件
+  </p>
+
   <div class="select">
     <select name="limits" v-model="currentLimit" @change="(e) => changeLimit(e.target.value)">
       <option value="">表示件数</option>

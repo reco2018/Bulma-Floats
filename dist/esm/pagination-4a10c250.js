@@ -1,4 +1,4 @@
-import { getCurrentInstance, defineComponent, computed, h, resolveComponent, ref, openBlock, createElementBlock, createCommentVNode, createElementVNode, withDirectives, vModelSelect, Fragment, renderList, toDisplayString, createStaticVNode } from 'vue';
+import { getCurrentInstance, defineComponent, computed, h, resolveComponent, ref, openBlock, createElementBlock, createCommentVNode, createElementVNode, toDisplayString, withDirectives, vModelSelect, Fragment, renderList, createTextVNode, createStaticVNode } from 'vue';
 
 function createContext() {
   let currentInstance = null;
@@ -287,19 +287,23 @@ const _hoisted_1 = {
   role: "navigation",
   "aria-label": "pagination"
 };
-const _hoisted_2 = { class: "select" };
-const _hoisted_3 = /*#__PURE__*/createStaticVNode("<option value=\"\">表示件数</option><option value=\"10\">10件</option><option value=\"20\">20件</option><option value=\"50\">50件</option><option value=\"100\">100件</option><option value=\"200\">200件</option>", 6);
-const _hoisted_9 = [
-  _hoisted_3
+const _hoisted_2 = { class: "mr-2" };
+const _hoisted_3 = /*#__PURE__*/createTextVNode(" 全");
+const _hoisted_4 = { class: "has-text-weight-bold" };
+const _hoisted_5 = /*#__PURE__*/createTextVNode("件 ");
+const _hoisted_6 = { class: "select" };
+const _hoisted_7 = /*#__PURE__*/createStaticVNode("<option value=\"\">表示件数</option><option value=\"10\">10件</option><option value=\"20\">20件</option><option value=\"50\">50件</option><option value=\"100\">100件</option><option value=\"200\">200件</option>", 6);
+const _hoisted_13 = [
+  _hoisted_7
 ];
-const _hoisted_10 = { class: "pagination-list" };
-const _hoisted_11 = ["onClick"];
-const _hoisted_12 = { key: 1 };
-const _hoisted_13 = /*#__PURE__*/createElementVNode("span", { class: "pagination-ellipsis" }, "…", -1 /* HOISTED */);
-const _hoisted_14 = [
-  _hoisted_13
+const _hoisted_14 = { class: "pagination-list" };
+const _hoisted_15 = ["onClick"];
+const _hoisted_16 = { key: 1 };
+const _hoisted_17 = /*#__PURE__*/createElementVNode("span", { class: "pagination-ellipsis" }, "…", -1 /* HOISTED */);
+const _hoisted_18 = [
+  _hoisted_17
 ];
-const _hoisted_15 = {
+const _hoisted_19 = {
   key: 2,
   class: "pagination-link is-current"
 };
@@ -321,16 +325,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               onClick: _cache[1] || (_cache[1] = $event => (_ctx.changePage(_ctx.current + 1)))
             }, " Next "))
           : createCommentVNode("v-if", true),
-        createElementVNode("div", _hoisted_2, [
+        createElementVNode("p", _hoisted_2, [
+          _hoisted_3,
+          createElementVNode("span", _hoisted_4, toDisplayString(_ctx.meta.total), 1 /* TEXT */),
+          _hoisted_5
+        ]),
+        createElementVNode("div", _hoisted_6, [
           withDirectives(createElementVNode("select", {
             name: "limits",
             "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => ((_ctx.currentLimit) = $event)),
             onChange: _cache[3] || (_cache[3] = (e) => _ctx.changeLimit(e.target.value))
-          }, _hoisted_9, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [
+          }, _hoisted_13, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [
             [vModelSelect, _ctx.currentLimit]
           ])
         ]),
-        createElementVNode("ul", _hoisted_10, [
+        createElementVNode("ul", _hoisted_14, [
           (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.meta.last_page, (index) => {
             return (openBlock(), createElementBlock("li", null, [
               (index !== _ctx.current
@@ -341,13 +350,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     key: 0,
                     class: "pagination-link",
                     onClick: $event => (_ctx.changePage(index))
-                  }, toDisplayString(index), 9 /* TEXT, PROPS */, _hoisted_11))
+                  }, toDisplayString(index), 9 /* TEXT, PROPS */, _hoisted_15))
                 : createCommentVNode("v-if", true),
               ((_ctx.current > 7 && index == 6) || (_ctx.current < _ctx.meta.last_page - 6 && index == _ctx.meta.last_page - 5))
-                ? (openBlock(), createElementBlock("li", _hoisted_12, _hoisted_14))
+                ? (openBlock(), createElementBlock("li", _hoisted_16, _hoisted_18))
                 : createCommentVNode("v-if", true),
               (index == _ctx.current)
-                ? (openBlock(), createElementBlock("a", _hoisted_15, toDisplayString(index), 1 /* TEXT */))
+                ? (openBlock(), createElementBlock("a", _hoisted_19, toDisplayString(index), 1 /* TEXT */))
                 : createCommentVNode("v-if", true)
             ]))
           }), 256 /* UNKEYED_FRAGMENT */))

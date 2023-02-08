@@ -289,19 +289,23 @@ const _hoisted_1 = {
   role: "navigation",
   "aria-label": "pagination"
 };
-const _hoisted_2 = { class: "select" };
-const _hoisted_3 = /*#__PURE__*/vue.createStaticVNode("<option value=\"\">表示件数</option><option value=\"10\">10件</option><option value=\"20\">20件</option><option value=\"50\">50件</option><option value=\"100\">100件</option><option value=\"200\">200件</option>", 6);
-const _hoisted_9 = [
-  _hoisted_3
+const _hoisted_2 = { class: "mr-2" };
+const _hoisted_3 = /*#__PURE__*/vue.createTextVNode(" 全");
+const _hoisted_4 = { class: "has-text-weight-bold" };
+const _hoisted_5 = /*#__PURE__*/vue.createTextVNode("件 ");
+const _hoisted_6 = { class: "select" };
+const _hoisted_7 = /*#__PURE__*/vue.createStaticVNode("<option value=\"\">表示件数</option><option value=\"10\">10件</option><option value=\"20\">20件</option><option value=\"50\">50件</option><option value=\"100\">100件</option><option value=\"200\">200件</option>", 6);
+const _hoisted_13 = [
+  _hoisted_7
 ];
-const _hoisted_10 = { class: "pagination-list" };
-const _hoisted_11 = ["onClick"];
-const _hoisted_12 = { key: 1 };
-const _hoisted_13 = /*#__PURE__*/vue.createElementVNode("span", { class: "pagination-ellipsis" }, "…", -1 /* HOISTED */);
-const _hoisted_14 = [
-  _hoisted_13
+const _hoisted_14 = { class: "pagination-list" };
+const _hoisted_15 = ["onClick"];
+const _hoisted_16 = { key: 1 };
+const _hoisted_17 = /*#__PURE__*/vue.createElementVNode("span", { class: "pagination-ellipsis" }, "…", -1 /* HOISTED */);
+const _hoisted_18 = [
+  _hoisted_17
 ];
-const _hoisted_15 = {
+const _hoisted_19 = {
   key: 2,
   class: "pagination-link is-current"
 };
@@ -323,16 +327,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               onClick: _cache[1] || (_cache[1] = $event => (_ctx.changePage(_ctx.current + 1)))
             }, " Next "))
           : vue.createCommentVNode("v-if", true),
-        vue.createElementVNode("div", _hoisted_2, [
+        vue.createElementVNode("p", _hoisted_2, [
+          _hoisted_3,
+          vue.createElementVNode("span", _hoisted_4, vue.toDisplayString(_ctx.meta.total), 1 /* TEXT */),
+          _hoisted_5
+        ]),
+        vue.createElementVNode("div", _hoisted_6, [
           vue.withDirectives(vue.createElementVNode("select", {
             name: "limits",
             "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => ((_ctx.currentLimit) = $event)),
             onChange: _cache[3] || (_cache[3] = (e) => _ctx.changeLimit(e.target.value))
-          }, _hoisted_9, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [
+          }, _hoisted_13, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [
             [vue.vModelSelect, _ctx.currentLimit]
           ])
         ]),
-        vue.createElementVNode("ul", _hoisted_10, [
+        vue.createElementVNode("ul", _hoisted_14, [
           (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.meta.last_page, (index) => {
             return (vue.openBlock(), vue.createElementBlock("li", null, [
               (index !== _ctx.current
@@ -343,13 +352,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     key: 0,
                     class: "pagination-link",
                     onClick: $event => (_ctx.changePage(index))
-                  }, vue.toDisplayString(index), 9 /* TEXT, PROPS */, _hoisted_11))
+                  }, vue.toDisplayString(index), 9 /* TEXT, PROPS */, _hoisted_15))
                 : vue.createCommentVNode("v-if", true),
               ((_ctx.current > 7 && index == 6) || (_ctx.current < _ctx.meta.last_page - 6 && index == _ctx.meta.last_page - 5))
-                ? (vue.openBlock(), vue.createElementBlock("li", _hoisted_12, _hoisted_14))
+                ? (vue.openBlock(), vue.createElementBlock("li", _hoisted_16, _hoisted_18))
                 : vue.createCommentVNode("v-if", true),
               (index == _ctx.current)
-                ? (vue.openBlock(), vue.createElementBlock("a", _hoisted_15, vue.toDisplayString(index), 1 /* TEXT */))
+                ? (vue.openBlock(), vue.createElementBlock("a", _hoisted_19, vue.toDisplayString(index), 1 /* TEXT */))
                 : vue.createCommentVNode("v-if", true)
             ]))
           }), 256 /* UNKEYED_FRAGMENT */))

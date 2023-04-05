@@ -68,7 +68,7 @@ export default defineComponent({
     })
 
     const currentLimit = computed({
-      get: () => Number(route.query.limit ?? 20),
+      get: () => route.query.limit ? Number(route.query.limit) : '',
       set: () => {}
     })
 

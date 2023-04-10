@@ -1,13 +1,12 @@
 <template>
-<nav 
-  v-if="meta.last_page > 1" 
+<nav
   class="pagination" role="navigation" aria-label="pagination"
 >
   <a v-if="current > 1" class="pagination-previous" @click="changePage(current - 1)">
-    Previous
+    前へ
   </a>
-  <a v-if="meta.total > current" class="pagination-next" @click="changePage(current + 1)">
-    Next
+  <a v-if="meta.last_page > current" class="pagination-next" @click="changePage(current + 1)">
+    次へ
   </a>
 
   <p class="mr-2">
@@ -16,7 +15,7 @@
 
   <div class="select">
     <select name="limits" v-model="currentLimit" @change="(e) => changeLimit(e.target.value)">
-      <option value="">表示件数</option>
+      <option value="" disabled>表示件数</option>
       <option value="10">10件</option>
       <option value="20">20件</option>
       <option value="50">50件</option>
@@ -54,9 +53,13 @@ import { useNuxtApp, useRoute, useRouter } from 'nuxt/app'
 
 export default defineComponent({
   props: {
-    meta: Object
+    meta: Object,
+    defaultLimit: {
+      type: String,
+      default: ''
+    },
   },
-  setup() {
+  setup(props) {
     const { $Airporter } = useNuxtApp()
     const route = useRoute()
     const router = useRouter()
@@ -68,7 +71,7 @@ export default defineComponent({
     })
 
     const currentLimit = computed({
-      get: () => route.query.limit ? Number(route.query.limit) : '',
+      get: () => route.query.limit ? Number(route.query.limit) : props.defaultLimit,
       set: () => {}
     })
 

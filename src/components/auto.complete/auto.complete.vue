@@ -1,20 +1,20 @@
 <template>
-  <div class="field">
+  <div class="field" @click.stop="()=>{}">
     <label v-if="title" class="label">{{ title }}</label>
     <div class="dropdown" :class="{ 'is-active': isActive }">
-      <div class="dropdown-trigger" @click="disabled ? null : (isActive = !isActive)">
+      <div class="dropdown-trigger" @click.stop="disabled ? null : (isActive = !isActive)">
         <div class="columns is-gapless input is-mobile auto-complete" :class="{'is-small': isSmall}">
           <div class="column" v-if="returnObject">
             <span v-if="item[itemKey]">{{ item[itemValue] }}</span>
             <span v-if="!item[itemKey]">{{placeHolder}}</span>
           </div>
           <div class="column" v-else>
-            <span v-if="item">{{ items.find((i) => i[itemKey] == item)?.[itemValue] }}</span>
+            <span v-if="item">{{ items?.find((i) => i[itemKey] == item)?.[itemValue] }}</span>
             <span v-if="!item">{{placeHolder}}</span>
           </div>
 
           <div v-if="item.id && !isActive && !disabled" class="column is-narrow">
-            <span class="icon" @click="remove"><i class="fas fa-trash"></i></span>
+            <span class="icon" @click.stop="remove"><i class="fas fa-trash"></i></span>
           </div>
           <div class="column is-narrow">
             <span v-if="!isActive" class="icon"><i class="fas fa-chevron-down"></i></span>
@@ -31,10 +31,10 @@
           </div>
           <div :style="menuHeight ? { overflow: 'scroll', height: menuHeight + 'px' } : {}">
             <span v-if="hasItemContent" v-for="(item, index) in items">
-              <slot :key="item[itemKey]" name="itemContent" :item="item" :click="() => select(item)"></slot>
+              <slot :key="item[itemKey]" name="itemContent" :item="item" @click.stop="() => select(item)"></slot>
             </span>
             <span v-else v-for="(item, index) in items">
-              <span :key="item[itemKey]" @click="select(item)" class="dropdown-item is-clickable">
+              <span :key="item[itemKey]" @click.stop="select(item)" class="dropdown-item is-clickable">
                 {{ item[itemValue] }}
               </span>
             </span>
@@ -45,13 +45,19 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent, onMounted, ref, watch } from 'vue'
 
 export default defineComponent({
   props: {
     title: String,
-    items: Array,
-    item: Object,
+    items:{
+      type: Array,
+      required: true
+    },
+    item : {
+      type: Object,
+      default:  () =>{}
+    },
     placeHolder: {
       type: String,
       default: '選択してください'
@@ -136,6 +142,14 @@ export default defineComponent({
         isActive.value = false
       }, 100)
     }
+    
+    onMounted(() => {
+      console.log('mounted')
+      window.document.addEventListener('click', event => {
+        console.log('click')
+        isActive.value = false
+      })
+    })
 
     return {
       isActive,

@@ -5,7 +5,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var toast = require('./toast.js');
 require('vue');
 var alert = require('./alert.js');
-var auto_complete = require('./auto.complete-94380e94.js');
+var auto_complete = require('./auto.complete-3eb12b41.js');
 var checkbox = require('./checkbox-426c325b.js');
 var pagination = require('./pagination-710c1fae.js');
 var tag_input = require('./tag.input-7d254687.js');

@@ -6,8 +6,14 @@ var styleInject_es = require('./style-inject.es-dcee06b6.js');
 var script = vue.defineComponent({
   props: {
     title: String,
-    items: Array,
-    item: Object,
+    items:{
+      type: Array,
+      required: true
+    },
+    item : {
+      type: Object,
+      default:  () =>{}
+    },
     placeHolder: {
       type: String,
       default: '選択してください'
@@ -92,6 +98,14 @@ var script = vue.defineComponent({
         isActive.value = false;
       }, 100);
     };
+    
+    vue.onMounted(() => {
+      console.log('mounted');
+      window.document.addEventListener('click', event => {
+        console.log('click');
+        isActive.value = false;
+      });
+    });
 
     return {
       isActive,
@@ -105,115 +119,117 @@ var script = vue.defineComponent({
 });
 
 const _withScopeId = n => (vue.pushScopeId("data-v-5f95ed01"),n=n(),vue.popScopeId(),n);
-const _hoisted_1 = { class: "field" };
-const _hoisted_2 = {
+const _hoisted_1 = {
   key: 0,
   class: "label"
 };
-const _hoisted_3 = {
+const _hoisted_2 = {
   key: 0,
   class: "column"
 };
-const _hoisted_4 = { key: 0 };
-const _hoisted_5 = { key: 1 };
-const _hoisted_6 = {
+const _hoisted_3 = { key: 0 };
+const _hoisted_4 = { key: 1 };
+const _hoisted_5 = {
   key: 1,
   class: "column"
 };
-const _hoisted_7 = { key: 0 };
-const _hoisted_8 = { key: 1 };
-const _hoisted_9 = {
+const _hoisted_6 = { key: 0 };
+const _hoisted_7 = { key: 1 };
+const _hoisted_8 = {
   key: 2,
   class: "column is-narrow"
 };
-const _hoisted_10 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("i", { class: "fas fa-trash" }, null, -1 /* HOISTED */));
-const _hoisted_11 = [
-  _hoisted_10
+const _hoisted_9 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("i", { class: "fas fa-trash" }, null, -1 /* HOISTED */));
+const _hoisted_10 = [
+  _hoisted_9
 ];
-const _hoisted_12 = { class: "column is-narrow" };
-const _hoisted_13 = {
+const _hoisted_11 = { class: "column is-narrow" };
+const _hoisted_12 = {
   key: 0,
   class: "icon"
 };
-const _hoisted_14 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("i", { class: "fas fa-chevron-down" }, null, -1 /* HOISTED */));
-const _hoisted_15 = [
-  _hoisted_14
+const _hoisted_13 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("i", { class: "fas fa-chevron-down" }, null, -1 /* HOISTED */));
+const _hoisted_14 = [
+  _hoisted_13
 ];
-const _hoisted_16 = {
+const _hoisted_15 = {
   key: 1,
   class: "icon"
 };
-const _hoisted_17 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("i", { class: "fas fa-chevron-up" }, null, -1 /* HOISTED */));
-const _hoisted_18 = [
-  _hoisted_17
+const _hoisted_16 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("i", { class: "fas fa-chevron-up" }, null, -1 /* HOISTED */));
+const _hoisted_17 = [
+  _hoisted_16
 ];
-const _hoisted_19 = {
+const _hoisted_18 = {
   class: "dropdown-menu",
   id: "dropdown-menu",
   role: "menu"
 };
-const _hoisted_20 = { class: "dropdown-content" };
-const _hoisted_21 = {
+const _hoisted_19 = { class: "dropdown-content" };
+const _hoisted_20 = {
   key: 0,
   class: "mx-2 mb-1"
 };
-const _hoisted_22 = ["placeholder"];
-const _hoisted_23 = ["onClick"];
+const _hoisted_21 = ["placeholder"];
+const _hoisted_22 = ["onClick"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (vue.openBlock(), vue.createElementBlock("div", _hoisted_1, [
+  return (vue.openBlock(), vue.createElementBlock("div", {
+    class: "field",
+    onClick: _cache[3] || (_cache[3] = vue.withModifiers(()=>{}, ["stop"]))
+  }, [
     (_ctx.title)
-      ? (vue.openBlock(), vue.createElementBlock("label", _hoisted_2, vue.toDisplayString(_ctx.title), 1 /* TEXT */))
+      ? (vue.openBlock(), vue.createElementBlock("label", _hoisted_1, vue.toDisplayString(_ctx.title), 1 /* TEXT */))
       : vue.createCommentVNode("v-if", true),
     vue.createElementVNode("div", {
       class: vue.normalizeClass(["dropdown", { 'is-active': _ctx.isActive }])
     }, [
       vue.createElementVNode("div", {
         class: "dropdown-trigger",
-        onClick: _cache[1] || (_cache[1] = $event => (_ctx.disabled ? null : (_ctx.isActive = !_ctx.isActive)))
+        onClick: _cache[1] || (_cache[1] = vue.withModifiers($event => (_ctx.disabled ? null : (_ctx.isActive = !_ctx.isActive)), ["stop"]))
       }, [
         vue.createElementVNode("div", {
           class: vue.normalizeClass(["columns is-gapless input is-mobile auto-complete", {'is-small': _ctx.isSmall}])
         }, [
           (_ctx.returnObject)
-            ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_3, [
+            ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_2, [
                 (_ctx.item[_ctx.itemKey])
-                  ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_4, vue.toDisplayString(_ctx.item[_ctx.itemValue]), 1 /* TEXT */))
+                  ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_3, vue.toDisplayString(_ctx.item[_ctx.itemValue]), 1 /* TEXT */))
                   : vue.createCommentVNode("v-if", true),
                 (!_ctx.item[_ctx.itemKey])
-                  ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_5, vue.toDisplayString(_ctx.placeHolder), 1 /* TEXT */))
+                  ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_4, vue.toDisplayString(_ctx.placeHolder), 1 /* TEXT */))
                   : vue.createCommentVNode("v-if", true)
               ]))
-            : (vue.openBlock(), vue.createElementBlock("div", _hoisted_6, [
+            : (vue.openBlock(), vue.createElementBlock("div", _hoisted_5, [
                 (_ctx.item)
-                  ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_7, vue.toDisplayString(_ctx.items.find((i) => i[_ctx.itemKey] == _ctx.item)?.[_ctx.itemValue]), 1 /* TEXT */))
+                  ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_6, vue.toDisplayString(_ctx.items?.find((i) => i[_ctx.itemKey] == _ctx.item)?.[_ctx.itemValue]), 1 /* TEXT */))
                   : vue.createCommentVNode("v-if", true),
                 (!_ctx.item)
-                  ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_8, vue.toDisplayString(_ctx.placeHolder), 1 /* TEXT */))
+                  ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_7, vue.toDisplayString(_ctx.placeHolder), 1 /* TEXT */))
                   : vue.createCommentVNode("v-if", true)
               ])),
           (_ctx.item.id && !_ctx.isActive && !_ctx.disabled)
-            ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_9, [
+            ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_8, [
                 vue.createElementVNode("span", {
                   class: "icon",
-                  onClick: _cache[0] || (_cache[0] = (...args) => (_ctx.remove && _ctx.remove(...args)))
-                }, _hoisted_11)
+                  onClick: _cache[0] || (_cache[0] = vue.withModifiers((...args) => (_ctx.remove && _ctx.remove(...args)), ["stop"]))
+                }, _hoisted_10)
               ]))
             : vue.createCommentVNode("v-if", true),
-          vue.createElementVNode("div", _hoisted_12, [
+          vue.createElementVNode("div", _hoisted_11, [
             (!_ctx.isActive)
-              ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_13, _hoisted_15))
+              ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_12, _hoisted_14))
               : vue.createCommentVNode("v-if", true),
             (_ctx.isActive)
-              ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_16, _hoisted_18))
+              ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_15, _hoisted_17))
               : vue.createCommentVNode("v-if", true)
           ])
         ], 2 /* CLASS */)
       ]),
-      vue.createElementVNode("div", _hoisted_19, [
-        vue.createElementVNode("div", _hoisted_20, [
+      vue.createElementVNode("div", _hoisted_18, [
+        vue.createElementVNode("div", _hoisted_19, [
           (_ctx.searchable)
-            ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_21, [
+            ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_20, [
                 vue.createElementVNode("div", {
                   class: vue.normalizeClass(`control is-medium ${_ctx.isLoading ? 'is-loading' : ''} has-icons-right mt-2`)
                 }, [
@@ -222,7 +238,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     type: "text",
                     placeholder: _ctx.inputPlaceHolder,
                     "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => ((_ctx.search) = $event))
-                  }, null, 8 /* PROPS */, _hoisted_22), [
+                  }, null, 8 /* PROPS */, _hoisted_21), [
                     [vue.vModelText, _ctx.search]
                   ])
                 ], 2 /* CLASS */)
@@ -237,7 +253,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     vue.renderSlot(_ctx.$slots, "itemContent", {
                       key: item[_ctx.itemKey],
                       item: item,
-                      click: () => _ctx.select(item)
+                      onClick: vue.withModifiers(() => _ctx.select(item), ["stop"])
                     })
                   ]))
                 }), 256 /* UNKEYED_FRAGMENT */))
@@ -245,9 +261,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   return (vue.openBlock(), vue.createElementBlock("span", null, [
                     (vue.openBlock(), vue.createElementBlock("span", {
                       key: item[_ctx.itemKey],
-                      onClick: $event => (_ctx.select(item)),
+                      onClick: vue.withModifiers($event => (_ctx.select(item)), ["stop"]),
                       class: "dropdown-item is-clickable"
-                    }, vue.toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_23))
+                    }, vue.toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_22))
                   ]))
                 }), 256 /* UNKEYED_FRAGMENT */))
           ], 4 /* STYLE */)

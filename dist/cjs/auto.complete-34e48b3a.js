@@ -6,14 +6,8 @@ var styleInject_es = require('./style-inject.es-dcee06b6.js');
 var script = vue.defineComponent({
   props: {
     title: String,
-    items:{
-      type: Array,
-      required: true
-    },
-    item : {
-      type: Object,
-      default:  () =>{}
-    },
+    items: Array,
+    item : Object,
     placeHolder: {
       type: String,
       default: '選択してください'
@@ -102,7 +96,6 @@ var script = vue.defineComponent({
     vue.onMounted(() => {
       console.log('mounted');
       window.document.addEventListener('click', event => {
-        console.log('click');
         isActive.value = false;
       });
     });
@@ -253,7 +246,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     vue.renderSlot(_ctx.$slots, "itemContent", {
                       key: item[_ctx.itemKey],
                       item: item,
-                      onClick: vue.withModifiers(() => _ctx.select(item), ["stop"])
+                      click: () => _ctx.select(item)
                     })
                   ]))
                 }), 256 /* UNKEYED_FRAGMENT */))

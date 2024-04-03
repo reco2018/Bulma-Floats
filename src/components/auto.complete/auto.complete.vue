@@ -31,7 +31,7 @@
           </div>
           <div :style="menuHeight ? { overflow: 'scroll', height: menuHeight + 'px' } : {}">
             <span v-if="hasItemContent" v-for="(item, index) in items">
-              <slot :key="item[itemKey]" name="itemContent" :item="item" @click.stop="() => select(item)"></slot>
+              <slot :key="item[itemKey]" name="itemContent" :item="item" :click="() => select(item)"></slot>
             </span>
             <span v-else v-for="(item, index) in items">
               <span :key="item[itemKey]" @click.stop="select(item)" class="dropdown-item is-clickable">
@@ -50,14 +50,8 @@ import { defineComponent, onMounted, ref, watch } from 'vue'
 export default defineComponent({
   props: {
     title: String,
-    items:{
-      type: Array,
-      required: true
-    },
-    item : {
-      type: Object,
-      default:  () =>{}
-    },
+    items: Array,
+    item : Object,
     placeHolder: {
       type: String,
       default: '選択してください'
@@ -146,7 +140,6 @@ export default defineComponent({
     onMounted(() => {
       console.log('mounted')
       window.document.addEventListener('click', event => {
-        console.log('click')
         isActive.value = false
       })
     })

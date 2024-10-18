@@ -1,4 +1,4 @@
-import { defineComponent, ref, watch, onMounted, openBlock, createElementBlock, withModifiers, toDisplayString, createCommentVNode, createElementVNode, normalizeClass, withDirectives, vModelText, normalizeStyle, Fragment, renderList, renderSlot, pushScopeId, popScopeId } from 'vue';
+import { defineComponent, ref, watch, onMounted, openBlock, createElementBlock, withModifiers, toDisplayString, createCommentVNode, createElementVNode, normalizeClass, withDirectives, vShow, vModelText, normalizeStyle, Fragment, renderList, renderSlot, pushScopeId, popScopeId } from 'vue';
 import { s as styleInject } from './style-inject.es-1f59c1d0.js';
 
 var script = defineComponent({
@@ -50,6 +50,10 @@ var script = defineComponent({
       type: Boolean,
       default: false
     },
+    hideSelectBox: {
+      type: Boolean,
+      default: false
+    }
   },
   emits: [
     'update:item', 'updated'
@@ -98,10 +102,13 @@ var script = defineComponent({
       });
     });
 
+    const hideSelectBox = ref(props.hideSelectBox);
+
     return {
       isActive,
       search,
       hasItemContent,
+      hideSelectBox,
       remove,
       select,
       onBlur
@@ -167,15 +174,15 @@ const _hoisted_22 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", {
     class: "field",
-    onClick: _cache[3] || (_cache[3] = withModifiers(()=>{}, ["stop"]))
+    onClick: _cache[4] || (_cache[4] = withModifiers(()=>{}, ["stop"]))
   }, [
     (_ctx.title)
       ? (openBlock(), createElementBlock("label", _hoisted_1, toDisplayString(_ctx.title), 1 /* TEXT */))
       : createCommentVNode("v-if", true),
     createElementVNode("div", {
-      class: normalizeClass(["dropdown", { 'is-active': _ctx.isActive }])
+      class: normalizeClass(["dropdown", { 'is-active': _ctx.hideSelectBox ? true : _ctx.isActive }])
     }, [
-      createElementVNode("div", {
+      withDirectives(createElementVNode("div", {
         class: "dropdown-trigger",
         onClick: _cache[1] || (_cache[1] = withModifiers($event => (_ctx.disabled ? null : (_ctx.isActive = !_ctx.isActive)), ["stop"]))
       }, [
@@ -216,6 +223,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               : createCommentVNode("v-if", true)
           ])
         ], 2 /* CLASS */)
+      ], 512 /* NEED_PATCH */), [
+        [vShow, !_ctx.hideSelectBox]
       ]),
       createElementVNode("div", _hoisted_18, [
         createElementVNode("div", _hoisted_19, [
@@ -225,11 +234,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   class: normalizeClass(`control is-medium ${_ctx.isLoading ? 'is-loading' : ''} has-icons-right mt-2`)
                 }, [
                   withDirectives(createElementVNode("input", {
+                    ref: "input",
                     class: "input",
                     type: "text",
                     placeholder: _ctx.inputPlaceHolder,
-                    "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => ((_ctx.search) = $event))
-                  }, null, 8 /* PROPS */, _hoisted_21), [
+                    "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => ((_ctx.search) = $event)),
+                    onBlur: _cache[3] || (_cache[3] = (...args) => (_ctx.onBlur && _ctx.onBlur(...args)))
+                  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_21), [
                     [vModelText, _ctx.search]
                   ])
                 ], 2 /* CLASS */)

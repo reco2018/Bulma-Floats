@@ -1,8 +1,8 @@
 <template>
   <div class="field" @click.stop="()=>{}">
     <label v-if="title" class="label">{{ title }}</label>
-    <div class="dropdown" :class="{ 'is-active': isActive }">
-      <div class="dropdown-trigger" @click.stop="disabled ? null : (isActive = !isActive)">
+    <div class="dropdown" :class="{ 'is-active': hideSelectBox ? true : isActive }">
+      <div v-show="!hideSelectBox" class="dropdown-trigger" @click.stop="disabled ? null : (isActive = !isActive)">
         <div class="columns is-gapless input is-mobile auto-complete" :class="{'is-small': isSmall}">
           <div class="column" v-if="returnObject">
             <span v-if="item[itemKey]">{{ item[itemValue] }}</span>
@@ -26,7 +26,8 @@
         <div class="dropdown-content">
           <div class="mx-2 mb-1" v-if="searchable">
             <div :class="`control is-medium ${isLoading ? 'is-loading' : ''} has-icons-right mt-2`">
-              <input class="input" type="text" :placeholder="inputPlaceHolder" v-model="search" />
+              <input ref="input" class="input" type="text" :placeholder="inputPlaceHolder" v-model="search"
+              @blur="onBlur" />
             </div>
           </div>
           <div :style="menuHeight ? { overflow: 'scroll', height: menuHeight + 'px' } : {}">
@@ -96,6 +97,10 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
+    hideSelectBox: {
+      type: Boolean,
+      default: false
+    }
   },
   emits: [
     'update:item', 'updated'
@@ -144,10 +149,13 @@ export default defineComponent({
       })
     })
 
+    const hideSelectBox = ref(props.hideSelectBox)
+
     return {
       isActive,
       search,
       hasItemContent,
+      hideSelectBox,
       remove,
       select,
       onBlur

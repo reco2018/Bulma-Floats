@@ -1,6 +1,6 @@
 {
   "name": "@reco2018/bulma-floats",
-  "version": "0.4.44",
+  "version": "0.4.46",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

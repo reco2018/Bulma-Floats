@@ -1,5 +1,5 @@
 <template>
-  <div class="field" @click.stop="()=>{}">
+  <div class="field" @click.stop>
     <label v-if="title" class="label">{{ title }}</label>
     <div class="dropdown" :class="{ 'is-active': hideSelectBox ? true : isActive }">
       <div v-show="!hideSelectBox" class="dropdown-trigger" @click.stop="disabled ? null : (isActive = !isActive)">
@@ -26,16 +26,28 @@
         <div class="dropdown-content">
           <div class="mx-2 mb-1" v-if="searchable">
             <div :class="`control is-medium ${isLoading ? 'is-loading' : ''} has-icons-right mt-2`">
-              <input ref="input" class="input" type="text" :placeholder="inputPlaceHolder" v-model="search"
-              @blur="onBlur" />
+              <input 
+                ref="input" 
+                v-model="search"
+                class="input" type="text" :placeholder="inputPlaceHolder"
+                @blur="onBlur"
+              />
             </div>
           </div>
           <div :style="menuHeight ? { overflow: 'scroll', height: menuHeight + 'px' } : {}">
             <span v-if="hasItemContent" v-for="(item, index) in items">
-              <slot :key="item[itemKey]" name="itemContent" :item="item" :click="() => select(item)"></slot>
+              <slot :key="item[itemKey]" 
+                name="itemContent"
+                :item="item"
+                :click="()=>select(item)"
+                >
+              </slot>
             </span>
             <span v-else v-for="(item, index) in items">
-              <span :key="item[itemKey]" @click.stop="select(item)" class="dropdown-item is-clickable">
+              <span 
+                :key="item[itemKey]" 
+                @click.stop="select(item)"
+                class="dropdown-item is-clickable">
                 {{ item[itemValue] }}
               </span>
             </span>
@@ -45,14 +57,20 @@
     </div>
   </div>
 </template>
-<script lang="ts">
+<script>
 import { defineComponent, onMounted, ref, watch } from 'vue'
 
 export default defineComponent({
   props: {
     title: String,
-    items: Array,
-    item : Object,
+    items: {
+      type: Array,
+      default: () => [{}]
+    },
+    item : {
+      type: Object,
+      default: () => ({})
+    },
     placeHolder: {
       type: String,
       default: '選択してください'
@@ -109,6 +127,8 @@ export default defineComponent({
     const isActive = ref(false)
     const search = ref('')
     const hasItemContent = ref(false)
+    const input = ref(null);
+    const mousedownElement = ref(null);
 
     if (slots.itemContent) {
       hasItemContent.value = true
@@ -137,14 +157,23 @@ export default defineComponent({
     }
 
     const onBlur = () => {
+      if (hideSelectBox) return
       setTimeout(() => {
         isActive.value = false
       }, 100)
     }
     
     onMounted(() => {
-      console.log('mounted')
+      window.document.addEventListener('mousedown', (event) => {
+        mousedownElement.value = event.target;
+      });
+      
       window.document.addEventListener('click', event => {
+        // クリック開始された要素がinput要素の場合は何もしない
+         // input内のテキストを選択したままinput要素の外までいくとclickイベントが発火してしまうため
+        // console.log('input.value', input.value)
+        if (mousedownElement.value === input.value) return
+
         isActive.value = false
       })
     })
@@ -156,6 +185,7 @@ export default defineComponent({
       search,
       hasItemContent,
       hideSelectBox,
+      input,
       remove,
       select,
       onBlur

@@ -4,8 +4,14 @@ import { s as styleInject } from './style-inject.es-1f59c1d0.js';
 var script = defineComponent({
   props: {
     title: String,
-    items: Array,
-    item : Object,
+    items: {
+      type: Array,
+      default: () => [{}]
+    },
+    item : {
+      type: Object,
+      default: () => ({})
+    },
     placeHolder: {
       type: String,
       default: '選択してください'
@@ -62,6 +68,8 @@ var script = defineComponent({
     const isActive = ref(false);
     const search = ref('');
     const hasItemContent = ref(false);
+    const input = ref(null);
+    const mousedownElement = ref(null);
 
     if (slots.itemContent) {
       hasItemContent.value = true;
@@ -90,14 +98,23 @@ var script = defineComponent({
     };
 
     const onBlur = () => {
+      if (hideSelectBox) return
       setTimeout(() => {
         isActive.value = false;
       }, 100);
     };
     
     onMounted(() => {
-      console.log('mounted');
+      window.document.addEventListener('mousedown', (event) => {
+        mousedownElement.value = event.target;
+      });
+      
       window.document.addEventListener('click', event => {
+        // クリック開始された要素がinput要素の場合は何もしない
+         // input内のテキストを選択したままinput要素の外までいくとclickイベントが発火してしまうため
+        // console.log('input.value', input.value)
+        if (mousedownElement.value === input.value) return
+
         isActive.value = false;
       });
     });
@@ -109,6 +126,7 @@ var script = defineComponent({
       search,
       hasItemContent,
       hideSelectBox,
+      input,
       remove,
       select,
       onBlur
@@ -174,7 +192,7 @@ const _hoisted_22 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", {
     class: "field",
-    onClick: _cache[4] || (_cache[4] = withModifiers(()=>{}, ["stop"]))
+    onClick: _cache[4] || (_cache[4] = withModifiers(() => {}, ["stop"]))
   }, [
     (_ctx.title)
       ? (openBlock(), createElementBlock("label", _hoisted_1, toDisplayString(_ctx.title), 1 /* TEXT */))
@@ -235,10 +253,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 }, [
                   withDirectives(createElementVNode("input", {
                     ref: "input",
+                    "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => ((_ctx.search) = $event)),
                     class: "input",
                     type: "text",
                     placeholder: _ctx.inputPlaceHolder,
-                    "onUpdate:modelValue": _cache[2] || (_cache[2] = $event => ((_ctx.search) = $event)),
                     onBlur: _cache[3] || (_cache[3] = (...args) => (_ctx.onBlur && _ctx.onBlur(...args)))
                   }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_21), [
                     [vModelText, _ctx.search]
@@ -255,7 +273,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     renderSlot(_ctx.$slots, "itemContent", {
                       key: item[_ctx.itemKey],
                       item: item,
-                      click: () => _ctx.select(item)
+                      click: ()=>_ctx.select(item)
                     })
                   ]))
                 }), 256 /* UNKEYED_FRAGMENT */))

@@ -201,7 +201,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       class: normalizeClass(["dropdown", { 'is-active': _ctx.hideSelectBox ? true : _ctx.isActive }])
     }, [
       withDirectives(createElementVNode("div", {
-        class: "dropdown-trigger",
+        class: normalizeClass(["dropdown-trigger", { 'disabled': _ctx.disabled}]),
         onClick: _cache[1] || (_cache[1] = withModifiers($event => (_ctx.disabled ? null : (_ctx.isActive = !_ctx.isActive)), ["stop"]))
       }, [
         createElementVNode("div", {
@@ -241,7 +241,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               : createCommentVNode("v-if", true)
           ])
         ], 2 /* CLASS */)
-      ], 512 /* NEED_PATCH */), [
+      ], 2 /* CLASS */), [
         [vShow, !_ctx.hideSelectBox]
       ]),
       createElementVNode("div", _hoisted_18, [
@@ -293,7 +293,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ]))
 }
 
-var css_248z = "\n.dropdown[data-v-5f95ed01],\n.dropdown-trigger[data-v-5f95ed01],\n.dropdown-menu[data-v-5f95ed01] {\n  width: 100%;\n}\n.auto-complete[data-v-5f95ed01] {\n  border: 1px solid #ccc;\n  min-height: 24px;\n}\n.control.is-loading[data-v-5f95ed01]::after {\n  border: 2px solid #157562;\n  border-right-color: transparent;\n  border-top-color: transparent;\n}\n";
+var css_248z = "\n.dropdown[data-v-5f95ed01],\n.dropdown-trigger[data-v-5f95ed01],\n.dropdown-menu[data-v-5f95ed01] {\n  width: 100%;\n}\n.dropdown-trigger.disabled .input[data-v-5f95ed01] {\n  cursor: not-allowed;\n  background-color: #f5f5f5;\n  color:gray !important;\n}\n.auto-complete[data-v-5f95ed01] {\n  border: 1px solid #ccc;\n  min-height: 24px;\n}\n.control.is-loading[data-v-5f95ed01]::after {\n  border: 2px solid #157562;\n  border-right-color: transparent;\n  border-top-color: transparent;\n}\n";
 styleInject(css_248z);
 
 script.render = render;

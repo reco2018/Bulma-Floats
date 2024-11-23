@@ -2,7 +2,7 @@
   <div class="field" @click.stop>
     <label v-if="title" class="label">{{ title }}</label>
     <div class="dropdown" :class="{ 'is-active': hideSelectBox ? true : isActive }">
-      <div v-show="!hideSelectBox" class="dropdown-trigger" @click.stop="disabled ? null : (isActive = !isActive)">
+      <div v-show="!hideSelectBox" class="dropdown-trigger" :class="{ 'disabled': disabled}" @click.stop="disabled ? null : (isActive = !isActive)">
         <div class="columns is-gapless input is-mobile auto-complete" :class="{'is-small': isSmall}">
           <div class="column" v-if="returnObject">
             <span v-if="item[itemKey]">{{ item[itemValue] }}</span>
@@ -198,6 +198,11 @@ export default defineComponent({
 .dropdown-trigger,
 .dropdown-menu {
   width: 100%;
+}
+.dropdown-trigger.disabled .input {
+  cursor: not-allowed;
+  background-color: #f5f5f5;
+  color:gray !important;
 }
 .auto-complete {
   border: 1px solid #ccc;

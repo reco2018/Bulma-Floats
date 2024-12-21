@@ -31,6 +31,8 @@
                 v-model="search"
                 class="input" type="text" :placeholder="inputPlaceHolder"
                 @blur="onBlur"
+                @click.stop="isActive = true"
+                @keydown.enter.prevent
               />
             </div>
           </div>

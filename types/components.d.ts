@@ -20,14 +20,17 @@ export declare type FNoticeConfig = {
 
 export declare type FDialogConfig<T> = {
     title: string,
-    okText: string,
-    cancelText: string,
+    okText?: string,
+    cancelText?: string,
     component: Component,
     defaultResult: T,
-    onOkPressed: (result: T) => null,
-    onCancelPressed: Function,
-    isFullScreen: true,
-    isSheet: true,
+    okVisible?: boolean,
+    cancelVisible?: boolean,
+    onOkPressed?: (result: T) => void | Promise<void> | null,
+    onCancelPressed?: Function,
+    isFullScreen?: boolean,
+    isSheet?: boolean,
+    props?: any,
 }
 
 export declare const ToastProgrammatic: {

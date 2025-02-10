@@ -201,6 +201,9 @@ export default defineComponent({
 .dropdown-menu {
   width: 100%;
 }
+.dropdown-item.is-clickable:hover {
+  background-color: rgba(191, 229, 221, 0.75);
+}
 .dropdown-trigger.disabled .input {
   cursor: not-allowed;
   background-color: #f5f5f5;

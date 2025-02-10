@@ -45,6 +45,10 @@ export default {
             this.onOk(this.newResult)
             this.close()
         },
+        cancel(type) {
+            this.onCancel(type)
+            this.close()
+        },
         handlePopstate() {
             this.close()
         }

@@ -6,6 +6,7 @@ var styleInject_es = require('./style-inject.es-dcee06b6.js');
 var script = vue.defineComponent({
   props: {
     title: String,
+    description: String,
     items: Array,
     selected: Array,
     itemKey: {
@@ -89,29 +90,36 @@ const _hoisted_2 = {
   key: 0,
   class: "label"
 };
-const _hoisted_3 = { class: "dropdown-trigger" };
-const _hoisted_4 = {
+const _hoisted_3 = {
+  key: 1,
+  class: "label is-size-7"
+};
+const _hoisted_4 = { class: "dropdown-trigger" };
+const _hoisted_5 = {
   class: "dropdown-menu",
   id: "dropdown-menu",
   role: "menu"
 };
-const _hoisted_5 = { class: "dropdown-content" };
-const _hoisted_6 = ["onMousedown"];
-const _hoisted_7 = {
-  key: 1,
+const _hoisted_6 = { class: "dropdown-content" };
+const _hoisted_7 = ["onMousedown"];
+const _hoisted_8 = {
+  key: 2,
   class: "tags mt-2"
 };
-const _hoisted_8 = ["onMousedown"];
+const _hoisted_9 = ["onMousedown"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (vue.openBlock(), vue.createElementBlock("div", _hoisted_1, [
     (_ctx.title)
       ? (vue.openBlock(), vue.createElementBlock("label", _hoisted_2, vue.toDisplayString(_ctx.title), 1 /* TEXT */))
       : vue.createCommentVNode("v-if", true),
+    (_ctx.description)
+      ? (vue.openBlock(), vue.createElementBlock("p", _hoisted_3, vue.toDisplayString(_ctx.description), 1 /* TEXT */))
+      : vue.createCommentVNode("v-if", true),
     vue.createElementVNode("div", {
       class: vue.normalizeClass(["dropdown", { 'is-active': _ctx.isActive }])
     }, [
-      vue.createElementVNode("div", _hoisted_3, [
+      vue.createElementVNode("div", _hoisted_4, [
         vue.withDirectives(vue.createElementVNode("input", {
           class: vue.normalizeClass(["input", {'is-small': _ctx.isSmall}]),
           type: "text",
@@ -123,20 +131,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           [vue.vModelText, _ctx.search]
         ])
       ]),
-      vue.createElementVNode("div", _hoisted_4, [
-        vue.createElementVNode("div", _hoisted_5, [
+      vue.createElementVNode("div", _hoisted_5, [
+        vue.createElementVNode("div", _hoisted_6, [
           (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.items, (item, index) => {
             return (vue.openBlock(), vue.createElementBlock("span", {
               key: index,
               onMousedown: $event => (_ctx.select(item)),
               class: "dropdown-item is-clickable"
-            }, vue.toDisplayString(item[_ctx.itemValue]), 41 /* TEXT, PROPS, HYDRATE_EVENTS */, _hoisted_6))
+            }, vue.toDisplayString(item[_ctx.itemValue]), 41 /* TEXT, PROPS, HYDRATE_EVENTS */, _hoisted_7))
           }), 128 /* KEYED_FRAGMENT */))
         ])
       ])
     ], 2 /* CLASS */),
     (_ctx.selected.length > 0)
-      ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_7, [
+      ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_8, [
           vue.renderSlot(_ctx.$slots, "tags", {}, () => [
             (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.selected, (item, index) => {
               return (vue.openBlock(), vue.createElementBlock("span", {
@@ -148,7 +156,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   type: "button",
                   class: "delete is-small",
                   onMousedown: $event => (_ctx.remove(item))
-                }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_8)
+                }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_9)
               ]))
             }), 128 /* KEYED_FRAGMENT */))
           ])

@@ -3,17 +3,18 @@ export { Toast as FToast, ToastProgrammatic } from './toast.js';
 import 'vue';
 import { Alert as script$1, AlertProgrammatic } from './alert.js';
 export { AlertProgrammatic, Alert as FAlert } from './alert.js';
-import { s as script$2 } from './auto.complete-f4b3e8ba.js';
-export { s as AutoComplete } from './auto.complete-f4b3e8ba.js';
-import { s as script$3 } from './checkbox-286191e2.js';
-export { s as CheckBox } from './checkbox-286191e2.js';
-import { s as script$4 } from './pagination-104d3d2b.js';
-export { s as Pagination } from './pagination-104d3d2b.js';
-import { s as script$5 } from './tag.input-8405251a.js';
-export { s as TagInput } from './tag.input-8405251a.js';
+import { s as script$2 } from './auto.complete-18862a3f.js';
+export { s as AutoComplete } from './auto.complete-18862a3f.js';
+import { s as script$3 } from './checkbox-9fdb8e33.js';
+export { s as CheckBox } from './checkbox-9fdb8e33.js';
+import { s as script$4 } from './pagination-689ff155.js';
+export { s as Pagination } from './pagination-689ff155.js';
+import { s as script$5 } from './tag.input-cfaaad7f.js';
+export { s as TagInput } from './tag.input-cfaaad7f.js';
 import { s as setVueInstance } from './config-b6f98b99.js';
 import './helpers.js';
 import './style-inject.es-1f59c1d0.js';
+import 'nuxt/app';
 
 var components = /*#__PURE__*/Object.freeze({
     __proto__: null,

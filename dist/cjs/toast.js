@@ -177,7 +177,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onMouseleave: _cache[1] || (_cache[1] = (...args) => (_ctx.removePause && _ctx.removePause(...args))),
         class: vue.normalizeClass(["toast notification", [_ctx.type, _ctx.position]]),
         "aria-hidden": !_ctx.isActive
-      }, vue.toDisplayString(_ctx.message), 43 /* TEXT, CLASS, PROPS, HYDRATE_EVENTS */, _hoisted_1), [
+      }, vue.toDisplayString(_ctx.message), 43 /* TEXT, CLASS, PROPS, NEED_HYDRATION */, _hoisted_1), [
         [vue.vShow, _ctx.isActive]
       ])
     ]),

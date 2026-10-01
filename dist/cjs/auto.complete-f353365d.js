@@ -136,7 +136,6 @@ var script = vue.defineComponent({
   }
 });
 
-const _withScopeId = n => (vue.pushScopeId("data-v-5f95ed01"),n=n(),vue.popScopeId(),n);
 const _hoisted_1 = {
   key: 0,
   class: "label"
@@ -157,39 +156,27 @@ const _hoisted_8 = {
   key: 2,
   class: "column is-narrow"
 };
-const _hoisted_9 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("i", { class: "fas fa-trash" }, null, -1 /* HOISTED */));
-const _hoisted_10 = [
-  _hoisted_9
-];
-const _hoisted_11 = { class: "column is-narrow" };
-const _hoisted_12 = {
+const _hoisted_9 = { class: "column is-narrow" };
+const _hoisted_10 = {
   key: 0,
   class: "icon"
 };
-const _hoisted_13 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("i", { class: "fas fa-chevron-down" }, null, -1 /* HOISTED */));
-const _hoisted_14 = [
-  _hoisted_13
-];
-const _hoisted_15 = {
+const _hoisted_11 = {
   key: 1,
   class: "icon"
 };
-const _hoisted_16 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/vue.createElementVNode("i", { class: "fas fa-chevron-up" }, null, -1 /* HOISTED */));
-const _hoisted_17 = [
-  _hoisted_16
-];
-const _hoisted_18 = {
+const _hoisted_12 = {
   class: "dropdown-menu",
   id: "dropdown-menu",
   role: "menu"
 };
-const _hoisted_19 = { class: "dropdown-content" };
-const _hoisted_20 = {
+const _hoisted_13 = { class: "dropdown-content" };
+const _hoisted_14 = {
   key: 0,
   class: "mx-2 mb-1"
 };
-const _hoisted_21 = ["placeholder"];
-const _hoisted_22 = ["onClick"];
+const _hoisted_15 = ["placeholder"];
+const _hoisted_16 = ["onClick"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (vue.openBlock(), vue.createElementBlock("div", {
@@ -231,25 +218,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 vue.createElementVNode("span", {
                   class: "icon",
                   onClick: _cache[0] || (_cache[0] = vue.withModifiers((...args) => (_ctx.remove && _ctx.remove(...args)), ["stop"]))
-                }, _hoisted_10)
+                }, [...(_cache[7] || (_cache[7] = [
+                  vue.createElementVNode("i", { class: "fas fa-trash" }, null, -1 /* CACHED */)
+                ]))])
               ]))
             : vue.createCommentVNode("v-if", true),
-          vue.createElementVNode("div", _hoisted_11, [
+          vue.createElementVNode("div", _hoisted_9, [
             (!_ctx.isActive)
-              ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_12, _hoisted_14))
+              ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_10, [...(_cache[8] || (_cache[8] = [
+                  vue.createElementVNode("i", { class: "fas fa-chevron-down" }, null, -1 /* CACHED */)
+                ]))]))
               : vue.createCommentVNode("v-if", true),
             (_ctx.isActive)
-              ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_15, _hoisted_17))
+              ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_11, [...(_cache[9] || (_cache[9] = [
+                  vue.createElementVNode("i", { class: "fas fa-chevron-up" }, null, -1 /* CACHED */)
+                ]))]))
               : vue.createCommentVNode("v-if", true)
           ])
         ], 2 /* CLASS */)
       ], 2 /* CLASS */), [
         [vue.vShow, !_ctx.hideSelectBox]
       ]),
-      vue.createElementVNode("div", _hoisted_18, [
-        vue.createElementVNode("div", _hoisted_19, [
+      vue.createElementVNode("div", _hoisted_12, [
+        vue.createElementVNode("div", _hoisted_13, [
           (_ctx.searchable)
-            ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_20, [
+            ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_14, [
                 vue.createElementVNode("div", {
                   class: vue.normalizeClass(`control is-medium ${_ctx.isLoading ? 'is-loading' : ''} has-icons-right mt-2`)
                 }, [
@@ -262,7 +255,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     onBlur: _cache[3] || (_cache[3] = (...args) => (_ctx.onBlur && _ctx.onBlur(...args))),
                     onClick: _cache[4] || (_cache[4] = vue.withModifiers($event => (_ctx.isActive = true), ["stop"])),
                     onKeydown: _cache[5] || (_cache[5] = vue.withKeys(vue.withModifiers(() => {}, ["prevent"]), ["enter"]))
-                  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_21), [
+                  }, null, 40 /* PROPS, NEED_HYDRATION */, _hoisted_15), [
                     [vue.vModelText, _ctx.search]
                   ])
                 ], 2 /* CLASS */)
@@ -287,7 +280,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                       key: item[_ctx.itemKey],
                       onClick: vue.withModifiers($event => (_ctx.select(item)), ["stop"]),
                       class: "dropdown-item is-clickable"
-                    }, vue.toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_22))
+                    }, vue.toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_16))
                   ]))
                 }), 256 /* UNKEYED_FRAGMENT */))
           ], 4 /* STYLE */)

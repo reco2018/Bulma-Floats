@@ -4,6 +4,7 @@ import { s as styleInject } from './style-inject.es-1f59c1d0.js';
 var script = defineComponent({
   props: {
     title: String,
+    description: String,
     items: Array,
     selected: Array,
     itemKey: {
@@ -87,29 +88,36 @@ const _hoisted_2 = {
   key: 0,
   class: "label"
 };
-const _hoisted_3 = { class: "dropdown-trigger" };
-const _hoisted_4 = {
+const _hoisted_3 = {
+  key: 1,
+  class: "label is-size-7"
+};
+const _hoisted_4 = { class: "dropdown-trigger" };
+const _hoisted_5 = {
   class: "dropdown-menu",
   id: "dropdown-menu",
   role: "menu"
 };
-const _hoisted_5 = { class: "dropdown-content" };
-const _hoisted_6 = ["onMousedown"];
-const _hoisted_7 = {
-  key: 1,
+const _hoisted_6 = { class: "dropdown-content" };
+const _hoisted_7 = ["onMousedown"];
+const _hoisted_8 = {
+  key: 2,
   class: "tags mt-2"
 };
-const _hoisted_8 = ["onMousedown"];
+const _hoisted_9 = ["onMousedown"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", _hoisted_1, [
     (_ctx.title)
       ? (openBlock(), createElementBlock("label", _hoisted_2, toDisplayString(_ctx.title), 1 /* TEXT */))
       : createCommentVNode("v-if", true),
+    (_ctx.description)
+      ? (openBlock(), createElementBlock("p", _hoisted_3, toDisplayString(_ctx.description), 1 /* TEXT */))
+      : createCommentVNode("v-if", true),
     createElementVNode("div", {
       class: normalizeClass(["dropdown", { 'is-active': _ctx.isActive }])
     }, [
-      createElementVNode("div", _hoisted_3, [
+      createElementVNode("div", _hoisted_4, [
         withDirectives(createElementVNode("input", {
           class: normalizeClass(["input", {'is-small': _ctx.isSmall}]),
           type: "text",
@@ -121,20 +129,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           [vModelText, _ctx.search]
         ])
       ]),
-      createElementVNode("div", _hoisted_4, [
-        createElementVNode("div", _hoisted_5, [
+      createElementVNode("div", _hoisted_5, [
+        createElementVNode("div", _hoisted_6, [
           (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.items, (item, index) => {
             return (openBlock(), createElementBlock("span", {
               key: index,
               onMousedown: $event => (_ctx.select(item)),
               class: "dropdown-item is-clickable"
-            }, toDisplayString(item[_ctx.itemValue]), 41 /* TEXT, PROPS, HYDRATE_EVENTS */, _hoisted_6))
+            }, toDisplayString(item[_ctx.itemValue]), 41 /* TEXT, PROPS, HYDRATE_EVENTS */, _hoisted_7))
           }), 128 /* KEYED_FRAGMENT */))
         ])
       ])
     ], 2 /* CLASS */),
     (_ctx.selected.length > 0)
-      ? (openBlock(), createElementBlock("div", _hoisted_7, [
+      ? (openBlock(), createElementBlock("div", _hoisted_8, [
           renderSlot(_ctx.$slots, "tags", {}, () => [
             (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.selected, (item, index) => {
               return (openBlock(), createElementBlock("span", {
@@ -146,7 +154,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   type: "button",
                   class: "delete is-small",
                   onMousedown: $event => (_ctx.remove(item))
-                }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_8)
+                }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_9)
               ]))
             }), 128 /* KEYED_FRAGMENT */))
           ])

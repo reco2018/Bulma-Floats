@@ -29,8 +29,8 @@ const AlertProgrammatic = {
                 ChildComponent: propsData.component,
             },
             methods: {
-                onCancel() {
-                    propsData.onCancelPressed()
+                onCancel(type) {
+                    propsData.onCancelPressed(type)
                     return true;
                 },
                 onOk(result) {

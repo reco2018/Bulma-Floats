@@ -1,6 +1,7 @@
 <template>
   <div class="field">
     <label v-if="title" class="label">{{ title }}</label>
+    <p v-if="description" class="label is-size-7">{{ description }}</p>
     <div class="dropdown" :class="{ 'is-active': isActive }">
       <div class="dropdown-trigger">
         <input 
@@ -35,6 +36,7 @@ import { defineComponent, ref, watch } from 'vue'
 export default defineComponent({
   props: {
     title: String,
+    description: String,
     items: Array,
     selected: Array,
     itemKey: {

@@ -10,7 +10,7 @@
   </a>
 
   <p class="mr-2">
-    全<span class="has-text-weight-bold">{{ meta.total }}</span>件
+    全<span class="has-text-weight-bold">{{ meta?.total }}</span>件
   </p>
 
   <div class="select">
@@ -25,17 +25,17 @@
   </div>
 
   <ul class="pagination-list">
-    <li v-for="index in meta.last_page">
+    <li v-for="index in meta?.last_page">
       <a
         v-if="index !== current
           && (index < 6
-          || index > meta.last_page - 5
+          || index > meta?.last_page - 5
           || (index > current - 2 && index < current + 2))"
         class="pagination-link"
         @click="changePage(index)">
         {{index}}
       </a>
-      <li v-if="(current > 7 && index == 6) || (current < meta.last_page - 6 && index == meta.last_page - 5)">
+      <li v-if="(current > 7 && index == 6) || (current < meta?.last_page - 6 && index == meta?.last_page - 5)">
         <span class="pagination-ellipsis">&hellip;</span>
       </li>
       <a 
@@ -80,7 +80,7 @@ export default defineComponent({
     }
 
     const changeLimit = (limit) => {
-      $Airporter.updateQuery({ limit })
+      $Airporter.updateQuery({ limit, page: 1 })
     }
 
     return {

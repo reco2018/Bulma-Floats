@@ -34,10 +34,6 @@ var DialogMixin = {
         return config.defaultModalCanCancel;
       }
     },
-    onCancel: {
-      type: Function,
-      "default": function _default() {}
-    },
     scroll: {
       type: String,
       "default": function _default() {
@@ -159,7 +155,7 @@ var DialogMixin = {
     },
     cancel: function cancel(method) {
       if (this.cancelOptions.indexOf(method) < 0) return;
-      this.onCancel();
+      this.onCancel(method);
       this.onCancel.apply(null, arguments);
       this.close();
     },
@@ -233,6 +229,10 @@ var script = {
             this.onOk(this.newResult);
             this.close();
         },
+        cancel(type) {
+            this.onCancel(type);
+            this.close();
+        },
         handlePopstate() {
             this.close();
         }
@@ -283,12 +283,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         (!_ctx.isFullScreen)
           ? (openBlock(), createElementBlock("div", {
               key: 0,
-              onClick: _cache[0] || (_cache[0] = $event => (_ctx.cancel('outside'))),
+              onClick: _cache[0] || (_cache[0] = $event => ($options.cancel('outside'))),
               class: "modal-background"
             }))
           : createCommentVNode("v-if", true),
         createElementVNode("button", {
-          onClick: _cache[1] || (_cache[1] = $event => (_ctx.cancel('x'))),
+          onClick: _cache[1] || (_cache[1] = $event => ($options.cancel('x'))),
           class: "delete",
           "aria-label": "close"
         }),
@@ -304,7 +304,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               result: $data.newResult,
               customProps: _ctx.props,
               onOnOk: $options.ok,
-              onOnCancel: _cache[2] || (_cache[2] = $event => (_ctx.cancel('button'))),
+              onOnCancel: _cache[2] || (_cache[2] = $event => ($options.cancel('button'))),
               onOnResultChanged: $options.onResultChanged
             }, null, 8 /* PROPS */, ["is", "result", "customProps", "onOnOk", "onOnResultChanged"]),
             (_ctx.content)
@@ -316,7 +316,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 (_ctx.cancelVisible)
                   ? (openBlock(), createElementBlock("button", {
                       key: 0,
-                      onClick: _cache[3] || (_cache[3] = $event => (_ctx.cancel('button'))),
+                      onClick: _cache[3] || (_cache[3] = $event => ($options.cancel('button'))),
                       class: "button"
                     }, toDisplayString($data.newCancelText), 1 /* TEXT */))
                   : createCommentVNode("v-if", true),
@@ -369,8 +369,8 @@ var AlertProgrammatic = {
         ChildComponent: propsData.component
       },
       methods: {
-        onCancel: function onCancel() {
-          propsData.onCancelPressed();
+        onCancel: function onCancel(type) {
+          propsData.onCancelPressed(type);
           return true;
         },
         onOk: function onOk(result) {

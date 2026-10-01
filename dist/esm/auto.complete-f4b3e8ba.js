@@ -1,4 +1,4 @@
-import { defineComponent, ref, watch, onMounted, openBlock, createElementBlock, withModifiers, toDisplayString, createCommentVNode, createElementVNode, normalizeClass, withDirectives, vShow, vModelText, normalizeStyle, Fragment, renderList, renderSlot, pushScopeId, popScopeId } from 'vue';
+import { defineComponent, ref, watch, onMounted, openBlock, createElementBlock, withModifiers, toDisplayString, createCommentVNode, createElementVNode, normalizeClass, withDirectives, vShow, withKeys, vModelText, normalizeStyle, Fragment, renderList, renderSlot, pushScopeId, popScopeId } from 'vue';
 import { s as styleInject } from './style-inject.es-1f59c1d0.js';
 
 var script = defineComponent({
@@ -192,7 +192,7 @@ const _hoisted_22 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", {
     class: "field",
-    onClick: _cache[4] || (_cache[4] = withModifiers(() => {}, ["stop"]))
+    onClick: _cache[6] || (_cache[6] = withModifiers(() => {}, ["stop"]))
   }, [
     (_ctx.title)
       ? (openBlock(), createElementBlock("label", _hoisted_1, toDisplayString(_ctx.title), 1 /* TEXT */))
@@ -257,7 +257,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     class: "input",
                     type: "text",
                     placeholder: _ctx.inputPlaceHolder,
-                    onBlur: _cache[3] || (_cache[3] = (...args) => (_ctx.onBlur && _ctx.onBlur(...args)))
+                    onBlur: _cache[3] || (_cache[3] = (...args) => (_ctx.onBlur && _ctx.onBlur(...args))),
+                    onClick: _cache[4] || (_cache[4] = withModifiers($event => (_ctx.isActive = true), ["stop"])),
+                    onKeydown: _cache[5] || (_cache[5] = withKeys(withModifiers(() => {}, ["prevent"]), ["enter"]))
                   }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_21), [
                     [vModelText, _ctx.search]
                   ])
@@ -293,7 +295,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ]))
 }
 
-var css_248z = "\n.dropdown[data-v-5f95ed01],\n.dropdown-trigger[data-v-5f95ed01],\n.dropdown-menu[data-v-5f95ed01] {\n  width: 100%;\n}\n.dropdown-trigger.disabled .input[data-v-5f95ed01] {\n  cursor: not-allowed;\n  background-color: #f5f5f5;\n  color:gray !important;\n}\n.auto-complete[data-v-5f95ed01] {\n  border: 1px solid #ccc;\n  min-height: 24px;\n}\n.control.is-loading[data-v-5f95ed01]::after {\n  border: 2px solid #157562;\n  border-right-color: transparent;\n  border-top-color: transparent;\n}\n";
+var css_248z = "\n.dropdown[data-v-5f95ed01],\n.dropdown-trigger[data-v-5f95ed01],\n.dropdown-menu[data-v-5f95ed01] {\n  width: 100%;\n}\n.dropdown-item.is-clickable[data-v-5f95ed01]:hover {\n  background-color: rgba(191, 229, 221, 0.75);\n}\n.dropdown-trigger.disabled .input[data-v-5f95ed01] {\n  cursor: not-allowed;\n  background-color: #f5f5f5;\n  color:gray !important;\n}\n.auto-complete[data-v-5f95ed01] {\n  border: 1px solid #ccc;\n  min-height: 24px;\n}\n.control.is-loading[data-v-5f95ed01]::after {\n  border: 2px solid #157562;\n  border-right-color: transparent;\n  border-top-color: transparent;\n}\n";
 styleInject(css_248z);
 
 script.render = render;

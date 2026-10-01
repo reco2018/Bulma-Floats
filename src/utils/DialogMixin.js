@@ -32,10 +32,6 @@ export default {
                 return config.defaultModalCanCancel
             }
         },
-        onCancel: {
-            type: Function,
-            default: () => {}
-        },
         scroll: {
             type: String,
             default: () => {
@@ -162,8 +158,9 @@ export default {
         },
         cancel(method) {
             if (this.cancelOptions.indexOf(method) < 0) return
-            this.onCancel()
+            this.onCancel(method)
             this.onCancel.apply(null, arguments)
+
             this.close()
         },
         close() {

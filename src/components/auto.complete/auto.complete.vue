@@ -31,6 +31,8 @@
                 v-model="search"
                 class="input" type="text" :placeholder="inputPlaceHolder"
                 @blur="onBlur"
+                @click.stop="isActive = true"
+                @keydown.enter.prevent
               />
             </div>
           </div>
@@ -198,6 +200,9 @@ export default defineComponent({
 .dropdown-trigger,
 .dropdown-menu {
   width: 100%;
+}
+.dropdown-item.is-clickable:hover {
+  background-color: rgba(191, 229, 221, 0.75);
 }
 .dropdown-trigger.disabled .input {
   cursor: not-allowed;

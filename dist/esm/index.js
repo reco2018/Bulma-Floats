@@ -7,8 +7,8 @@ import { s as script$2 } from './auto.complete-f4b3e8ba.js';
 export { s as AutoComplete } from './auto.complete-f4b3e8ba.js';
 import { s as script$3 } from './checkbox-286191e2.js';
 export { s as CheckBox } from './checkbox-286191e2.js';
-import { s as script$4 } from './pagination-a8689d2c.js';
-export { s as Pagination } from './pagination-a8689d2c.js';
+import { s as script$4 } from './pagination-104d3d2b.js';
+export { s as Pagination } from './pagination-104d3d2b.js';
 import { s as script$5 } from './tag.input-8405251a.js';
 export { s as TagInput } from './tag.input-8405251a.js';
 import { s as setVueInstance } from './config-b6f98b99.js';
@@ -28,12 +28,10 @@ var components = /*#__PURE__*/Object.freeze({
 var BulmaFloats = {
   install: function install(app, options) {
     setVueInstance(app);
-
     for (var key in components) {
       var component = components[key];
       app.component(key, component);
     }
-
     app.config.globalProperties.$floats = {
       toast: ToastProgrammatic,
       alert: AlertProgrammatic

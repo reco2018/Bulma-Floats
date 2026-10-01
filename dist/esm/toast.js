@@ -48,7 +48,6 @@ var NoticeMixin = {
         case 'is-top':
         case 'is-top-left':
           return this.parentTop;
-
         case 'is-bottom-right':
         case 'is-bottom':
         case 'is-bottom-left':
@@ -64,7 +63,6 @@ var NoticeMixin = {
             enter: 'fadeInDown',
             leave: 'fadeOut'
           };
-
         case 'is-bottom-right':
         case 'is-bottom':
         case 'is-bottom-left':
@@ -98,7 +96,6 @@ var NoticeMixin = {
     },
     close: function close() {
       var _this = this;
-
       if (!this.isPaused) {
         clearTimeout(this.timer);
         this.isActive = false;
@@ -113,12 +110,10 @@ var NoticeMixin = {
     },
     showNotice: function showNotice() {
       var _this2 = this;
-
       console.log(this.$el);
       if (this.shouldQueue()) this.correctParent.innerHTML = '';
       this.correctParent.insertAdjacentElement('afterbegin', this.$el);
       this.isActive = true;
-
       if (!this.indefinite) {
         this.timer = setTimeout(function () {
           return _this2.timeoutCallback();
@@ -129,21 +124,17 @@ var NoticeMixin = {
       this.parentTop = document.querySelector((this.newContainer ? this.newContainer : 'body') + '>.notices.is-top');
       this.parentBottom = document.querySelector((this.newContainer ? this.newContainer : 'body') + '>.notices.is-bottom');
       if (this.parentTop && this.parentBottom) return;
-
       if (!this.parentTop) {
         this.parentTop = document.createElement('div');
         this.parentTop.className = 'notices is-top';
       }
-
       if (!this.parentBottom) {
         this.parentBottom = document.createElement('div');
         this.parentBottom.className = 'notices is-bottom';
       }
-
       var container = document.querySelector(this.newContainer) || document.body;
       container.appendChild(this.parentTop);
       container.appendChild(this.parentBottom);
-
       if (this.newContainer) {
         this.parentTop.classList.add('has-custom-container');
         this.parentBottom.classList.add('has-custom-container');
@@ -203,7 +194,6 @@ var ToastProgrammatic = {
         message: params
       };
     }
-
     var defaultParam = {
       position: 'is-top'
     };
@@ -211,17 +201,13 @@ var ToastProgrammatic = {
     var ToastComponent = defineComponent({
       "extends": script
     });
-
     var _app = createApp(ToastComponent, propsData);
-
     if (VueInstance._instance && VueInstance._instance.appContext) {
       Object.assign(_app._context, VueInstance._instance.appContext);
     } else if (VueInstance._context) {
       Object.assign(_app._context, VueInstance._context);
     }
-
     _app.mount(document.createElement('div'));
-
     return ToastComponent;
   }
 };

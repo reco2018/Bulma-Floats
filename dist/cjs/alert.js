@@ -41,7 +41,7 @@ var DialogMixin = {
     scroll: {
       type: String,
       "default": function _default() {
-        return 'clip';
+        return config.config.defaultModalScroll ? config.config.defaultModalScroll : 'clip';
       },
       validator: function validator(value) {
         return ['clip', 'keep'].indexOf(value) >= 0;
@@ -102,7 +102,6 @@ var DialogMixin = {
           maxWidth: this.newWidth
         };
       }
-
       return null;
     }
   },
@@ -112,7 +111,6 @@ var DialogMixin = {
     },
     isActive: function isActive(value) {
       var _this = this;
-
       if (value) this.destroyed = false;
       this.handleScroll();
       this.$nextTick(function () {
@@ -125,30 +123,24 @@ var DialogMixin = {
   methods: {
     handleScroll: function handleScroll() {
       if (typeof window === 'undefined') return;
-
       if (this.scroll === 'clip') {
         if (this.isActive) {
           document.documentElement.classList.add('is-clipped');
         } else {
           document.documentElement.classList.remove('is-clipped');
         }
-
         return;
       }
-
       this.savedScrollTop = !this.savedScrollTop ? document.documentElement.scrollTop : this.savedScrollTop;
-
       if (this.isActive) {
         document.body.classList.add('is-noscroll');
       } else {
         document.body.classList.remove('is-noscroll');
       }
-
       if (this.isActive) {
         document.body.style.top = "-".concat(this.savedScrollTop, "px");
         return;
       }
-
       document.documentElement.scrollTop = this.savedScrollTop;
       document.body.style.top = null;
       this.savedScrollTop = null;
@@ -165,7 +157,6 @@ var DialogMixin = {
     },
     close: function close() {
       var _this2 = this;
-
       if (this.programmatic) {
         this.isActive = false;
         setTimeout(function () {
@@ -189,7 +180,6 @@ var DialogMixin = {
       if (this.destroyOnHide) {
         this.destroyed = true;
       }
-
       this.$emit('after-leave');
     }
   },
@@ -204,8 +194,8 @@ var DialogMixin = {
   },
   beforeDestroy: function beforeDestroy() {
     if (typeof window !== 'undefined') {
-      document.removeEventListener('keyup', this.keyPress); // reset scroll
-
+      document.removeEventListener('keyup', this.keyPress);
+      // reset scroll
       document.documentElement.classList.remove('is-clipped');
       var savedScrollTop = !this.savedScrollTop ? document.documentElement.scrollTop : this.savedScrollTop;
       document.body.classList.remove('is-noscroll');
@@ -355,7 +345,6 @@ var AlertProgrammatic = {
         message: params
       };
     }
-
     var defaultParam = {
       programmatic: true,
       isFullScreen: false,
@@ -383,19 +372,14 @@ var AlertProgrammatic = {
         }
       }
     });
-
     var _app = vue.createApp(AlertComponent, propsData);
-
     if (config.VueInstance._instance && config.VueInstance._instance.appContext) {
       Object.assign(_app._context, config.VueInstance._instance.appContext);
     } else if (config.VueInstance._context) {
       Object.assign(_app._context, config.VueInstance._context);
     }
-
     console.log(_app);
-
     _app.mount(document.createElement('div'));
-
     return AlertComponent;
   }
 };

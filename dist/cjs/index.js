@@ -7,7 +7,7 @@ require('vue');
 var alert = require('./alert.js');
 var auto_complete = require('./auto.complete-a233b8b7.js');
 var checkbox = require('./checkbox-426c325b.js');
-var pagination = require('./pagination-a551e1db.js');
+var pagination = require('./pagination-f274f09f.js');
 var tag_input = require('./tag.input-5138806c.js');
 var config = require('./config-4ce33493.js');
 require('./helpers.js');
@@ -26,12 +26,10 @@ var components = /*#__PURE__*/Object.freeze({
 var BulmaFloats = {
   install: function install(app, options) {
     config.setVueInstance(app);
-
     for (var key in components) {
       var component = components[key];
       app.component(key, component);
     }
-
     app.config.globalProperties.$floats = {
       toast: toast.ToastProgrammatic,
       alert: alert.AlertProgrammatic

@@ -1,5 +1,23 @@
 # Bulma-Floats
+
+Nuxt 3 (`nuxt` is a peer dependency).
+
+## Setup
+
+`Pagination` imports `nuxt/app`, so the package must be transpiled by Nuxt.
+Without this, the production server fails to render (`#build/nuxt.config.mjs` is not defined).
+
 ```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  build: {
+    transpile: ['@reco2018/bulma-floats']
+  }
+})
+```
+
+```ts
+// plugins/bulma-floats.ts
 import { defineNuxtPlugin } from '#app'
 import BulmaFloats, { ToastProgrammatic, AlertProgrammatic } from '@reco2018/bulma-floats'
 

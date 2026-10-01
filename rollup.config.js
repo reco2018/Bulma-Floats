@@ -25,6 +25,10 @@ const entries = {
     }, {})
 }
 
+// Resolved from the host app at runtime. Bundling nuxt/app would ship a
+// second copy of Nuxt's runtime that only works by sharing global context.
+const external = ['vue', 'nuxt/app']
+
 const babelConfig = {
     exclude: 'node_modules/**',
     babelrc: false,
@@ -44,7 +48,7 @@ export default () => {
     let config = [
         {
             input: entries,
-            external: ['vue'],
+            external,
             output: {
                 format: 'esm',
                 dir: `dist/esm`
@@ -61,7 +65,7 @@ export default () => {
         },
         {
             input: entries,
-            external: ['vue'],
+            external,
             output: {
                 format: 'cjs',
                 dir: 'dist/cjs',

@@ -1,2 +1,2 @@
-export { s as CheckBox } from './checkbox-286191e2.js';
+export { s as CheckBox } from './checkbox-9fdb8e33.js';
 import 'vue';

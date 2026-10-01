@@ -1,6 +1,8 @@
-import { defineComponent, openBlock, createElementBlock, Fragment, renderList, createElementVNode, createTextVNode, toDisplayString } from 'vue';
+'use strict';
 
-var script = defineComponent({
+var vue = require('vue');
+
+var script = vue.defineComponent({
   props: {
     options: Array,
     selected: Array,
@@ -43,18 +45,18 @@ var script = defineComponent({
 const _hoisted_1 = ["value", "onInput", "checked"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.options, (option) => {
-    return (openBlock(), createElementBlock("label", {
+  return (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.options, (option) => {
+    return (vue.openBlock(), vue.createElementBlock("label", {
       class: "checkbox mr-3 mb-2",
       key: option[_ctx.itemKey]
     }, [
-      createElementVNode("input", {
+      vue.createElementVNode("input", {
         type: "checkbox",
         value: option[_ctx.itemKey],
         onInput: $event => (_ctx.input(option)),
         checked: _ctx.isChecked(option)
-      }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1),
-      createTextVNode(" " + toDisplayString(option[_ctx.itemValue]), 1 /* TEXT */)
+      }, null, 40 /* PROPS, NEED_HYDRATION */, _hoisted_1),
+      vue.createTextVNode(" " + vue.toDisplayString(option[_ctx.itemValue]), 1 /* TEXT */)
     ]))
   }), 128 /* KEYED_FRAGMENT */))
 }
@@ -62,4 +64,4 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 script.render = render;
 script.__file = "src/components/checkbox/checkbox.vue";
 
-export { script as s };
+exports.script = script;

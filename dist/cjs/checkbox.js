@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var checkbox = require('./checkbox-426c325b.js');
+var checkbox = require('./checkbox-7e8017d6.js');
 require('vue');
 
 

@@ -5,13 +5,14 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var toast = require('./toast.js');
 require('vue');
 var alert = require('./alert.js');
-var auto_complete = require('./auto.complete-a233b8b7.js');
-var checkbox = require('./checkbox-426c325b.js');
-var pagination = require('./pagination-a551e1db.js');
-var tag_input = require('./tag.input-5138806c.js');
+var auto_complete = require('./auto.complete-f353365d.js');
+var checkbox = require('./checkbox-7e8017d6.js');
+var pagination = require('./pagination-80c1574d.js');
+var tag_input = require('./tag.input-03cb5bb8.js');
 var config = require('./config-4ce33493.js');
 require('./helpers.js');
 require('./style-inject.es-dcee06b6.js');
+require('nuxt/app');
 
 var components = /*#__PURE__*/Object.freeze({
     __proto__: null,
@@ -26,12 +27,10 @@ var components = /*#__PURE__*/Object.freeze({
 var BulmaFloats = {
   install: function install(app, options) {
     config.setVueInstance(app);
-
     for (var key in components) {
       var component = components[key];
       app.component(key, component);
     }
-
     app.config.globalProperties.$floats = {
       toast: toast.ToastProgrammatic,
       alert: alert.AlertProgrammatic

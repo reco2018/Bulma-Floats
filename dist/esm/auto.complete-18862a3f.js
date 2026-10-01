@@ -1,4 +1,4 @@
-import { defineComponent, ref, watch, onMounted, openBlock, createElementBlock, withModifiers, toDisplayString, createCommentVNode, createElementVNode, normalizeClass, withDirectives, vShow, withKeys, vModelText, normalizeStyle, Fragment, renderList, renderSlot, pushScopeId, popScopeId } from 'vue';
+import { defineComponent, ref, watch, onMounted, openBlock, createElementBlock, withModifiers, toDisplayString, createCommentVNode, createElementVNode, normalizeClass, withDirectives, vShow, withKeys, vModelText, normalizeStyle, Fragment, renderList, renderSlot } from 'vue';
 import { s as styleInject } from './style-inject.es-1f59c1d0.js';
 
 var script = defineComponent({
@@ -134,7 +134,6 @@ var script = defineComponent({
   }
 });
 
-const _withScopeId = n => (pushScopeId("data-v-5f95ed01"),n=n(),popScopeId(),n);
 const _hoisted_1 = {
   key: 0,
   class: "label"
@@ -155,39 +154,27 @@ const _hoisted_8 = {
   key: 2,
   class: "column is-narrow"
 };
-const _hoisted_9 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/createElementVNode("i", { class: "fas fa-trash" }, null, -1 /* HOISTED */));
-const _hoisted_10 = [
-  _hoisted_9
-];
-const _hoisted_11 = { class: "column is-narrow" };
-const _hoisted_12 = {
+const _hoisted_9 = { class: "column is-narrow" };
+const _hoisted_10 = {
   key: 0,
   class: "icon"
 };
-const _hoisted_13 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/createElementVNode("i", { class: "fas fa-chevron-down" }, null, -1 /* HOISTED */));
-const _hoisted_14 = [
-  _hoisted_13
-];
-const _hoisted_15 = {
+const _hoisted_11 = {
   key: 1,
   class: "icon"
 };
-const _hoisted_16 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/createElementVNode("i", { class: "fas fa-chevron-up" }, null, -1 /* HOISTED */));
-const _hoisted_17 = [
-  _hoisted_16
-];
-const _hoisted_18 = {
+const _hoisted_12 = {
   class: "dropdown-menu",
   id: "dropdown-menu",
   role: "menu"
 };
-const _hoisted_19 = { class: "dropdown-content" };
-const _hoisted_20 = {
+const _hoisted_13 = { class: "dropdown-content" };
+const _hoisted_14 = {
   key: 0,
   class: "mx-2 mb-1"
 };
-const _hoisted_21 = ["placeholder"];
-const _hoisted_22 = ["onClick"];
+const _hoisted_15 = ["placeholder"];
+const _hoisted_16 = ["onClick"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", {
@@ -229,25 +216,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 createElementVNode("span", {
                   class: "icon",
                   onClick: _cache[0] || (_cache[0] = withModifiers((...args) => (_ctx.remove && _ctx.remove(...args)), ["stop"]))
-                }, _hoisted_10)
+                }, [...(_cache[7] || (_cache[7] = [
+                  createElementVNode("i", { class: "fas fa-trash" }, null, -1 /* CACHED */)
+                ]))])
               ]))
             : createCommentVNode("v-if", true),
-          createElementVNode("div", _hoisted_11, [
+          createElementVNode("div", _hoisted_9, [
             (!_ctx.isActive)
-              ? (openBlock(), createElementBlock("span", _hoisted_12, _hoisted_14))
+              ? (openBlock(), createElementBlock("span", _hoisted_10, [...(_cache[8] || (_cache[8] = [
+                  createElementVNode("i", { class: "fas fa-chevron-down" }, null, -1 /* CACHED */)
+                ]))]))
               : createCommentVNode("v-if", true),
             (_ctx.isActive)
-              ? (openBlock(), createElementBlock("span", _hoisted_15, _hoisted_17))
+              ? (openBlock(), createElementBlock("span", _hoisted_11, [...(_cache[9] || (_cache[9] = [
+                  createElementVNode("i", { class: "fas fa-chevron-up" }, null, -1 /* CACHED */)
+                ]))]))
               : createCommentVNode("v-if", true)
           ])
         ], 2 /* CLASS */)
       ], 2 /* CLASS */), [
         [vShow, !_ctx.hideSelectBox]
       ]),
-      createElementVNode("div", _hoisted_18, [
-        createElementVNode("div", _hoisted_19, [
+      createElementVNode("div", _hoisted_12, [
+        createElementVNode("div", _hoisted_13, [
           (_ctx.searchable)
-            ? (openBlock(), createElementBlock("div", _hoisted_20, [
+            ? (openBlock(), createElementBlock("div", _hoisted_14, [
                 createElementVNode("div", {
                   class: normalizeClass(`control is-medium ${_ctx.isLoading ? 'is-loading' : ''} has-icons-right mt-2`)
                 }, [
@@ -260,7 +253,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     onBlur: _cache[3] || (_cache[3] = (...args) => (_ctx.onBlur && _ctx.onBlur(...args))),
                     onClick: _cache[4] || (_cache[4] = withModifiers($event => (_ctx.isActive = true), ["stop"])),
                     onKeydown: _cache[5] || (_cache[5] = withKeys(withModifiers(() => {}, ["prevent"]), ["enter"]))
-                  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_21), [
+                  }, null, 40 /* PROPS, NEED_HYDRATION */, _hoisted_15), [
                     [vModelText, _ctx.search]
                   ])
                 ], 2 /* CLASS */)
@@ -285,7 +278,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                       key: item[_ctx.itemKey],
                       onClick: withModifiers($event => (_ctx.select(item)), ["stop"]),
                       class: "dropdown-item is-clickable"
-                    }, toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_22))
+                    }, toDisplayString(item[_ctx.itemValue]), 9 /* TEXT, PROPS */, _hoisted_16))
                   ]))
                 }), 256 /* UNKEYED_FRAGMENT */))
           ], 4 /* STYLE */)

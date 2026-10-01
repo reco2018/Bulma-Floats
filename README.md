@@ -4,8 +4,9 @@ Nuxt 3 (`nuxt` is a peer dependency).
 
 ## Setup
 
-`Pagination` imports `nuxt/app`, so the package must be transpiled by Nuxt.
+`Pagination` imports `nuxt/app`, so apps that render on the server must let Nuxt transpile the package.
 Without this, the production server fails to render (`#build/nuxt.config.mjs` is not defined).
+Not required with `ssr: false`, but harmless to add.
 
 ```ts
 // nuxt.config.ts
